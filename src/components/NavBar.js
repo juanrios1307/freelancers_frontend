@@ -1,12 +1,18 @@
 import React,{Component} from 'react';
 import '../assets/css/Navbar.css';
+import logo from '../assets/images/logo.svg'
+
 class navBar extends Component {
     render(){
         return (
             <div className="navbar">
                 <nav className="navbar navbar-expand-md navbar-light bg-light">
                     <div className="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-                        <a className="navbar-brand" href="#">Quick Services</a>
+                        <a className="navbar-brand" href="#">
+                            <img src={logo} width="30" height="30"
+                                 className="d-inline-block align-top" alt=""/>
+                                Quick Services
+                        </a>
                     </div>
 
                     <div className="mx-auto order-0">
