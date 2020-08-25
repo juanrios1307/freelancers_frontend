@@ -5,6 +5,6 @@
     position: fixed;
 }
 
-.ul{
-    float: right !important;
+.input-group{
+    width: 600px !important;
 }

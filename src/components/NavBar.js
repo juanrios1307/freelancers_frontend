@@ -28,20 +28,20 @@ class navBar extends Component {
                     </div>
 
                     <div className="mx-auto order-0">
-                        <form className="navbar-form navbar-left">
+                        <form className="navbar-form navbar-left my-2 my-lg-0 form-inline">
                             <div className="input-group">
                                 <input type="text" className="form-control" placeholder="Search"/>
-                                    <div className="input-group-btn">
-                                        <button className="btn btn-default" type="submit">
-                                            submit
-                                        </button>
-                                    </div>
+
+                                <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
+                                            <i className="fa fa-search"></i>
+                                </button>
+
                             </div>
                         </form>
 
                     </div>
 
-                    <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                    <div className="navbar-collapse collapse w-100 order-1 dual-collapse">
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item">
                                 <a className="nav-link" href="#">Sign Up</a>
