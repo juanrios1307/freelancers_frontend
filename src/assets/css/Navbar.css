@@ -7,6 +7,15 @@
     padding-right: 15px;
 }
 
+.dual-collapse2{
+
+}
+
+.navbar-brand{
+    font-family: Lobster;
+    font-size: larger;
+}
+
 .input-group{
     width: 600px !important;
 }
