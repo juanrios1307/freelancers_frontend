@@ -30,7 +30,7 @@ class navBar extends Component {
                     <div className="mx-auto order-0">
                         <form className="navbar-form navbar-left my-2 my-lg-0 form-inline">
                             <div className="input-group">
-                                <input type="text" className="form-control" placeholder="Search"/>
+                                <input type="text" className="form-control" placeholder="Buscar"/>
 
                                 <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
                                             <i className="fa fa-search"></i>
