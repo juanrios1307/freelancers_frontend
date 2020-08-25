@@ -1,13 +1,18 @@
 import React,{Component} from 'react';
 import '../assets/css/MainPage.css';
 import NavBar from "./NavBar";
+import logo from '../assets/images/logo.svg'
 
 class MainPage extends Component {
     render(){
         return (
-            <header className="App-header">
-                <NavBar/>
-            </header>
+            <div>
+                <header className="App-header">
+                    <NavBar/>
+                </header>
+                <img src={logo} className="align-self-center  mr-3" alt="banner"/>
+
+            </div>
         );                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
     }
 }

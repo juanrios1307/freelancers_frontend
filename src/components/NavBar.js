@@ -1,10 +1,9 @@
 import React,{Component} from 'react';
-
+import '../assets/css/Navbar.css';
 class navBar extends Component {
     render(){
         return (
             <div className="navbar">
-
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
 
                     <button className="navbar-toggler" type="button" data-toggle="collapse"
