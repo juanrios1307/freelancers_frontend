@@ -1,36 +1,24 @@
 import React,{Component} from 'react';
 import '../assets/css/Navbar.css';
+import logo from '../assets/images/logo.svg'
+
 class navBar extends Component {
     render(){
         return (
             <div className="navbar">
-
-
                 <nav className="navbar navbar-expand-md navbar-light bg-light">
                     <div className="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-
-                    </div>
-
-                    <div className="mx-auto order-0 nav-inline">
-
-                    </div>
-
-                    <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
-                        <ul className="nav navbar-nav mr-auto mt-2 mt-lg-0">
-
-                        </ul>
-                    </div>
-                </nav>
-
-                <nav className="navbar navbar-expand-md navbar-light bg-light">
-                    <div className="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-                        <a className="navbar-brand" href="#">Quick Services</a>
+                        <a className="navbar-brand" href="#">
+                            <img src={logo} width="30" height="30"
+                                 className="d-inline-block align-top" alt=""/>
+                                Quick Services
+                        </a>
                     </div>
 
                     <div className="mx-auto order-0">
                         <form className="navbar-form navbar-left my-2 my-lg-0 form-inline">
                             <div className="input-group">
-                                <input type="text" className="form-control" placeholder="Search"/>
+                                <input type="text" className="form-control" placeholder="Buscar"/>
 
                                 <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
                                             <i className="fa fa-search"></i>
