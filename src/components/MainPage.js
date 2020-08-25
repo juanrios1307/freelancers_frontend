@@ -1,22 +1,19 @@
 import React,{Component} from 'react';
 import '../assets/css/MainPage.css';
 import NavBar from "./NavBar";
-import logo from '../assets/images/logo512.png'
-
 
 class MainPage extends Component {
     render(){
         return (
-            <div>
+            <body>
                 <header className="App-header">
                     <NavBar/>
-                    <div className="banner">
+                    <section className="banner">
 
-                    </div>
-
+                    </section>
                 </header>
 
-            </div>
+            </body>
         );                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
     }
 }

@@ -4,24 +4,6 @@ class navBar extends Component {
     render(){
         return (
             <div className="navbar">
-
-
-                <nav className="navbar navbar-expand-md navbar-light bg-light">
-                    <div className="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-
-                    </div>
-
-                    <div className="mx-auto order-0 nav-inline">
-
-                    </div>
-
-                    <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
-                        <ul className="nav navbar-nav mr-auto mt-2 mt-lg-0">
-
-                        </ul>
-                    </div>
-                </nav>
-
                 <nav className="navbar navbar-expand-md navbar-light bg-light">
                     <div className="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
                         <a className="navbar-brand" href="#">Quick Services</a>
