@@ -1,16 +1,10 @@
 .navbar {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
     width: 100%;
     top: 0px;
     left: 0px;
     position: fixed;
 }
-.navbar-expand-lg{
-    padding-left:10px;
-}
-.navbar-nav{
-    float:right;
-    text-aling: right;
+
+.input-group{
+    width: 600px !important;
 }

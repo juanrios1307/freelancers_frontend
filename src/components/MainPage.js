@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import '../assets/css/MainPage.css';
 import NavBar from "./NavBar";
-import logo from '../assets/images/logo.svg'
+import logo from '../assets/images/logo512.png'
 
 
 class MainPage extends Component {
@@ -15,7 +15,6 @@ class MainPage extends Component {
                     </div>
 
                 </header>
-                <img src={logo} className="align-self-center  mr-3" alt="banner"/>
 
             </div>
         );                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              

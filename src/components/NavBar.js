@@ -4,32 +4,52 @@ class navBar extends Component {
     render(){
         return (
             <div className="navbar">
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
 
-                    <button className="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
 
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <form className="form-inline my-2 my-lg-0">
-                            <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-                            <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                        </form>
+                <nav className="navbar navbar-expand-md navbar-light bg-light">
+                    <div className="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
 
-                        <ul className="navbar-nav mr-auto">
+                    </div>
 
-                            <li className="nav-item">
-                                <a className="nav-link" href="#">Sign In</a>
-                            </li>
+                    <div className="mx-auto order-0 nav-inline">
 
-                            <li className="nav-item">
-                                <a className="nav-link" href="#">log in</a>
-                            </li>
+                    </div>
+
+                    <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                        <ul className="nav navbar-nav mr-auto mt-2 mt-lg-0">
 
                         </ul>
+                    </div>
+                </nav>
 
+                <nav className="navbar navbar-expand-md navbar-light bg-light">
+                    <div className="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+                        <a className="navbar-brand" href="#">Quick Services</a>
+                    </div>
+
+                    <div className="mx-auto order-0">
+                        <form className="navbar-form navbar-left my-2 my-lg-0 form-inline">
+                            <div className="input-group">
+                                <input type="text" className="form-control" placeholder="Search"/>
+
+                                <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
+                                            <i className="fa fa-search"></i>
+                                </button>
+
+                            </div>
+                        </form>
+
+                    </div>
+
+                    <div className="navbar-collapse collapse w-100 order-1 dual-collapse">
+                        <ul className="navbar-nav ml-auto">
+                            <li className="nav-item">
+                                <a className="nav-link" href="#">Sign Up</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#">Login</a>
+                            </li>
+                        </ul>
                     </div>
                 </nav>
 
