@@ -1,8 +1,28 @@
 import React,{Component} from 'react';
 import '../assets/css/Navbar.css';
 import logo from '../assets/images/logo.svg'
+import Axios from "axios";
 
-class navBar extends Component {
+
+class NavBar extends Component {
+
+    state = {
+        profesion: []
+    }
+
+    componentDidMount() {
+        const url='https://peaceful-ridge-86113.herokuapp.com/api/main'
+
+        Axios.get(url)
+            .then(res => {
+
+                const profesion = res.data.data;
+                this.setState({ profesion});
+                console.log("Profesiones"+JSON.stringify(profesion))
+
+            })
+    }
+
     render(){
         return (
             <div className="navbar">
@@ -31,6 +51,8 @@ class navBar extends Component {
 
                     <div className="navbar-collapse collapse w-100 order-1 dual-collapse">
                         <ul className="navbar-nav ml-auto">
+
+
                             <li className="nav-item">
                                 <a className="nav-link" href="#">Sign Up</a>
                             </li>
@@ -38,12 +60,16 @@ class navBar extends Component {
                                 <a className="nav-link" href="#">Login</a>
                             </li>
                         </ul>
+
+
                     </div>
                 </nav>
 
-
             </div>
-        );
+
+
+
+    );
     }
 }
-export default navBar;
+export default NavBar;

@@ -7,7 +7,7 @@ import logo from '../assets/images/logo512.png'
 class MainPage extends Component {
     render(){
         return (
-            <body>
+            <div>
                 <header className="App-header">
                     <NavBar/>
                     <div className="banner">
@@ -16,11 +16,11 @@ class MainPage extends Component {
 
                 </header>
                 <div className="info1">
-                    <h7 className="titulo1">
+                    <h6 className="titulo1">
                         Busca,encuentra y ofrece trabajos
-                    </h7>
+                    </h6>
                 </div>
-            </body>
+            </div>
         );                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
     }
 }
