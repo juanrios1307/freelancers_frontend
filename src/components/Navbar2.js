@@ -47,8 +47,8 @@ function Navbar2(){
                             </Link>
                         </li>
                         <li className='nav-item'>
-                            <Link to='/' className='nav-links' onClick={closeMobilMenu}>
-                                Products
+                            <Link to='/log-in' className='nav-links-mobile' onClick={closeMobilMenu}>
+                                Log In
                             </Link>
                         </li>
                         <li className='nav-item'>
@@ -57,6 +57,7 @@ function Navbar2(){
                             </Link>
                         </li>
                     </ul>
+                    {button && <Button buttonStyle='btn--outline'>LOG IN</Button>}
                     {button && <Button buttonStyle='btn--outline'>SING UP</Button>}
                 </div>
             </nav>

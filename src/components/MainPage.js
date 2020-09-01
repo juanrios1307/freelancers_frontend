@@ -3,7 +3,6 @@ import '../assets/css/MainPage.css';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Navbar2 from "./Navbar2";
 
-
 class MainPage extends Component {
     render(){
         return (
