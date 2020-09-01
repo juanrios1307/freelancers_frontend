@@ -1,26 +1,20 @@
 import React,{Component} from 'react';
 import '../assets/css/MainPage.css';
-import NavBar from "./NavBar";
-import logo from '../assets/images/logo512.png'
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import Navbar2 from "./Navbar2";
 
 
 class MainPage extends Component {
     render(){
         return (
-            <div>
-                <header className="App-header">
-                    <NavBar/>
-                    <div className="banner">
-
-                    </div>
-
-                </header>
-                <div className="info1">
-                    <h6 className="titulo1">
-                        Busca,encuentra y ofrece trabajos
-                    </h6>
-                </div>
-            </div>
+            <>
+                <Router>
+                    <Navbar2/>
+                    <Switch>
+                        <Route path="/" exact />
+                    </Switch>
+                </Router>
+            </>
         );                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
     }
 }
