@@ -7,7 +7,7 @@ import BannerSection from "./BannerSection";
 class MainPage extends Component {
     render(){
         return (
-            <body>
+            <div>
             <header>
                 <Router>
                     <Navbar2/>
@@ -20,7 +20,7 @@ class MainPage extends Component {
                 <BannerSection/>
             </div>
 
-            </body>
+            </div>
         );                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
     }
 }

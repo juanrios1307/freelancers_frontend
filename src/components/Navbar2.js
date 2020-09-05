@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import {Button} from "./Button";
 
 import '../assets/css/Navbar2.css'
+import Axios from "axios";
 
 function Navbar2(){
     const [click, setClick] = useState(false);
@@ -10,6 +11,22 @@ function Navbar2(){
 
     const handleClick = () => setClick(!click);
     const closeMobilMenu = () => setClick(false);
+
+    const [profesion,setProfesion] =useState('');
+
+    React.useEffect(() =>{
+
+        const url='https://peaceful-ridge-86113.herokuapp.com/api/main'
+
+        Axios.get(url)
+            .then(res => {
+
+                const profesion = res.data.data;
+                setProfesion({ profesion});
+                console.log("Profesiones"+JSON.stringify(profesion))
+
+            })
+    },[]);
 
     const showButton = () => {
         if(window.innerWidth <= 960){
