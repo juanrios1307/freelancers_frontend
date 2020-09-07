@@ -22,7 +22,7 @@ function Navbar2(){
             .then(res => {
 
                 const profesion = res.data.data;
-                setProfesion({ profesion});
+                setProfesion({profesion});
                 console.log("Profesiones"+JSON.stringify(profesion))
 
             })
