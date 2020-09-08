@@ -1,11 +1,38 @@
 import React from "react";
 import loginImg from '../assets/images/login.svg';
 import Logo from '../assets/images/Logo/BLACK PNG.png'
+import Axios from "axios";
+import Swal from "sweetalert2";
 
 export class Login extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            correo:'',
+            pwd:'',
+        }
+
+        this.login = this.login.bind(this);
     }
+
+    async login(e){
+        e.preventDefault()
+
+        const url = 'https://peaceful-ridge-86113.herokuapp.com/api/login'
+
+        const response = await Axios.post(url, this.state)
+
+        const mensaje = response.data.mensaje
+
+        console.log(mensaje)
+        Swal.fire({
+            icon: 'success',
+            title: mensaje
+        })
+
+    }
+
 
     render() {
         return (
