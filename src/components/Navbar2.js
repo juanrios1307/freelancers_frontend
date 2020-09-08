@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
-import {Link} from 'react-router-dom'
+import {Link, Redirect, withRouter} from 'react-router-dom'
 import {Button} from "./Button";
 
-import '../assets/css/Navbar2.css'
+import '../assets/css/Navbar2.scss'
 import Axios from "axios";
 
 function Navbar2(){
@@ -59,27 +59,16 @@ function Navbar2(){
                             </Link>
                         </li>
                         <li className='nav-item'>
-                            <Link to='/' className='nav-links' onClick={closeMobilMenu}>
+                            <Link to='/login-register' className='nav-links' onClick={closeMobilMenu}>
                                 Services
                             </Link>
                         </li>
-                        <li className='nav-item'>
-                            <Link to='/log-in' className='nav-links-mobile' onClick={closeMobilMenu}>
-                                Log In
-                            </Link>
-                        </li>
-                        <li className='nav-item'>
-                            <Link to='/sing-up' className='nav-links-mobile' onClick={closeMobilMenu}>
-                                Sing Up
-                            </Link>
-                        </li>
                     </ul>
-                    {button && <Button buttonStyle='btn--outline'>LOG IN</Button>}
-                    {button && <Button buttonStyle='btn--outline'>SING UP</Button>}
+                    {button && <Button buttonStyle='btn--outline'>Inicio Sesión / Registro</Button>}
                 </div>
             </nav>
         </>
     )
 }
 
-export default Navbar2
+export default withRouter(Navbar2)
