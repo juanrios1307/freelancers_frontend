@@ -14,18 +14,26 @@ export class Login extends React.Component {
         }
 
         this.login = this.login.bind(this);
+
+        let axiosConfig = {}
     }
+
+
 
     async login(e){
         e.preventDefault()
 
-        const url = 'https://peaceful-ridge-86113.herokuapp.com/api/login'
+        //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/login'
+        const url='http://localhost:5000/api/login'
 
-        const response = await Axios.post(url, this.state)
+        const response = await Axios.post(
+            url,
+            this.state)
 
         const mensaje = response.data.mensaje
 
         console.log(mensaje)
+
         Swal.fire({
             icon: 'success',
             title: mensaje
@@ -42,22 +50,27 @@ export class Login extends React.Component {
                     <div className="image">
                         <img src={Logo} alt="LogIn-image"/>
                     </div>
-                    <div className="form">
+                    <form className="form" onSubmit={this.login}>
                         <div className="form-group">
                             <label htmlFor="email">Correo Electrónico</label>
-                            <input type="email" name="email" placeholder="Correo Electrónico" />
+                            <input type="email" name="email" placeholder="Correo Electrónico" required
+                                   value={this.state.correo}
+                                   onChange={(e) => this.setState({correo: e.target.value})}/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="password">Contraseña</label>
-                            <input type="password" name="password" placeholder="Contraseña" />
+                            <input type="password" name="password" placeholder="Contraseña" required
+                                   value={this.state.pwd}
+                                   onChange={(e) => this.setState({pwd: e.target.value})}/>
                         </div>
-                    </div>
+                        <div className="footer">
+                            <button type="submit" className="btn">
+                                Login
+                            </button>
+                        </div>
+                    </form>
                 </div>
-                <div className="footer">
-                    <button type="button" className="btn">
-                        Login
-                    </button>
-                </div>
+
             </div>
         );
     }

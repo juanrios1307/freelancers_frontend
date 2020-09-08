@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
-import {Link, Redirect, withRouter} from 'react-router-dom'
+import {BrowserRouter as Router,Route,Link, Redirect, withRouter} from 'react-router-dom'
 import {Button} from "./Button";
+import LoginRegisterPage from "../Pages/LoginRegisterPage";
 
 import '../assets/css/Navbar2.scss'
 import Axios from "axios";
@@ -45,6 +46,7 @@ function Navbar2(){
     return(
         <>
             <nav className="navbar" >
+                <Router>
                 <div className="navbar-container">
                     <Link to="/" className="navbar-logo" onClick={closeMobilMenu}>
                         QuickServices
@@ -66,6 +68,12 @@ function Navbar2(){
                     </ul>
                     {button && <Button buttonStyle='btn--outline'>Inicio Sesión / Registro</Button>}
                 </div>
+
+                    <Route path="/login-register" exact component={LoginRegisterPage} />
+
+                </Router>
+
+
             </nav>
         </>
     )
