@@ -7,27 +7,27 @@ import Footer from "./Footer";
 import CardCarousel from "./CardCarousel";
 
 class MainPage extends Component {
+
     render(){
         return (
             <div>
-            <header>
-                <Router>
-                    <Navbar2/>
-                    <Switch>
-                        <Route path="/" exact />
-                    </Switch>
-                </Router>
-            </header>
-            <div>
-                <BannerSection/>
-            </div>
+                <header>
+                    <Router>
+                        <Navbar2/>
+                        <Switch>
+                            <Route path="/" exact />
+                        </Switch>
+                    </Router>
+                </header>
+                <div>
+                    <BannerSection/>
+                </div>
                 <div>
                     <CardCarousel/>
                 </div>
                 <div>
                     <Footer/>
                 </div>
-
             </div>
         );                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
     }
