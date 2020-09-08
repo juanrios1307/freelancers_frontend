@@ -15,7 +15,6 @@ export class Login extends React.Component {
 
         this.login = this.login.bind(this);
 
-        let axiosConfig = {}
     }
 
 
