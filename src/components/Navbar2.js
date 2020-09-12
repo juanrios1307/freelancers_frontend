@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {Link} from 'react-router-dom'
 import {Button} from "./Button";
-import LoginRegisterPage from "../Pages/LoginRegisterPage";
 
 import '../assets/css/Navbar2.scss'
 import Axios from "axios";
@@ -11,7 +10,6 @@ function Navbar2(){
     const [button, setButton] = useState(true);
 
     const handleClick = () => setClick(!click);
-    const closeMobilMenu = () => setClick(true);
 
     const [profesion,setProfesion] =useState('');
 
@@ -63,9 +61,7 @@ function Navbar2(){
                         <Link to='/login' className='nav-links'>Login / Sign Up</Link>
                    </Button>
                 </div>
-
             </nav>
-
     )
 }
 
