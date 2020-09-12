@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {BrowserRouter as Router,Route,Link, Redirect, withRouter} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {Button} from "./Button";
 import LoginRegisterPage from "../Pages/LoginRegisterPage";
 
@@ -11,7 +11,7 @@ function Navbar2(){
     const [button, setButton] = useState(true);
 
     const handleClick = () => setClick(!click);
-    const closeMobilMenu = () => setClick(false);
+    const closeMobilMenu = () => setClick(true);
 
     const [profesion,setProfesion] =useState('');
 
@@ -44,39 +44,29 @@ function Navbar2(){
     window.addEventListener('resize', showButton);
 
     return(
-        <>
+
             <nav className="navbar" >
-                <Router>
                 <div className="navbar-container">
-                    <Link to="/" className="navbar-logo" onClick={closeMobilMenu}>
-                        QuickServices
-                    </Link>
+                    <Link to="/" className="navbar-logo">QuickServices</Link>
                     <div className='menu-icon' onClick={handleClick}>
                         <i className={click ? 'fas fa-times' : 'fas fa-bars'}/>
                     </div>
                     <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                         <li className='nav-item'>
-                            <Link to='/' className='nav-links' onClick={closeMobilMenu}>
-                                Home
-                            </Link>
+                            <Link to='/' className='nav-links' >Home</Link>
                         </li>
                         <li className='nav-item'>
-                            <Link to='/login-register' className='nav-links' onClick={closeMobilMenu}>
-                                Services
-                            </Link>
+                            <Link to='/' className='nav-links'>Services</Link>
                         </li>
                     </ul>
-                    {button && <Button buttonStyle='btn--outline'>Inicio Sesión / Registro</Button>}
+                   <Button buttonStyle='btn--outline'>
+                        <Link to='/login' className='nav-links'>Login / Sign Up</Link>
+                   </Button>
                 </div>
 
-                    <Route path="/login-register" exact component={LoginRegisterPage} />
-
-                </Router>
-
-
             </nav>
-        </>
+
     )
 }
 
-export default withRouter(Navbar2)
+export default Navbar2

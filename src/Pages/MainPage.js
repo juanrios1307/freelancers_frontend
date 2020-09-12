@@ -12,12 +12,7 @@ class MainPage extends Component {
         return (
             <div>
                 <header>
-                    <Router>
-                        <Navbar2/>
-                        <Switch>
-                            <Route path="/" exact />
-                        </Switch>
-                    </Router>
+                    <Navbar2/>
                 </header>
                 <div>
                     <BannerSection/>

@@ -7,17 +7,12 @@ import * as serviceWorker from './serviceWorker';
 import LoginRegisterPage from "./Pages/LoginRegisterPage";
 import MainPage from "./Pages/MainPage";
 
-const Index = () => (
-    <BrowserRouter>
-        <Switch>
-            <Route exact path="/" component={MainPage}/>
-            <Route exact path="/login-register" component={LoginRegisterPage}/>
-        </Switch>
-    </BrowserRouter>
-
+ReactDOM.render(
+    <React.StrictMode>
+        <App/>
+    </React.StrictMode>,
+    document.getElementById('root')
 );
-
-ReactDOM.render(<Index/>,document.getElementById('root'))
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
