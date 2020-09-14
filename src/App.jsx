@@ -10,7 +10,7 @@ class App extends React.Component {
             <Router>
                 <Switch>
                     <Route exact path="/" component={MainPage} />
-                    <Route exact path="/login" component={LoginRegisterPage} />
+                    <Route exact path="/sing-up" component={LoginRegisterPage} />
                 </Switch>
             </Router>
 

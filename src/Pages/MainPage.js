@@ -5,6 +5,7 @@ import Navbar2 from "../components/Navbar2";
 import BannerSection from "../components/BannerSection";
 import Footer from "../components/Footer";
 import CardCarousel from "../components/CardCarousel";
+import Navbar from "../components/NavBar";
 
 class MainPage extends Component {
 
@@ -12,7 +13,7 @@ class MainPage extends Component {
         return (
             <div>
                 <header>
-                    <Navbar2/>
+                    <Navbar/>
                 </header>
                 <div>
                     <BannerSection/>
