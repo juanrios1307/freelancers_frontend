@@ -56,19 +56,18 @@ function Navbar() {
                     </div>
                     <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                         <li className='nav-item'>
-                            <Link
-                                to='/sing-up'
-                                className='nav-links'
-                                onClick={closeMobileMenu}
-                            >Iniciar Sesión / Registro
-                            </Link>
-                        </li>
-                        <li className='nav-item'>
                             <form className="form-inline my-2 my-lg-0">
                                 <input className="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search"/>
                                 <button className="my-sm-0" type="submit">Buscar</button>
                             </form>
                         </li>
+
+                        <li className='nav-item'>
+                            <Link to='/sing-up' className='nav-links' onClick={closeMobileMenu} >
+                                Iniciar Sesión / Registro
+                            </Link>
+                        </li>
+
                     </ul>
                 </div>
             </nav>
