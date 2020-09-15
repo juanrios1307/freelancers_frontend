@@ -60,8 +60,7 @@ function Navbar() {
                                 to='/sing-up'
                                 className='nav-links'
                                 onClick={closeMobileMenu}
-                            >
-                                Iniciar Sesión / Registro
+                            >Iniciar Sesión / Registro
                             </Link>
                         </li>
                         <li className='nav-item'>
