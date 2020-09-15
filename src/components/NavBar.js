@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from './Button';
 import { Link } from 'react-router-dom';
 import '../assets/css/Navbar2.scss'
-import Logo from '../assets/images/Logo/WHITE PNG.png'
 import Axios from "axios";
 
 function Navbar() {
@@ -14,20 +12,28 @@ function Navbar() {
 
     const [profesion,setProfesion] =useState('');
 
-    React.useEffect(() =>{
+    const url='https://peaceful-ridge-86113.herokuapp.com/api/main'
+    //const url='http://localhost:5000/api/main'
 
-        const url='https://peaceful-ridge-86113.herokuapp.com/api/main'
+    const buscar = (e) => {
+        e.preventDefault()
 
-        Axios.get(url)
-            .then(res => {
+        const config = {
+            method: 'get',
+            url: url,
+            headers: {
+                'profesion': profesion
+            }
+        };
 
-                const profesion = res.data.data;
-                setProfesion({profesion});
-                console.log("Profesiones"+JSON.stringify(profesion))
-
+        Axios(config)
+            .then(function (response) {
+                console.log(JSON.stringify(response.data));
             })
-    },[]);
-
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
 
     const showButton = () => {
         if (window.innerWidth <= 960) {
@@ -56,8 +62,9 @@ function Navbar() {
                     </div>
                     <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                         <li className='nav-item'>
-                            <form className="form-inline my-2 my-lg-0">
-                                <input className="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search"/>
+                            <form className="form-inline my-2 my-lg-0" onSubmit={buscar}>
+                                <input className="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search"
+                                       onChange={e => setProfesion(e.target.value)}/>
                                 <button className="my-sm-0" type="submit">Buscar</button>
                             </form>
                         </li>
