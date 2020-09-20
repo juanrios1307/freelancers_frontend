@@ -1,5 +1,4 @@
 import React from "react";
-import loginImg from '../assets/images/login.svg';
 import Logo from '../assets/images/Logo/BLACK PNG.png'
 import Axios from "axios";
 import Swal from "sweetalert2";

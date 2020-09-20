@@ -1,7 +1,9 @@
 import React from "react";
 import LoginRegisterPage from "./Pages/LoginRegisterPage";
 import MainPage from "./Pages/MainPage";
-import {BrowserRouter as Router, Route, Switch, Link, Redirect} from "react-router-dom";
+import SavingPub from "./Pages/SavingPub";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+
 
 class App extends React.Component {
     render() {
@@ -11,6 +13,7 @@ class App extends React.Component {
                 <Switch>
                     <Route exact path="/" component={MainPage} />
                     <Route exact path="/sing-up" component={LoginRegisterPage} />
+                    <Route exact path="/saves" component={SavingPub} />
                 </Switch>
             </Router>
 
