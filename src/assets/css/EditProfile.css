@@ -1,0 +1,30 @@
+.form-group{
+    padding: 10px;
+    margin-left: 10px;
+}
+.form-group input{
+    margin-left: 10px;
+}
+.form-group label{
+    font-family: "Open Sans", sans-serif;
+    color: whitesmoke;
+}
+.footer{
+    margin-left: 10px;
+}
+.footer button{
+    background: white;
+    color: #282c34;
+    margin-bottom: 1em;
+}
+.footer button:hover{
+    background: black;
+    color: white;
+    margin-bottom: 1em;
+}
+.edit{
+    background: linear-gradient(90deg, rgb(29, 115, 91) 0%, rgb(40, 121, 19) 100%);
+    margin-left: 18px;
+    border-radius: 1em;
+    padding: 10px;
+}
