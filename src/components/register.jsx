@@ -12,7 +12,8 @@ export class Register extends React.Component {
             nombre :'',
             correo:'',
             pwd:'',
-            telefono:''
+            telefono:'',
+            ciudad:''
         }
 
         this.signinUser = this.signinUser.bind(this);
@@ -21,9 +22,9 @@ export class Register extends React.Component {
     async signinUser(e) {
         e.preventDefault()
 
-        const url = 'https://peaceful-ridge-86113.herokuapp.com/api/users'
+        //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/users'
 
-        //const url='http://localhost:5000/api/users'
+        const url='http://localhost:5000/api/users'
 
         const response = await Axios.post(url, this.state)
 
@@ -70,6 +71,12 @@ export class Register extends React.Component {
                             <input type="tel" name="phone" placeholder="Teléfono" required
                                    value={this.state.telefono}
                                    onChange={(e) => this.setState({telefono: e.target.value})}/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="username">Ciudad</label>
+                            <input type="text" name="username" placeholder="Ciudad" required
+                                   value={this.state.ciudad}
+                                   onChange={(e) => this.setState({ciudad: e.target.value})}/>
                         </div>
                         <div className="footer">
                             <button type="submit" className="btn">

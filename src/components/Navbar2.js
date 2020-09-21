@@ -15,7 +15,8 @@ function Navbar2(){
 
     React.useEffect(() =>{
 
-        const url='https://peaceful-ridge-86113.herokuapp.com/api/main'
+        //const url='https://peaceful-ridge-86113.herokuapp.com/api/main'
+        const url='http://localhost:5000/api/main'
 
         Axios.get(url)
             .then(res => {

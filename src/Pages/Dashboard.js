@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Grid} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import Navbar from "../components/NavbarD";
@@ -12,6 +12,7 @@ import Cards from '../components/Cards';
 import Graphics from '../components/Graphics';
 import TableMaterial from '../components/TableMaterial';
 import EditProfile from "../components/EditProfile";
+import Axios from "axios";
 
 const useStyles= makeStyles(()=>({
     root:{
@@ -61,6 +62,36 @@ const data = [
 
 function Dashboard(props) {
     const classes= useStyles();
+
+    const [nombre,setNombre] =useState('');
+    const [ciudad,setCiudad] =useState('');
+
+    //const url='https://peaceful-ridge-86113.herokuapp.com/api/users'
+    const url='http://localhost:5000/api/users'
+
+    React.useEffect(async () =>{
+
+        const token=localStorage.getItem("token")
+
+        const config = {
+            method: 'get',
+            url: url,
+            headers: {
+                'access-token': token
+            }
+        };
+
+        const res=await Axios(config);
+
+        const data = res.data.data;
+
+        setNombre(data.nombre);
+        setCiudad(data.ciudad)
+
+        console.log("Nombre: "+data.nombre+" ciudad: "+ciudad)
+
+    },[]);
+
     return (
         <div className={classes.root}>
             <Grid container spacing={3}>
@@ -71,10 +102,10 @@ function Dashboard(props) {
 
 
                 <Grid item xs={12} sm={4} md={4} lg={4} xl={4}>
-                    <CardsHeader icono={<PersonIcon className={classes.iconos}/>} titulo="NOMBRE" texto="Pedro Perez" color="linear-gradient(90deg, rgb(29, 115, 91) 0%, rgb(40, 121, 19) 100%)" font="white"/>
+                    <CardsHeader icono={<PersonIcon className={classes.iconos}/>} titulo="NOMBRE" texto={nombre} color="linear-gradient(90deg, rgb(29, 115, 91) 0%, rgb(40, 121, 19) 100%)" font="white"/>
                 </Grid>
                 <Grid item xs={12} sm={4} md={4} lg={4} xl={4}>
-                    <CardsHeader icono={<PublicIcon className={classes.iconos}/>} titulo="Ciudad" texto="Medellín" color="linear-gradient(90deg, rgb(29, 115, 91) 0%, rgb(40, 121, 19) 100%)" font="white"/>
+                    <CardsHeader icono={<PublicIcon className={classes.iconos}/>} titulo="Ciudad" texto={ciudad} color="linear-gradient(90deg, rgb(29, 115, 91) 0%, rgb(40, 121, 19) 100%)" font="white"/>
                 </Grid>
                 <Grid item xs={12} sm={4} md={4} lg={4} xl={4}>
                     <CardsHeader icono={<AssessmentIcon className={classes.iconos}/>} titulo="CANTIDAD DE PUBLICACIONES" texto="5" color="linear-gradient(90deg, rgb(29, 115, 91) 0%, rgb(40, 121, 19) 100%)" font="white"/>
