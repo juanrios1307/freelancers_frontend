@@ -88,8 +88,6 @@ function Dashboard(props) {
         setNombre(data.nombre);
         setCiudad(data.ciudad)
 
-        console.log("Nombre: "+data.nombre+" ciudad: "+ciudad)
-
     },[]);
 
     return (
