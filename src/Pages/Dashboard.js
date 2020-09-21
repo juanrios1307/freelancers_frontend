@@ -71,13 +71,13 @@ function Dashboard(props) {
 
 
                 <Grid item xs={12} sm={4} md={4} lg={4} xl={4}>
-                    <CardsHeader icono={<PersonIcon className={classes.iconos}/>} titulo="NOMBRE" texto="Pedro Perez" color="rgba(248,80,50,1)" font="white"/>
+                    <CardsHeader icono={<PersonIcon className={classes.iconos}/>} titulo="NOMBRE" texto="Pedro Perez" color="linear-gradient(90deg, rgb(29, 115, 91) 0%, rgb(40, 121, 19) 100%)" font="white"/>
                 </Grid>
                 <Grid item xs={12} sm={4} md={4} lg={4} xl={4}>
-                    <CardsHeader icono={<PublicIcon className={classes.iconos}/>} titulo="Ciudad" texto="Medellín" color="rgba(248,80,50,1)" font="white"/>
+                    <CardsHeader icono={<PublicIcon className={classes.iconos}/>} titulo="Ciudad" texto="Medellín" color="linear-gradient(90deg, rgb(29, 115, 91) 0%, rgb(40, 121, 19) 100%)" font="white"/>
                 </Grid>
                 <Grid item xs={12} sm={4} md={4} lg={4} xl={4}>
-                    <CardsHeader icono={<AssessmentIcon className={classes.iconos}/>} titulo="CANTIDAD DE PUBLICACIONES" texto="5" color="rgba(248,80,50,1)" font="white"/>
+                    <CardsHeader icono={<AssessmentIcon className={classes.iconos}/>} titulo="CANTIDAD DE PUBLICACIONES" texto="5" color="linear-gradient(90deg, rgb(29, 115, 91) 0%, rgb(40, 121, 19) 100%)" font="white"/>
                 </Grid>
 
                 <Grid container spacing={1} className={classes.container} xs={12} sm={12} md={6} lg={6} xl={6}>
