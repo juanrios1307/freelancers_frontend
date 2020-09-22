@@ -3,7 +3,7 @@ import '../assets/css/MainPage.css';
 import BannerSection from "../components/BannerSection";
 import Footer from "../components/Footer";
 import CardCarousel from "../components/CardCarousel";
-import Navbar from "../components/NavBar";
+import NavBar from "../components/NavBar.js";
 
 class MainPage extends Component {
 
@@ -11,7 +11,7 @@ class MainPage extends Component {
         return (
             <div>
                 <header>
-                    <Navbar/>
+                    <NavBar/>
                 </header>
                 <div>
                     <BannerSection/>

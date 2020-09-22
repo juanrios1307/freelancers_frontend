@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import '../assets/css/Navbar2.scss'
+import '../assets/css/Navbar.scss'
 import Axios from "axios";
 
-function Navbar() {
+function NavBar() {
     const [click, setClick] = useState(false);
     const [button, setButton] = useState(true);
 
@@ -82,4 +82,4 @@ function Navbar() {
     );
 }
 
-export default Navbar;
+export default NavBar;
