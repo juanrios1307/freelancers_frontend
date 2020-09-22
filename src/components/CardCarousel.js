@@ -15,7 +15,7 @@ class CardCarousel extends Component {
                     <div className="card-icon" ><img src={icono1} alt="icon1"/></div>
                     <div className="card-body">
                         <h5 className="card-title">Andrea Sánchez</h5>
-                        <p className="card-text">Diseñadora Grafica y creadora de Apps.</p>
+                        <p className="card-text">Diseñadora Gráfica y creadora de Apps.</p>
                     </div>
                     <div className="card-footer">
                         <small className="text-muted">Last updated 20 mins ago</small>

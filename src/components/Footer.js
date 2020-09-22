@@ -74,7 +74,7 @@ class Footer extends Component{
                                     <a href="#">Tu Cuenta</a>
                                 </p>
                                 <p>
-                                    <a href="#">Afiliate</a>
+                                    <a href="#">Afíliate</a>
                                 </p>
                                 <p>
                                     <a href="#">Sobre Nosotros</a>
