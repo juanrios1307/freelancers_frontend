@@ -16,7 +16,7 @@ class Footer extends Component{
 
 
                             <div className="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
-                                <h6 className="mb-0">Get connected with us on social networks!</h6>
+                                <h6 className="mb-0">Conectate a nuestras redes sociales!</h6>
                             </div>
 
                             <div className="col-md-6 col-lg-7 text-center text-md-right">
@@ -60,9 +60,7 @@ class Footer extends Component{
 
                             <h6 className="text-uppercase font-weight-bold">QuickServices</h6>
                             <hr className="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"/>
-                                <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
-                                    consectetur
-                                    adipisicing elit.</p>
+                                <p>Contrata a verdaderos profesionales calificados a un precio realmente justo.</p>
 
                         </div>
 
@@ -70,19 +68,19 @@ class Footer extends Component{
                         <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
 
 
-                            <h6 className="text-uppercase font-weight-bold">Useful links</h6>
+                            <h6 className="text-uppercase font-weight-bold">Links útiles</h6>
                             <hr className="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"/>
                                 <p>
-                                    <a href="#">Your Account</a>
+                                    <a href="#">Tu Cuenta</a>
                                 </p>
                                 <p>
-                                    <a href="#">Become an Affiliate</a>
+                                    <a href="#">Afiliate</a>
                                 </p>
                                 <p>
-                                    <a href="#">Shipping Rates</a>
+                                    <a href="#">Sobre Nosotros</a>
                                 </p>
                                 <p>
-                                    <a href="#">Help</a>
+                                    <a href="#">Ayuda</a>
                                 </p>
 
                         </div>
@@ -90,7 +88,7 @@ class Footer extends Component{
                         <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
 
 
-                            <h6 className="text-uppercase font-weight-bold">Contact</h6>
+                            <h6 className="text-uppercase font-weight-bold">Contacto</h6>
                             <hr className="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"/>
                                 <p>
                                     <i className="fas fa-home mr-3"></i> Envigado, Antioquia, Colombia</p>
