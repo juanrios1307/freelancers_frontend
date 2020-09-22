@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Grid} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
-import Navbar from "../components/NavbarD";
+import DashNav from "../components/DashNav.js";
 import 'fontsource-roboto';
 import '../assets/css/Dashboard.css';
 import PersonIcon from '@material-ui/icons/Person';
@@ -95,7 +95,7 @@ function Dashboard(props) {
             <Grid container spacing={3}>
 
                 <Grid item xs={12}>
-                    <Navbar/>
+                    <DashNav/>
                 </Grid>
 
 
@@ -122,6 +122,12 @@ function Dashboard(props) {
 
                 <Grid item xs={12} className={classes.containerTabla}>
                     <TableMaterial data={data}/>
+                </Grid>
+
+                <Grid item xs={12} className={classes.containerTabla}>
+                    <button>
+                        Registrarse como trabajador
+                    </button>
                 </Grid>
 
 

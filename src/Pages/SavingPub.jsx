@@ -1,6 +1,15 @@
 import React from "react";
 import Axios from "axios";
 import '../assets/css/CardCarousel.css';
+import {Grid} from "@material-ui/core";
+import DashNav from "../components/DashNav";
+import CardsHeader from "../components/CardsHeader";
+import PersonIcon from "@material-ui/icons/Person";
+import PublicIcon from "@material-ui/icons/Public";
+import AssessmentIcon from "@material-ui/icons/Assessment";
+import EditProfile from "../components/EditProfile";
+import Graphics from "../components/Graphics";
+import TableMaterial from "../components/TableMaterial";
 
 
 class SavingPub extends React.Component {
@@ -57,10 +66,20 @@ class SavingPub extends React.Component {
 
     render(){
         return(
-            <div>
-                    {this.state.Content}
+        <Grid container spacing={3}>
 
-            </div>
+            <Grid item xs={12}>
+                <DashNav/>
+            </Grid>
+
+
+            <Grid item xs={12}>
+                {this.state.Content}
+            </Grid>
+
+
+
+        </Grid>
         )};
 
 }
