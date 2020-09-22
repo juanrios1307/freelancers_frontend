@@ -58,8 +58,7 @@ class SavingPub extends React.Component {
     render(){
         return(
             <div>
-                    {this.state.Content}
-
+                {this.state.Content}
             </div>
         )};
 

@@ -13,11 +13,16 @@ export class Register extends React.Component {
             experiencia:'',
             yearsXperience:'',
             titulo:'',
-            imagen:''
+            imagen:'',
+            tituloFile:'',
+            imagenFile:''
         }
 
         this.signupworker = this.signupworker.bind(this);
+
     }
+
+
 
     async signupworker(e) {
         e.preventDefault()
@@ -25,6 +30,21 @@ export class Register extends React.Component {
         //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/workers'
 
         const url='http://localhost:5000/api/workers'
+        const urlCloud='https://api.cloudinary.com/v1_1/eia/image/upload'
+        const preset='upload'
+
+        const formData = new FormData();
+        formData.append('file', this.state.imagenFile);
+        formData.append('upload_preset', preset);
+
+        try {
+            const res = await Axios.post(urlCloud, formData);
+            this.setState({imagen:res.data.secure_url});
+
+        } catch (err) {
+            console.error(err);
+        }
+
 
         var config = {
             method: 'post',
@@ -72,21 +92,19 @@ export class Register extends React.Component {
                         </div>
                         <div className="form-group">
                             <label htmlFor="password">Años de experiencia</label>
-                            <input type="text" name="yearsXperience" placeholder="Años de experiencia" required
+                            <input type="number" name="yearsXperience" placeholder="Años de experiencia" required
                                    value={this.state.yearsXperience}
                                    onChange={(e) => this.setState({yearsXperience: e.target.value})}/>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="phone">Teléfono</label>
-                            <input type="tel" name="phone" placeholder="Teléfono"
-                                   value={this.state.telefono}
-                                   onChange={(e) => this.setState({telefono: e.target.value})}/>
+                            <label htmlFor="phone">Titulo</label>
+                            <input type="file" name="titulo" placeholder="Titulo"
+                                   onChange={(e) => this.setState({tituloFile: e.target.files[1]})}/>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="username">Ciudad</label>
-                            <input type="text" name="username" placeholder="Ciudad"
-                                   value={this.state.ciudad}
-                                   onChange={(e) => this.setState({ciudad: e.target.value})}/>
+                            <label htmlFor="username">Imagen de perfil</label>
+                            <input type="file" name="imagen" placeholder="imagen"
+                                   onChange={(e) => this.setState({imagenFile: e.target.files[1]})}/>
                         </div>
                         <div className="footer">
                             <button type="submit" className="btn">
