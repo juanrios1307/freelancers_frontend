@@ -12,8 +12,8 @@ function NavBar() {
 
     const [profesion,setProfesion] =useState('');
 
-    //const url='https://peaceful-ridge-86113.herokuapp.com/api/main'
-    const url='http://localhost:5000/api/main'
+    const url='https://peaceful-ridge-86113.herokuapp.com/api/main'
+    //const url='http://localhost:5000/api/main'
 
     const buscar = (e) => {
         e.preventDefault()

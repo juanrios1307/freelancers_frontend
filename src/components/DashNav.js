@@ -8,8 +8,12 @@ import { IconContext } from 'react-icons';
 
 function DashNav() {
     const [sidebar, setSidebar] = useState(false);
+    const [click, setClick] = useState(false);
 
     const showSidebar = () => setSidebar(!sidebar);
+    const render = () => {
+        window.location.reload(false);
+    };
 
     return (
         <>
@@ -32,13 +36,14 @@ function DashNav() {
                         {SidebarData.map((item, index) => {
                             return (
                                 <li key={index} className={item.cName}>
-                                    <Link to={item.path}>
-                                        {item.icon}
-                                        <span>{item.title}</span>
+                                    <Link to={item.path} >
+                                        {item.icon} <span>{item.title}</span>
                                     </Link>
                                 </li>
+
                             );
                         })}
+
                     </ul>
 
                 </nav>

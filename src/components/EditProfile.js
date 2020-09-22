@@ -15,8 +15,8 @@ function EditProfile() {
     const [newTelefono,setNewTelefono] =useState('');
     const [newCiudad,setNewCiudad] =useState('');
 
-    //const url='https://peaceful-ridge-86113.herokuapp.com/api/users'
-    const url='http://localhost:5000/api/users'
+    const url='https://peaceful-ridge-86113.herokuapp.com/api/users'
+   // const url='http://localhost:5000/api/users'
 
     React.useEffect(async () =>{
 
