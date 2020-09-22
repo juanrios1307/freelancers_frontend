@@ -129,11 +129,11 @@ function Dashboard(props) {
                 </Grid>
 
                 <Grid item xs={12} className='dashButtonDiv'>
-                    <Link to='/signupworker'>
+                    <a href='/signupworker'>
                         <button className='buttonDash'>
                             Registrarse como trabajador
                         </button>
-                    </Link>
+                    </a>
                 </Grid>
             </Grid>
         </div>
