@@ -14,20 +14,18 @@ class CardCarousel extends Component {
                 <div className="card">
                     <div className="card-icon" ><img src={icono1} alt="icon1"/></div>
                     <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">This is a wider card with supporting text below as a natural
-                            lead-in to additional content. This content is a little bit longer.</p>
+                        <h5 className="card-title">Andrea Sánchez</h5>
+                        <p className="card-text">Diseñadora Grafica y creadora de Apps.</p>
                     </div>
                     <div className="card-footer">
-                        <small className="text-muted">Last updated 3 mins ago</small>
+                        <small className="text-muted">Last updated 20 mins ago</small>
                     </div>
                 </div>
                 <div className="card">
                     <div className="card-icon" ><img src={icono2} alt="icon1"/></div>
                     <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">This card has supporting text below as a natural lead-in to
-                            additional content.</p>
+                        <h5 className="card-title">Juan Montoya</h5>
+                        <p className="card-text">Traductor y puedo trabajar en redacción y corrección de textos y artículos.</p>
                     </div>
                     <div className="card-footer">
                         <small className="text-muted">Last updated 3 mins ago</small>
@@ -36,13 +34,11 @@ class CardCarousel extends Component {
                 <div className="card">
                     <div className="card-icon" ><img src={icono3} alt="icon1"/></div>
                     <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">This is a wider card with supporting text below as a natural
-                            lead-in to additional content. This card has even longer content than the first to show
-                            that equal height action.</p>
+                        <h5 className="card-title">Carlos García</h5>
+                        <p className="card-text">Pintor y escultor profesional.</p>
                     </div>
                     <div className="card-footer">
-                        <small className="text-muted">Last updated 3 mins ago</small>
+                        <small className="text-muted">Last updated 5 mins ago</small>
                     </div>
                 </div>
             </section>
