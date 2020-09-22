@@ -3,6 +3,7 @@ import Logo from '../assets/images/Logo/BLACK PNG.png'
 import Axios from "axios";
 import Swal from "sweetalert2";
 import '../assets/css/RegisterWorker.scss'
+import {Redirect} from "react-router-dom";
 
 export class Register extends React.Component {
     constructor(props) {
@@ -15,7 +16,8 @@ export class Register extends React.Component {
             titulo:'',
             imagen:'',
             tituloFile:'',
-            imagenFile:''
+            imagenFile:'',
+            bool:false
         }
 
         this.signupworker = this.signupworker.bind(this);
@@ -77,56 +79,63 @@ export class Register extends React.Component {
             title: mensaje
         })
 
+        this.setState({bool:true})
+
     }
 
 
     render() {
-        return (
-            <div className="b-container" ref={this.props.containerRef}>
-                <div className="h">Registro</div>
-                <div className="cont">
-                    <div className="image">
-                        <img src={Logo} alt="LogIn-image"/>
-                    </div>
-                    <form className="form" onSubmit={this.signupworker}>
-                        <div className="form-group">
-                            <label htmlFor="username">Profesión</label>
-                            <input type="text" name="profesion" placeholder="Profesión" required
-                                   value={this.state.profesion}
-                            onChange={(e) => this.setState({profesion: e.target.value})}/>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="email">Experiencia</label>
-                            <textarea type="text" name="experiencia" placeholder="Experiencia" required
-                                   value={this.state.experiencia}
-                            onChange={(e) => this.setState({experiencia: e.target.value})}/>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="password">Años de experiencia</label>
-                            <input type="number" name="yearsXperience" placeholder="Años de experiencia" required
-                                   value={this.state.yearsXperience}
-                                   onChange={(e) => this.setState({yearsXperience: e.target.value})}/>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="phone">Titulo</label>
-                            <input type="file" name="titulo" placeholder="Titulo"
-                                   onChange={(e) => this.setState({tituloFile: e.target.files[0]})}/>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="username">Imagen de perfil</label>
-                            <input type="file" name="imagen" placeholder="imagen"
-                                   onChange={(e) => this.setState({imagenFile: e.target.files[0]})}/>
-                        </div>
-                        <div className="footer">
-                            <button type="submit" className="btn">
-                                Registrar
-                            </button>
-                        </div>
-                    </form>
-                </div>
+        if (this.state.bool) {
+            return <Redirect to='/dashboard' />
+        } else {
 
-            </div>
-        );
+            return (
+                <div className="b-container" ref={this.props.containerRef}>
+                    <div className="h">Registro</div>
+                    <div className="cont">
+                        <div className="image">
+                            <img src={Logo} alt="LogIn-image"/>
+                        </div>
+                        <form className="form" onSubmit={this.signupworker}>
+                            <div className="form-group">
+                                <label htmlFor="username">Profesión</label>
+                                <input type="text" name="profesion" placeholder="Profesión" required
+                                       value={this.state.profesion}
+                                       onChange={(e) => this.setState({profesion: e.target.value})}/>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="email">Experiencia</label>
+                                <textarea type="text" name="experiencia" placeholder="Experiencia" required
+                                          value={this.state.experiencia}
+                                          onChange={(e) => this.setState({experiencia: e.target.value})}/>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="password">Años de experiencia</label>
+                                <input type="number" name="yearsXperience" placeholder="Años de experiencia" required
+                                       value={this.state.yearsXperience}
+                                       onChange={(e) => this.setState({yearsXperience: e.target.value})}/>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="phone">Titulo</label>
+                                <input type="file" name="titulo" placeholder="Titulo"
+                                       onChange={(e) => this.setState({tituloFile: e.target.files[0]})}/>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="username">Imagen de perfil</label>
+                                <input type="file" name="imagen" placeholder="imagen"
+                                       onChange={(e) => this.setState({imagenFile: e.target.files[0]})}/>
+                            </div>
+                            <div className="footer">
+                                <button type="submit" className="btn">
+                                    Registrar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            );
+        }
     }
 }
 export default Register
