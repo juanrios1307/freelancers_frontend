@@ -95,7 +95,7 @@ class Footer extends Component{
                                 <p>
                                     <i className="fas fa-envelope mr-3"></i> quickservices@gmail.com</p>
                                 <p>
-                                    <i className="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+                                    <i className="fas fa-phone mr-3"></i> + 57 315 8125800</p>
 
                         </div>
 
