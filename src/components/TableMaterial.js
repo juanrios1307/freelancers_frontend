@@ -19,7 +19,7 @@ function TableMaterial(props) {
             <Table>
                 <TableHead>
                     <TableRow>
-                        <StyledTableCell>Publicaciones Guardadas</StyledTableCell>
+                        <StyledTableCell>Publicaciones Destacadas</StyledTableCell>
                         <StyledTableCell>Fecha de Publicación</StyledTableCell>
                         <StyledTableCell>Número de Visualizaciones</StyledTableCell>
                     </TableRow>
