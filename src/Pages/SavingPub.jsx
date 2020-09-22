@@ -41,6 +41,7 @@ class SavingPub extends React.Component {
             Content: data.map((worker) => (
                     <div className="card-body" key={worker._id}>
                         <h6 className="card-title">Nombre: {worker.user.nombre}</h6>
+                        <img className="c-img" src={worker.imagen} alt='imagen' />
                         <p className="card-text">Email: {worker.user.correo}</p>
                         <p className="card-text">Profesión : {worker.profesion}</p>
                         <p className="card-text">Experiencia: {worker.experiencia}</p>
