@@ -88,19 +88,19 @@ function EditProfile() {
     return (
        <div className="edit">
            <form className="form" onSubmit={actualizar}>
-               <div className="form-group">
+               <div className="f-group">
                    <label htmlFor="username">Nombre Completo: </label>
                    <input type="text" name="username" placeholder={nombre}   onChange={e => setNewNombre(e.target.value)} />
                </div>
-               <div className="form-group">
+               <div className="f-group">
                    <label htmlFor="phone">Teléfono: </label>
                    <input type="phone" name="phone" placeholder={telefono} onChange={e => setNewTelefono(e.target.value)} />
                </div>
-               <div className="form-group">
-                   <label htmlFor="phone">Teléfono: </label>
+               <div className="f-group">
+                   <label htmlFor="city">Ciudad: </label>
                    <input type="text" name="ciudad" placeholder={ciudad} onChange={e => setNewCiudad(e.target.value)} />
                </div>
-               <div className="footer">
+               <div className="ftr">
                    <button type="submit" className="btn">
                        Editar
                    </button>

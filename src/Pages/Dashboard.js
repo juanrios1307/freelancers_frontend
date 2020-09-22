@@ -13,6 +13,7 @@ import Graphics from '../components/Graphics';
 import TableMaterial from '../components/TableMaterial';
 import EditProfile from "../components/EditProfile";
 import Axios from "axios";
+import { Link } from 'react-router-dom';
 
 const useStyles= makeStyles(()=>({
     root:{
@@ -30,6 +31,9 @@ const useStyles= makeStyles(()=>({
     },
     containerTabla:{
         marginTop: '40px'
+    },
+    containerButton:{
+        alignItems: 'center'
     }
 }));
 
@@ -124,13 +128,13 @@ function Dashboard(props) {
                     <TableMaterial data={data}/>
                 </Grid>
 
-                <Grid item xs={12} className={classes.containerTabla}>
-                    <button>
-                        Registrarse como trabajador
-                    </button>
+                <Grid item xs={12} className='dashButtonDiv'>
+                    <Link to='/signupworker'>
+                        <button className='buttonDash'>
+                            Registrarse como trabajador
+                        </button>
+                    </Link>
                 </Grid>
-
-
             </Grid>
         </div>
     );
