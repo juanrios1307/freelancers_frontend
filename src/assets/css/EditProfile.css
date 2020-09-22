@@ -1,23 +1,23 @@
-.form-group{
+.f-group{
     padding: 10px;
     margin-left: 10px;
 }
-.form-group input{
+.f-group input{
     margin-left: 10px;
 }
-.form-group label{
+.f-group label{
     font-family: "Open Sans", sans-serif;
     color: whitesmoke;
 }
-.footer{
+.ftr{
     margin-left: 10px;
 }
-.footer button{
+.ftr button{
     background: white;
     color: #282c34;
     margin-bottom: 1em;
 }
-.footer button:hover{
+.ftr button:hover{
     background: black;
     color: white;
     margin-bottom: 1em;

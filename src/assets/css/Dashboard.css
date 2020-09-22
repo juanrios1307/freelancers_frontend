@@ -1,3 +1,17 @@
-body{
-    margin: 0;
+.dashButtonDiv{
+    width: 100%;
+    background-color: #282c34;
+    align-items: center;
+    padding: 10em;
+}
+.buttonDash{
+    padding: 1em;
+    border-radius: 10px;
+    color: white;
+    font-family: "Open Sans", sans-serif;
+    background: linear-gradient(90deg, rgb(29, 115, 91) 0%, rgb(40, 121, 19) 100%);
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
 }

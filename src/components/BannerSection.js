@@ -1,8 +1,7 @@
 import React,{Component} from 'react';
 import '../assets/css/BannerSection.css'
-import slide1 from '../assets/images/slide1.jpg'
-import slide2 from '../assets/images/slide2.jpg'
-import slide3 from '../assets/images/slide3.jpg'
+import slide1 from '../assets/images/slide1.png'
+import slide2 from '../assets/images/slide2.png'
 
 class BannerSection extends Component {
 
@@ -15,9 +14,6 @@ class BannerSection extends Component {
                     </div>
                     <div className="carousel-item">
                         <img className="d-block w-100" src={slide2} alt="Second slide"/>
-                    </div>
-                    <div className="carousel-item">
-                        <img className="d-block w-100" src={slide3} alt="Third slide"/>
                     </div>
                 </div>
                 <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
