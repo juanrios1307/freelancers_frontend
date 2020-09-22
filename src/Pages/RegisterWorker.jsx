@@ -2,6 +2,7 @@ import React from "react";
 import Logo from '../assets/images/Logo/BLACK PNG.png'
 import Axios from "axios";
 import Swal from "sweetalert2";
+import '../assets/css/RegisterWorker.scss'
 
 export class Register extends React.Component {
     constructor(props) {
@@ -81,9 +82,9 @@ export class Register extends React.Component {
 
     render() {
         return (
-            <div className="base-container" ref={this.props.containerRef}>
-                <div className="header">Registro</div>
-                <div className="content">
+            <div className="b-container" ref={this.props.containerRef}>
+                <div className="h">Registro</div>
+                <div className="cont">
                     <div className="image">
                         <img src={Logo} alt="LogIn-image"/>
                     </div>
