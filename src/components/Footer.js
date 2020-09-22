@@ -71,16 +71,16 @@ class Footer extends Component{
                             <h6 className="text-uppercase font-weight-bold">Links útiles</h6>
                             <hr className="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"/>
                                 <p>
-                                    <a href="#">Tu Cuenta</a>
+                                    <a href="/sing-up">Tu Cuenta</a>
                                 </p>
                                 <p>
-                                    <a href="#">Afíliate</a>
+                                    <a href="/sing-up">Afiliate</a>
                                 </p>
                                 <p>
                                     <a href="#">Sobre Nosotros</a>
                                 </p>
                                 <p>
-                                    <a href="#">Ayuda</a>
+                                    <a href="/support">Ayuda</a>
                                 </p>
 
                         </div>
@@ -106,7 +106,7 @@ class Footer extends Component{
                 </div>
 
                 <div className="footer-copyright text-center py-3">© 2020 Copyright:
-                    <a href="https://mdbootstrap.com/"> QuickServices.com</a>
+                    <a href="/"> QuickServices.com</a>
                 </div>
 
 
