@@ -2,7 +2,6 @@ import React from "react";
 import Logo from '../assets/images/Logo/BLACK PNG.png'
 import Axios from "axios";
 import Swal from "sweetalert2";
-import { CloudinaryContext, Transformation, Image } from 'cloudinary-react';
 
 export class Register extends React.Component {
     constructor(props) {
