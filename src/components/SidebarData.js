@@ -18,27 +18,27 @@ export const SidebarData = [
         icon: <IoIcons.IoIosPaper />,
         cName: 'n-text'
     },
-    {
-        title: 'Products',
+   {
+        title: 'Principal',
         path: '/',
         icon: <FaIcons.FaCartPlus />,
         cName: 'n-text'
     },
-    {
-        title: 'Team',
-        path: '/team',
+   {
+        title: 'Buscar',
+        path: '/search',
         icon: <IoIcons.IoMdPeople />,
         cName: 'n-text'
     },
     {
-        title: 'Messages',
-        path: '/messages',
+        title: 'Chat',
+        path: '/chat',
         icon: <FaIcons.FaEnvelopeOpenText />,
         cName: 'n-text'
     },
     {
-        title: 'Support',
-        path: '/support',
+        title: 'Ajustes',
+        path: '/settings',
         icon: <IoIcons.IoMdHelpCircle />,
         cName: 'n-text'
     }
