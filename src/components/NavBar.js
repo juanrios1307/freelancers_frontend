@@ -15,15 +15,10 @@ function NavBar() {
     const url='https://peaceful-ridge-86113.herokuapp.com/api/main'
     //const url='http://localhost:5000/api/main'
 
-    const buscar = (e) => {
-        e.preventDefault()
-
+    const buscar = () => {
         const config = {
             method: 'get',
             url: url,
-            headers: {
-                'profesion': profesion
-            }
         };
 
         Axios(config)
@@ -33,6 +28,10 @@ function NavBar() {
             .catch(function (error) {
                 console.log(error);
             });
+    }
+
+    const buscarProfesion=(e)=>{
+        localStorage.setItem("profesion",profesion)
     }
 
     const showButton = () => {
@@ -45,6 +44,7 @@ function NavBar() {
 
     useEffect(() => {
         showButton();
+        buscar();
     }, []);
 
     window.addEventListener('resize', showButton);
@@ -62,15 +62,22 @@ function NavBar() {
                     </div>
                     <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                         <li className='nav-item'>
-                            <form className="form-inline my-2 my-lg-0" onSubmit={buscar}>
+                            <form className="form-inline my-2 my-lg-0" onSubmit={buscarProfesion}>
                                 <input className="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search"
                                        onChange={e => setProfesion(e.target.value)}/>
-                                <button className="my-sm-0" type="submit">Buscar</button>
+
+                                       <button className="my-sm-0" type="submit" >
+                                           <Link to='/workers' onClick={closeMobileMenu} onClick={buscarProfesion}>
+                                                Buscar
+                                           </Link>
+                                       </button>
+
+
                             </form>
                         </li>
 
                         <li className='nav-item'>
-                            <Link to='/sing-up' className='nav-links' onClick={closeMobileMenu} >
+                            <Link to='/sing-up' refresh="true" className='nav-links' onClick={closeMobileMenu} >
                                 Iniciar Sesión / Registro
                             </Link>
                         </li>

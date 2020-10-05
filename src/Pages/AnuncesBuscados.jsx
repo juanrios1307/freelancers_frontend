@@ -3,8 +3,9 @@ import Axios from "axios";
 import '../assets/css/Listas.css';
 import {Grid} from "@material-ui/core";
 import DashNav from "../components/DashNav";
+import NavBar from "../components/NavBar";
 
-class SavingPub extends React.Component {
+class AnuncesBuscados extends React.Component {
 
     constructor(props) {
         super(props);
@@ -15,21 +16,25 @@ class SavingPub extends React.Component {
     }
 
     componentDidMount() {
+
         this.getData();
     }
 
     async getData() {
 
-        const token = localStorage.getItem("token")
-         const url = 'https://peaceful-ridge-86113.herokuapp.com/api/saving'
+        const profesion = localStorage.getItem("profesion")
+        localStorage.removeItem("profesion")
 
-        //const url = 'http://localhost:5000/api/saving'
+
+         //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/main/anunces'
+
+        const url = 'http://localhost:5000/api/main/anunces'
 
         const config = {
             method: 'get',
             url: url,
             headers: {
-                'access-token': token
+                'profesion': profesion
             }
         };
 
@@ -38,15 +43,14 @@ class SavingPub extends React.Component {
        var data = response.data.data;
 
         this.setState({
-            Content: data.map((worker) => (
-                    <div className="media" key={worker._id}>
-                        <img className="mr-3" src={worker.imagen} alt='imagen' />
+            Content: data.map((anunces) => (
+                    <div className="media" key={anunces._id}>
+                        <img className="mr-3" src={anunces.imagen} alt='imagen' />
                         <div className="media-body">
-                            <h6 className="mt-0">Nombre: {worker.user.nombre}</h6>
-                            <p className="card-text">Email: {worker.user.correo}</p>
-                            <p className="card-text">Profesión : {worker.profesion}</p>
-                            <p className="card-text">Experiencia: {worker.experiencia}</p>
-                            <p className="card-text">Años de experiencia: {worker.yearsXperience}</p>
+                            <h6 className="mt-0">{anunces.titulo}</h6>
+                            <p className="card-text">Email: {anunces.user.correo}</p>
+                            <p className="card-text">Email: {anunces.user.telefono}</p>
+                            <p className="card-text">Profesión : {anunces.profesion}</p>
                             <div className="card-footer">
                                 <small className="text-muted">Last updated 3 mins ago</small>
                             </div>
@@ -64,9 +68,8 @@ class SavingPub extends React.Component {
         <Grid container spacing={3}>
 
             <Grid item xs={12}>
-                <DashNav/>
+                <NavBar/>
             </Grid>
-
 
             <Grid item xs={12}>
                 {this.state.Content}
@@ -79,4 +82,4 @@ class SavingPub extends React.Component {
 
 }
 
-export default SavingPub
+export default AnuncesBuscados

@@ -26,11 +26,13 @@ export class Register extends React.Component {
 
 
 
+
     async signupworker(e) {
         e.preventDefault()
+
         const token = localStorage.getItem("token")
-        const url = 'https://peaceful-ridge-86113.herokuapp.com/api/workers'
-        //const url='http://localhost:5000/api/workers'
+        //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/workers'
+        const url='http://localhost:5000/api/workers'
 
         const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/eia/image/upload';
         const UPLOAD_PRESET = 'iiq0b57e';
@@ -113,7 +115,8 @@ export class Register extends React.Component {
                                 <label htmlFor="password">Años de experiencia</label>
                                 <input type="number" name="yearsXperience" placeholder="Años de experiencia" required
                                        value={this.state.yearsXperience}
-                                       onChange={(e) => this.setState({yearsXperience: e.target.value})}/>
+                                       onChange={(e) => this.setState({yearsXperience: e.target.value})}
+                               />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="phone">Titulo</label>

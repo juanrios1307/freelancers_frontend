@@ -2,9 +2,9 @@ import React from "react";
 import Axios from "axios";
 import '../assets/css/Listas.css';
 import {Grid} from "@material-ui/core";
-import DashNav from "../components/DashNav";
+import NavBar from "../components/NavBar";
 
-class SavingPub extends React.Component {
+class WorkersBuscados extends React.Component {
 
     constructor(props) {
         super(props);
@@ -20,16 +20,20 @@ class SavingPub extends React.Component {
 
     async getData() {
 
-        const token = localStorage.getItem("token")
-         const url = 'https://peaceful-ridge-86113.herokuapp.com/api/saving'
+        const profesion = localStorage.getItem("profesion")
+        localStorage.removeItem("profesion")
 
-        //const url = 'http://localhost:5000/api/saving'
+        console.log(profesion)
+
+         //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/main/workers'
+
+        const url = 'http://localhost:5000/api/main/workers'
 
         const config = {
             method: 'get',
             url: url,
             headers: {
-                'access-token': token
+                'profesion': profesion
             }
         };
 
@@ -64,9 +68,8 @@ class SavingPub extends React.Component {
         <Grid container spacing={3}>
 
             <Grid item xs={12}>
-                <DashNav/>
+                <NavBar/>
             </Grid>
-
 
             <Grid item xs={12}>
                 {this.state.Content}
@@ -79,4 +82,4 @@ class SavingPub extends React.Component {
 
 }
 
-export default SavingPub
+export default WorkersBuscados
