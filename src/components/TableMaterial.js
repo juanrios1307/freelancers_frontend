@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from '@material-ui/core';
 import {withStyles} from '@material-ui/core/styles';
+import Axios from "axios";
 
 const StyledTableCell= withStyles(()=>({
     head:{
@@ -14,24 +15,52 @@ const StyledTableCell= withStyles(()=>({
 }))(TableCell);
 
 function TableMaterial(props) {
+
+    const [Content, setContent] = useState('');
+
+    useEffect(() => {
+       getData()
+    }, []);
+
+    const getData= async () => {
+
+
+        //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/main/promworkers'
+
+        const url = 'http://localhost:5000/api/main/promworkers'
+
+        const config = {
+            method: 'get',
+            url: url
+        };
+
+        var response = await Axios(config);
+
+        var data = response.data.data;
+
+
+        setContent( data.map((elemento) => (
+            <TableRow key={elemento.id}>
+                <TableCell><img src={elemento.imagen} width="40px" height="40px"/>{"  "}</TableCell>
+                <TableCell align="center">{elemento.user.nombre}</TableCell>
+                <TableCell align="center">{elemento.profesion}</TableCell>
+            </TableRow>
+        )))
+    }
+
+
     return (
         <TableContainer>
             <Table>
                 <TableHead>
                     <TableRow>
                         <StyledTableCell>Publicaciones Destacadas</StyledTableCell>
-                        <StyledTableCell>Fecha de Publicación</StyledTableCell>
-                        <StyledTableCell>Número de Visualizaciones</StyledTableCell>
+                        <StyledTableCell>Nombre</StyledTableCell>
+                        <StyledTableCell>Profesion</StyledTableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {props.data.map(elemento=>(
-                        <TableRow key={elemento.id}>
-                            <TableCell><img src={elemento.imagen} width="35px" height="25px"/>{"  "}{elemento.video}</TableCell>
-                            <TableCell align="center">{elemento.fecha}</TableCell>
-                            <TableCell align="center">{elemento.visualizaciones}</TableCell>
-                        </TableRow>
-                    ))}
+                    {Content}
                 </TableBody>
             </Table>
         </TableContainer>

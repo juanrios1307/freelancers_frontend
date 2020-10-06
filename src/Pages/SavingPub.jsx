@@ -40,7 +40,7 @@ class SavingPub extends React.Component {
         this.setState({
             Content: data.map((worker) => (
                     <div className="media" key={worker._id}>
-                        <img className="mr-3" src={worker.imagen} alt='imagen' />
+                        <img className="mr-3 imgList" src={worker.imagen} alt='imagen' />
                         <div className="media-body">
                             <h6 className="mt-0">Nombre: {worker.user.nombre}</h6>
                             <p className="card-text">Email: {worker.user.correo}</p>

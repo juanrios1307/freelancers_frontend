@@ -3,44 +3,65 @@ import '../assets/css/CardCarousel.css';
 import icono1 from '../assets/images/pi1.jpeg';
 import icono2 from '../assets/images/pi2.jpeg';
 import icono3 from '../assets/images/pi3.jpeg';
+import Axios from "axios";
 
 
 
 class CardCarousel extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            Content: ''
+        };
+        this.getData = this.getData.bind(this);
+    }
+
+    componentDidMount() {
+        this.getData();
+    }
+
+    async getData() {
+
+
+
+        //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/main/promworkers'
+
+        const url = 'http://localhost:5000/api/main/promworkers'
+
+        const config = {
+            method: 'get',
+            url: url
+        };
+
+        var response=await Axios(config);
+
+        var data = response.data.data;
+
+       this.setState({
+            Content: data.map((worker) => (
+                    <div className="card" key={worker._id}>
+                        <div className="card-icon" ><img src={worker.imagen} alt="icon1"/></div>
+                        <div className="card-body">
+                            <h5 className="card-title">{worker.user.nombre}</h5>
+                            <p className="card-text">{worker.profesion}</p>
+                            <p className="card-text">Correo: {worker.user.correo}</p>
+                        </div>
+                        <div className="card-footer">
+                            <small className="text-muted">Last updated 20 mins ago</small>
+                        </div>
+                    </div>
+            ))
+        })
+
+    }
+
+
+
     render() {
         return (
             <section className="card-deck">
-                <div className="card">
-                    <div className="card-icon" ><img src={icono1} alt="icon1"/></div>
-                    <div className="card-body">
-                        <h5 className="card-title">Andrea Sánchez</h5>
-                        <p className="card-text">Diseñadora Gráfica y creadora de Apps.</p>
-                    </div>
-                    <div className="card-footer">
-                        <small className="text-muted">Last updated 20 mins ago</small>
-                    </div>
-                </div>
-                <div className="card">
-                    <div className="card-icon" ><img src={icono2} alt="icon1"/></div>
-                    <div className="card-body">
-                        <h5 className="card-title">Juan Montoya</h5>
-                        <p className="card-text">Traductor y puedo trabajar en redacción y corrección de textos y artículos.</p>
-                    </div>
-                    <div className="card-footer">
-                        <small className="text-muted">Last updated 3 mins ago</small>
-                    </div>
-                </div>
-                <div className="card">
-                    <div className="card-icon" ><img src={icono3} alt="icon1"/></div>
-                    <div className="card-body">
-                        <h5 className="card-title">Carlos García</h5>
-                        <p className="card-text">Pintor y escultor profesional.</p>
-                    </div>
-                    <div className="card-footer">
-                        <small className="text-muted">Last updated 5 mins ago</small>
-                    </div>
-                </div>
+                {this.state.Content}
             </section>
         );
     }

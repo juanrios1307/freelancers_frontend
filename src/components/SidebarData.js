@@ -18,6 +18,13 @@ export const SidebarData = [
         icon: <IoIcons.IoIosPaper />,
         cName: 'n-text'
     },
+    {
+        title: 'Crear Anuncio',
+        path: '/createAnunce',
+        icon: <IoIcons.IoIosPaper />,
+        cName: 'n-text'
+    },
+
    {
         title: 'Principal',
         path: '/',

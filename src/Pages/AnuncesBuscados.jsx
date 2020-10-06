@@ -45,7 +45,7 @@ class AnuncesBuscados extends React.Component {
         this.setState({
             Content: data.map((anunces) => (
                     <div className="media" key={anunces._id}>
-                        <img className="mr-3" src={anunces.imagen} alt='imagen' />
+                        <img className="mr-3 imgList" src={anunces.imagen} alt='imagen' />
                         <div className="media-body">
                             <h6 className="mt-0">{anunces.titulo}</h6>
                             <p className="card-text">Email: {anunces.user.correo}</p>
