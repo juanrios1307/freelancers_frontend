@@ -37,38 +37,13 @@ const useStyles= makeStyles(()=>({
     }
 }));
 
-const data = [
-    {
-        id:1,
-        Publicacion:
-            "Como Hacer un Split en React JS || React Split Pane || Tutorial en Español (2020)",
-        fecha: "6 de sep. 2020",
-        visualizaciones: 32,
-        imagen: require("../assets/images/split.webp"),
-    },
-    {
-        id:2,
-        Publicacion:
-            "Cómo Solucionar Error al Crear Applicación de React JS",
-        fecha: "5 de sep. 2020",
-        visualizaciones: 31,
-        imagen: require("../assets/images/error.webp"),
-    },
-    {
-        id:3,
-        Publicacion:
-            "Cómo Utilizar Forever en Node JS || Ejecutar Node JS en Segundo Plano || Background Node JS",
-        fecha: "4 de sep. 2020",
-        visualizaciones: 21,
-        imagen: require("../assets/images/forever.webp"),
-    },
-];
+
 
 function Dashboard(props) {
     const classes= useStyles();
 
-    const [nombre,setNombre] =useState('');
-    const [ciudad,setCiudad] =useState('');
+    const [nombre,setNombre] =useState('...');
+    const [ciudad,setCiudad] =useState('...');
 
     const url='https://peaceful-ridge-86113.herokuapp.com/api/users'
     //const url='http://localhost:5000/api/users'
@@ -125,7 +100,7 @@ function Dashboard(props) {
 
 
                 <Grid item xs={12} className={classes.containerTabla}>
-                    <TableMaterial data={data}/>
+                    <TableMaterial/>
                 </Grid>
 
                 <Grid item xs={12} className='dashButtonDiv'>

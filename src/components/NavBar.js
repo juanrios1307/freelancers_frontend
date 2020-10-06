@@ -64,6 +64,7 @@ function NavBar() {
                         QuickServices
                         <i href={'WHITE PNG'}/>
                     </Link>
+
                     <div className='menu-icon' onClick={handleClick}>
                         <i className={click ? 'fas fa-times' : 'fas fa-bars'}/>
                     </div>
@@ -76,9 +77,6 @@ function NavBar() {
                                 <button className="my-sm-0" type="submit">
                                     Buscar
                                 </button>
-                                <Link to="/workers" onClick={closeMobileMenu} onClick={buscarProfesion}>
-
-                                </Link>
                             </form>
                         </li>
 
@@ -86,6 +84,7 @@ function NavBar() {
                             <Link to='/sing-up' refresh="true" className='nav-links' onClick={closeMobileMenu}>
                                 Iniciar Sesión / Registro
                             </Link>
+
                         </li>
 
                     </ul>

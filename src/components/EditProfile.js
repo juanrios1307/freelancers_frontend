@@ -19,9 +19,7 @@ function EditProfile() {
    // const url='http://localhost:5000/api/users'
 
     React.useEffect(async () =>{
-
        user()
-
     },[]);
 
     const user= async () => {
@@ -89,7 +87,7 @@ function EditProfile() {
        <div className="edit">
            <form className="form" onSubmit={actualizar}>
                <div className="f-group">
-                   <label htmlFor="username">Nombre Completo: </label>
+                   <label htmlFor="username" >Nombre Completo: </label>
                    <input type="text" name="username" placeholder={nombre}   onChange={e => setNewNombre(e.target.value)} />
                </div>
                <div className="f-group">

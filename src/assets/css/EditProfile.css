@@ -4,13 +4,18 @@
 }
 .f-group input{
     margin-left: 10px;
+    padding-left: 10px;
 }
+
 .f-group label{
     font-family: "Open Sans", sans-serif;
     color: whitesmoke;
+    display: inline-block;
+    width: 150px;
 }
 .ftr{
     margin-left: 10px;
+    text-align: center;
 }
 .ftr button{
     background: white;
