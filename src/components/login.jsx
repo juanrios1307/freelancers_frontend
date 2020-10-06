@@ -59,7 +59,6 @@ export class Login extends React.Component {
 
 
 
-
     render() {
         if(this.state.toRedirect){
             return <Redirect to='/dashboard' />

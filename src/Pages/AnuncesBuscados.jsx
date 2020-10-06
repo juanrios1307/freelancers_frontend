@@ -49,8 +49,9 @@ class AnuncesBuscados extends React.Component {
                         <div className="media-body">
                             <h6 className="mt-0">{anunces.titulo}</h6>
                             <p className="card-text">Email: {anunces.user.correo}</p>
-                            <p className="card-text">Email: {anunces.user.telefono}</p>
+                            <p className="card-text">Telefono: {anunces.user.telefono}</p>
                             <p className="card-text">Profesión : {anunces.profesion}</p>
+                            <p className="card-text">Ciudad : {anunces.ciudad}</p>
                             <div className="card-footer">
                                 <small className="text-muted">Last updated 3 mins ago</small>
                             </div>

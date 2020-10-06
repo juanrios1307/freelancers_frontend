@@ -26,7 +26,7 @@ export const SidebarData = [
     },
    {
         title: 'Buscar',
-        path: '/search',
+        path: '/workers',
         icon: <IoIcons.IoMdPeople />,
         cName: 'n-text'
     },
