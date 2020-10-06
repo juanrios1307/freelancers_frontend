@@ -24,9 +24,9 @@ class WorkersBuscados extends React.Component {
         localStorage.removeItem("profesion")
 
 
-         //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/main/workers'
+         const url = 'https://peaceful-ridge-86113.herokuapp.com/api/main/workers'
 
-        const url = 'http://localhost:5000/api/main/workers'
+        //const url = 'http://localhost:5000/api/main/workers'
 
         const config = {
             method: 'get',

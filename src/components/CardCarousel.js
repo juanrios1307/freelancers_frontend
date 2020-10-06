@@ -25,9 +25,9 @@ class CardCarousel extends Component {
 
 
 
-        //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/main/promworkers'
+        const url = 'https://peaceful-ridge-86113.herokuapp.com/api/main/promworkers'
 
-        const url = 'http://localhost:5000/api/main/promworkers'
+      //  const url = 'http://localhost:5000/api/main/promworkers'
 
         const config = {
             method: 'get',
