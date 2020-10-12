@@ -26,15 +26,6 @@ h10{
     font-family: "Open Sans", sans-serif;
     font-weight: bold;
 }
-img{
-    margin-top: 1em;
-    width: 10em;
-    height: 10em;
-    margin-left: 1em;
-    border: 5px solid #060b26;
-    border-radius: 10px;
-    padding: 2px;
-}
 input{
     margin-left: 10px;
     padding-left: 10px;
