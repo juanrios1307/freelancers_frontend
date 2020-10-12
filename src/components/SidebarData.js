@@ -2,6 +2,7 @@ import React from 'react';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import * as IoIcons from 'react-icons/io';
+import * as BsIcons from 'react-icons/bs';
 
 export const SidebarData = [
     {
@@ -14,7 +15,7 @@ export const SidebarData = [
     {
         title: 'Guardadas',
         path: '/saves',
-        icon: <IoIcons.IoIosPaper />,
+        icon: <BsIcons.BsFillBookmarkFill/> ,
         cName: 'n-text'
     },
     {
@@ -27,25 +28,25 @@ export const SidebarData = [
    {
         title: 'Principal',
         path: '/',
-        icon: <FaIcons.FaCartPlus />,
+       icon: <AiIcons.AiFillHome />,
         cName: 'n-text'
     },
    {
         title: 'Buscar',
         path: '/workers',
-        icon: <IoIcons.IoMdPeople />,
+        icon: <AiIcons.AiOutlineSearch />,
         cName: 'n-text'
     },
     {
         title: 'Chat',
         path: '/chat',
-        icon: <FaIcons.FaEnvelopeOpenText />,
+        icon: <AiIcons.AiFillMessage />,
         cName: 'n-text'
     },
     {
         title: 'Ajustes',
         path: '/settings',
-        icon: <IoIcons.IoMdHelpCircle />,
+        icon:  <AiIcons.AiFillSetting />,
         cName: 'n-text'
     }
 ];

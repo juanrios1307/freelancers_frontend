@@ -31,7 +31,7 @@ function NavBar() {
     }
 
     const buscarProfesion = (e) => {
-        localStorage.setItem("profesion", profesion)
+        localStorage.setItem("profesion", profesion.toLowerCase())
 
     }
 

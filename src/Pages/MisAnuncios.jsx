@@ -14,10 +14,29 @@ class MisAnuncios extends React.Component {
             Content: ''
         };
         this.getData = this.getData.bind(this);
+        this.deleteAnuncio = this.deleteAnuncio.bind(this);
     }
 
     componentDidMount() {
         this.getData();
+    }
+
+    deleteAnuncio(id){
+        const token = localStorage.getItem("token")
+        // const url = 'https://peaceful-ridge-86113.herokuapp.com/api/anuncesWork'
+
+        const url = 'http://localhost:5000/api/anuncesWork/'
+
+        const config = {
+            method: 'delete',
+            url: url+id,
+            headers: {
+                'access-token': token
+            }
+        };
+
+        var response=Axios(config);
+
     }
 
     async getData() {
@@ -50,8 +69,8 @@ class MisAnuncios extends React.Component {
                             <p className="card-text">Descripción: {anunces.especificaciones}</p>
                             <p className="card-text">Ciudad: {anunces.ciudad}</p>
 
-                            <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillEdit/></button>
-                            <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillDelete/></button>
+                            <button type="button" className="btn btn-outline btn-list" key={anunces._id} ><AiIcons.AiFillEdit/></button>
+                            <button type="button" className="btn btn-outline btn-list" key={anunces._id} onClick={this.deleteAnuncio()}><AiIcons.AiFillDelete/></button>
 
                             <div className="card-footer">
                                 <small className="text-muted">Subido {moment(anunces.date).format('DD/MM/YYYY')} </small>
