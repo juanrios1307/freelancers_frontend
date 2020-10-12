@@ -2,7 +2,7 @@ import React from "react";
 import Axios from "axios";
 import '../assets/css/Listas.css';
 import {Grid} from "@material-ui/core";
-import NavBar from "../components/NavBar";
+import NavBar from "../components/DashNav";
 import * as AiIcons from "react-icons/ai/index";
 import * as BsIcons from "react-icons/bs/index";
 

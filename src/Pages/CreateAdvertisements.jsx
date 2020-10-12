@@ -134,7 +134,7 @@ class CreateAdvertisements extends Component {
                                        onChange={(e) => this.setState({ciudad: e.target.value})}/>
                             </div>
 
-                            <div className="form-group">
+                            <div className="f-g">
                                 <label htmlFor="username">Imagen de perfil</label>
                                 <input type="file" name="imagen" placeholder="imagen"
                                        onChange={(e) => this.setState({imagenFile: e.target.files[0]})}/>
