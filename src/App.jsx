@@ -7,6 +7,7 @@ import Dashboard from "./Pages/Dashboard";
 import RegisterWorker from "./Pages/RegisterWorker";
 import WorkersBuscados from "./Pages/WorkersBuscados";
 import AnuncesBuscados from "./Pages/AnuncesBuscados";
+import CreateAdvertisements from "./Pages/CreateAdvertisements";
 
 
 class App extends React.Component {
@@ -18,6 +19,7 @@ class App extends React.Component {
                     <Route exact path="/" component={MainPage} />
                     <Route exact path="/sing-up" component={LoginRegisterPage} />
                     <Route exact path="/dashboard" component={Dashboard} />
+                    <Route exact path="/createAnunce" component={CreateAdvertisements}/>
                     <Route exact path="/saves" component={SavingPub} />
                     <Route exact path="/signupworker" component={RegisterWorker} />
                     <Route exact path="/workers" component={WorkersBuscados} />
