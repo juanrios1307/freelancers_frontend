@@ -3,9 +3,10 @@ import Axios from "axios";
 import '../assets/css/Listas.css';
 import {Grid} from "@material-ui/core";
 import DashNav from "../components/DashNav";
+import moment from "moment"
 import * as AiIcons from 'react-icons/ai';
 
-class SavingPub extends React.Component {
+class MisAnuncios extends React.Component {
 
     constructor(props) {
         super(props);
@@ -22,9 +23,9 @@ class SavingPub extends React.Component {
     async getData() {
 
         const token = localStorage.getItem("token")
-         const url = 'https://peaceful-ridge-86113.herokuapp.com/api/saving'
+        // const url = 'https://peaceful-ridge-86113.herokuapp.com/api/anuncesWork'
 
-        //const url = 'http://localhost:5000/api/saving'
+        const url = 'http://localhost:5000/api/anuncesWork'
 
         const config = {
             method: 'get',
@@ -39,24 +40,23 @@ class SavingPub extends React.Component {
        var data = response.data.data;
 
         this.setState({
-            Content: data.map((worker) => (
-                    <div className="media" key={worker._id}>
-                        <img className="mr-3 imgList" src={worker.imagen} alt='imagen' />
+            Content: data.map((anunces) => (
+                    <div className="media" key={anunces._id}>
+                        <img className="mr-3 imgList" src={anunces.imagen} alt='imagen' />
                         <div className="media-body">
-                            <h6 className="mt-0">Nombre: {worker.user.nombre}</h6>
-                            <p className="card-text">Email: {worker.user.correo}</p>
-                            <p className="card-text">Profesión : {worker.profesion}</p>
-                            <p className="card-text">Experiencia: {worker.experiencia}</p>
-                            <p className="card-text">Años de experiencia: {worker.yearsXperience}</p>
+                            <h6 className="mt-0">{anunces.titulo}</h6>
+                            <p className="card-text">Profesión : {anunces.profesion}</p>
+                            <p className="card-text">Presuspuesto: {anunces.presupuesto}</p>
+                            <p className="card-text">Descripción: {anunces.especificaciones}</p>
+                            <p className="card-text">Ciudad: {anunces.ciudad}</p>
 
-                            <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillStar/></button>
-                            <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillMessage/></button>
-                            <button type="button" className="btn btn-outline btn-list"><AiIcons.AiTwotoneMail/></button>
+                            <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillEdit/></button>
                             <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillDelete/></button>
 
                             <div className="card-footer">
-                                <small className="text-muted">Last updated 3 mins ago</small>
+                                <small className="text-muted">Subido {moment(anunces.date).format('DD/MM/YYYY')} </small>
                             </div>
+
                         </div>
 
                     </div>
@@ -79,6 +79,13 @@ class SavingPub extends React.Component {
                 {this.state.Content}
             </Grid>
 
+            <Grid item xs={12} className='dashButtonDiv'>
+                <a href='/createAnunce'>
+                    <button className='buttonDash'>
+                        Publicar anuncio
+                    </button>
+                </a>
+            </Grid>
 
 
         </Grid>
@@ -86,4 +93,4 @@ class SavingPub extends React.Component {
 
 }
 
-export default SavingPub
+export default MisAnuncios

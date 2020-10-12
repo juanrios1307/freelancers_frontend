@@ -3,6 +3,8 @@ import Axios from "axios";
 import '../assets/css/Listas.css';
 import {Grid} from "@material-ui/core";
 import NavBar from "../components/NavBar";
+import * as AiIcons from "react-icons/ai/index";
+import * as BsIcons from "react-icons/bs/index";
 
 class WorkersBuscados extends React.Component {
 
@@ -50,8 +52,14 @@ class WorkersBuscados extends React.Component {
                             <p className="card-text">Profesión : {worker.profesion}</p>
                             <p className="card-text">Experiencia: {worker.experiencia}</p>
                             <p className="card-text">Años de experiencia: {worker.yearsXperience}</p>
+
+                            <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillStar/></button>
+                            <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillMessage/></button>
+                            <button type="button" className="btn btn-outline btn-list"><AiIcons.AiTwotoneMail/></button>
+                            <button type="button" className="btn btn-outline btn-list"><BsIcons.BsFillBookmarkFill/></button>
+
                             <div className="card-footer">
-                                <small className="text-muted">Last updated 3 mins ago</small>
+                                <small className="text-muted"></small>
                             </div>
                         </div>
 

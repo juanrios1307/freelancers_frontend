@@ -4,6 +4,9 @@ import '../assets/css/Listas.css';
 import {Grid} from "@material-ui/core";
 import DashNav from "../components/DashNav";
 import NavBar from "../components/NavBar";
+import * as AiIcons from "react-icons/ai/index";
+import * as BsIcons from "react-icons/bs/index";
+import moment from "moment";
 
 class AnuncesBuscados extends React.Component {
 
@@ -52,8 +55,14 @@ class AnuncesBuscados extends React.Component {
                             <p className="card-text">Telefono: {anunces.user.telefono}</p>
                             <p className="card-text">Profesión : {anunces.profesion}</p>
                             <p className="card-text">Ciudad : {anunces.ciudad}</p>
+
+                            <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillStar/></button>
+                            <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillMessage/></button>
+                            <button type="button" className="btn btn-outline btn-list"><AiIcons.AiTwotoneMail/></button>
+                            <button type="button" className="btn btn-outline btn-list"><BsIcons.BsFillBookmarkFill/></button>
+
                             <div className="card-footer">
-                                <small className="text-muted">Last updated 3 mins ago</small>
+                                <small className="text-muted">Subido {moment(anunces.date).format('DD/MM/YYYY')} </small>
                             </div>
                         </div>
 

@@ -44,6 +44,7 @@ function Dashboard(props) {
 
     const [nombre,setNombre] =useState('...');
     const [ciudad,setCiudad] =useState('...');
+    const [anuncios,setAnuncios] =useState('...');
 
     const url='https://peaceful-ridge-86113.herokuapp.com/api/users'
     //const url='http://localhost:5000/api/users'
@@ -65,7 +66,8 @@ function Dashboard(props) {
         const data = res.data.data;
 
         setNombre(data.nombre);
-        setCiudad(data.ciudad)
+        setCiudad(data.ciudad);
+        setAnuncios(data.Anunces.length)
 
     },[]);
 
@@ -79,13 +81,13 @@ function Dashboard(props) {
 
 
                 <Grid item xs={12} sm={4} md={4} lg={4} xl={4}>
-                    <CardsHeader icono={<PersonIcon className={classes.iconos}/>} titulo="NOMBRE" texto={nombre} color="linear-gradient(90deg, rgb(29, 115, 91) 0%, rgb(40, 121, 19) 100%)" font="white"/>
+                    <CardsHeader icono={<PersonIcon className={classes.iconos}/>} titulo="Nombre" texto={nombre} color="linear-gradient(90deg, rgb(29, 115, 91) 0%, rgb(40, 121, 19) 100%)" font="white"/>
                 </Grid>
                 <Grid item xs={12} sm={4} md={4} lg={4} xl={4}>
                     <CardsHeader icono={<PublicIcon className={classes.iconos}/>} titulo="Ciudad" texto={ciudad} color="linear-gradient(90deg, rgb(29, 115, 91) 0%, rgb(40, 121, 19) 100%)" font="white"/>
                 </Grid>
                 <Grid item xs={12} sm={4} md={4} lg={4} xl={4}>
-                    <CardsHeader icono={<AssessmentIcon className={classes.iconos}/>} titulo="CANTIDAD DE PUBLICACIONES" texto="5" color="linear-gradient(90deg, rgb(29, 115, 91) 0%, rgb(40, 121, 19) 100%)" font="white"/>
+                    <CardsHeader icono={<AssessmentIcon className={classes.iconos}/>} titulo="Cantidad de Anuncios" texto={anuncios} color="linear-gradient(90deg, rgb(29, 115, 91) 0%, rgb(40, 121, 19) 100%)" font="white"/>
                 </Grid>
 
                 <Grid container spacing={1} className={classes.container} xs={12} sm={12} md={6} lg={6} xl={6}>

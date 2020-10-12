@@ -2,7 +2,6 @@ import React from 'react';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import * as IoIcons from 'react-icons/io';
-import {Redirect} from "react-router-dom";
 
 export const SidebarData = [
     {
@@ -19,8 +18,8 @@ export const SidebarData = [
         cName: 'n-text'
     },
     {
-        title: 'Crear Anuncio',
-        path: '/createAnunce',
+        title: 'Mis Anuncios',
+        path: '/misanuncios',
         icon: <IoIcons.IoIosPaper />,
         cName: 'n-text'
     },
