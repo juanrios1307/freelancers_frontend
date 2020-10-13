@@ -2,9 +2,10 @@ import React from "react";
 import Axios from "axios";
 import '../assets/css/Listas.css';
 import {Grid} from "@material-ui/core";
-import NavBar from "../components/NavBar";
+import NavBar from "../components/DashNav";
 import * as AiIcons from "react-icons/ai/index";
 import * as BsIcons from "react-icons/bs/index";
+import {Link} from "react-router-dom";
 
 class WorkersBuscados extends React.Component {
 
@@ -57,10 +58,6 @@ class WorkersBuscados extends React.Component {
                             <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillMessage/></button>
                             <button type="button" className="btn btn-outline btn-list"><AiIcons.AiTwotoneMail/></button>
                             <button type="button" className="btn btn-outline btn-list"><BsIcons.BsFillBookmarkFill/></button>
-
-                            <div className="card-footer">
-                                <small className="text-muted"></small>
-                            </div>
                         </div>
 
                     </div>
@@ -72,19 +69,28 @@ class WorkersBuscados extends React.Component {
 
     render(){
         return(
-        <Grid container spacing={3}>
+        <div>
 
-            <Grid item xs={12}>
+            <div item xs={12}>
                 <NavBar/>
-            </Grid>
+            </div>
 
-            <Grid item xs={12}>
+            <div className="sort">
+                <Link className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                      aria-haspopup="true" aria-expanded="false">Filtrar por</Link>
+                <div className="dropdown-menu">
+                    <Link className="dropdown-item" href="#">Fecha</Link>
+                    <Link className="dropdown-item" href="#">Ubicación</Link>
+                </div>
+            </div>
+
+            <div item xs={12}>
                 {this.state.Content}
-            </Grid>
+            </div>
 
 
 
-        </Grid>
+        </div>
         )};
 
 }
