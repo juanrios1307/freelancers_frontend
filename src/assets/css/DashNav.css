@@ -94,6 +94,8 @@ span {
 .nv-item {
     height: 50%;
     color: #222222;
+    align-self: center;
+    margin-right: 2em;
 }
 .profile{
     width: 3em;
