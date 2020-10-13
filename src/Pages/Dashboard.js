@@ -14,6 +14,7 @@ import TableMaterial from '../components/TableMaterial';
 import EditProfile from "../components/EditProfile";
 import Axios from "axios";
 import { Link } from 'react-router-dom';
+import NavBar from "../components/NavBar";
 
 const useStyles= makeStyles(()=>({
     root:{
@@ -37,8 +38,6 @@ const useStyles= makeStyles(()=>({
     }
 }));
 
-
-
 function Dashboard(props) {
     const classes= useStyles();
 
@@ -50,9 +49,13 @@ function Dashboard(props) {
     //const url='http://localhost:5000/api/users'
 
     React.useEffect(async () =>{
+        getData()
 
-        const token=localStorage.getItem("token")
-        if(token) {
+    },[]);
+
+    const getData =async () => {
+        const token = localStorage.getItem("token")
+        if (token) {
             const config = {
                 method: 'get',
                 url: url,
@@ -69,7 +72,7 @@ function Dashboard(props) {
             setCiudad(data.ciudad);
             setAnuncios(data.Anunces.length)
         }
-    },[]);
+    }
 
     return (
         <div className={classes.root}>

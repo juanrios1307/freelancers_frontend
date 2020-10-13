@@ -51,7 +51,7 @@ class SavingPub extends React.Component {
 
                             <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillStar/></button>
                             <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillMessage/></button>
-                            <button type="button" className="btn btn-outline btn-list"><AiIcons.AiTwotoneMail/></button>
+                            <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillEye/></button>
                             <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillDelete/></button>
 
                             <div className="card-footer">

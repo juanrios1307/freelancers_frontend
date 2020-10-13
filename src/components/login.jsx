@@ -30,8 +30,8 @@ export class Login extends React.Component {
         e.preventDefault()
 
 
-        const url = 'https://peaceful-ridge-86113.herokuapp.com/api/login'
-        //const url='http://localhost:5000/api/login'
+        //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/login'
+        const url='http://localhost:5000/api/login'
 
         const response = await Axios.post(
             url,
@@ -40,18 +40,25 @@ export class Login extends React.Component {
         const mensaje = response.data.mensaje
         const status=response.status
 
-        localStorage.setItem("token",response.data.token)
 
-
-        Swal.fire({
-            icon: 'success',
-            title: mensaje,
-
-        })
 
         if(status==200){
+            Swal.fire({
+                icon: 'success',
+                title: mensaje,
+
+            })
+
+            localStorage.setItem("token",response.data.token)
+
             this.setState({
                 toRedirect:true
+            })
+        }else{
+            Swal.fire({
+                icon: 'error',
+                title: mensaje,
+
             })
         }
 

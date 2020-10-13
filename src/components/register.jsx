@@ -17,6 +17,7 @@ export class Register extends React.Component {
         }
 
         this.signinUser = this.signinUser.bind(this);
+        this.validarPwd = this.validarPwd.bind(this)
     }
 
     async signinUser(e) {
@@ -26,16 +27,55 @@ export class Register extends React.Component {
 
        // const url='http://localhost:5000/api/users'
 
-        const response = await Axios.post(url, this.state)
+        if(this.validarPwd()){
 
-        const mensaje = response.data.mensaje
+        }else {
 
-        console.log(mensaje)
-        Swal.fire({
-            icon: 'success',
-            title: mensaje
-        })
+            const response = await Axios.post(url, this.state)
 
+            const mensaje = response.data.mensaje
+
+            console.log(mensaje)
+            Swal.fire({
+                icon: 'success',
+                title: mensaje
+            })
+        }
+    }
+
+    validarPwd(){
+        var str=this.state.pwd
+
+
+        if (str.length < 6) {
+            Swal.fire({
+                icon: 'error',
+                title: "La contraseña debe contener al menos 6 caracteres"
+            })
+            return true
+        } if (str.length > 50) {
+            Swal.fire({
+                icon: 'error',
+                title: "La contraseña debe contener menos de 50 caracteres"
+            })
+            return true
+        } if (str.match(/\d/) == null) {
+            Swal.fire({
+                icon: 'error',
+                title: "La contraseña debe contener al menos 1 numero"
+            })
+
+            return true
+        } if (str.match(/[a-zA-Z]/) == null) {
+            Swal.fire({
+                icon: 'error',
+                title: "La contraseña debe contener al menos 1 letra"
+            })
+            return true
+        }
+
+
+        return false
     }
 
 

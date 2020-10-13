@@ -136,7 +136,7 @@ class CreateAdvertisements extends Component {
 
                             <div className="f-g">
                                 <label htmlFor="username">Imagen de perfil</label>
-                                <input type="file" name="imagen" placeholder="imagen"
+                                <input type="file" name="imagen" placeholder="imagen" required
                                        onChange={(e) => this.setState({imagenFile: e.target.files[0]})}/>
                             </div>
 

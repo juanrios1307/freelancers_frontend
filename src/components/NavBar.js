@@ -11,6 +11,7 @@ function NavBar() {
     const closeMobileMenu = () => setClick(false);
 
     const [profesion, setProfesion] = useState('');
+    const [categoria, setCategoria] = useState('workers');
 
     const url = 'https://peaceful-ridge-86113.herokuapp.com/api/main'
     //const url='http://localhost:5000/api/main'
@@ -30,9 +31,9 @@ function NavBar() {
             });
     }
 
-    const buscarProfesion = (e) => {
+    const buscarProfesion = () => {
         localStorage.setItem("profesion", profesion.toLowerCase())
-
+        localStorage.setItem("categoria",categoria)
     }
 
     const showButton = () => {
@@ -51,9 +52,17 @@ function NavBar() {
     window.addEventListener('resize', showButton);
 
     if (localStorage.getItem("profesion")) {
-        return (
-            <Redirect to="/workers"/>
-        )
+        if(localStorage.getItem("categoria") == "workers"){
+
+            return (
+                <Redirect to="/workers"/>
+            )
+        }else{
+
+            return (
+                <Redirect to="/anunces"/>
+            )
+        }
     } else {
 
         return (
@@ -74,12 +83,12 @@ function NavBar() {
                                 <input className="form-control mr-sm-2" type="search" placeholder="Buscar"
                                        aria-label="Search"
                                        onChange={e => setProfesion(e.target.value)}/>
-                                <Link className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                                      aria-haspopup="true" aria-expanded="false">Categorias</Link>
-                                <div className="dropdown-menu">
-                                    <Link className="dropdown-item" href="#">Profesión</Link>
-                                    <Link className="dropdown-item" href="#">Anuncio</Link>
-                                </div>
+
+                                <select onChange={e => setCategoria(e.target.value)} className="nav-link dropdown-toggle">
+                                    <option  value="workers" >Profesión</option>
+                                    <option  value="anunces" >Anuncio</option>
+                                </select>
+
                                 <button className="my-sm-0" type="submit">
                                     Buscar
                                 </button>

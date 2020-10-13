@@ -71,6 +71,7 @@ class MisAnuncios extends React.Component {
 
                             <button type="button" className="btn btn-outline btn-list" key={anunces._id} ><AiIcons.AiFillEdit/></button>
                             <button type="button" className="btn btn-outline btn-list" key={anunces._id} onClick={this.deleteAnuncio(this.props.key)}><AiIcons.AiFillDelete/></button>
+                            <button type="button" className="btn btn-outline btn-list" key={anunces._id} ><AiIcons.AiFillEye/></button>
 
                             <div className="card-footer">
                                 <small className="text-muted">Subido {moment(anunces.date).format('DD/MM/YYYY')} </small>

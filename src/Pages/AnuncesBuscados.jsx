@@ -7,6 +7,7 @@ import NavBar from "../components/NavBar";
 import * as AiIcons from "react-icons/ai/index";
 import * as BsIcons from "react-icons/bs/index";
 import moment from "moment";
+import {Link} from "react-router-dom";
 
 class AnuncesBuscados extends React.Component {
 
@@ -27,11 +28,12 @@ class AnuncesBuscados extends React.Component {
 
         const profesion = localStorage.getItem("profesion")
         localStorage.removeItem("profesion")
+        localStorage.removeItem("categoria")
 
 
-         const url = 'https://peaceful-ridge-86113.herokuapp.com/api/main/anunces'
+         //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/main/anunces'
 
-       // const url = 'http://localhost:5000/api/main/anunces'
+         const url = 'http://localhost:5000/api/main/anunces'
 
         const config = {
             method: 'get',
@@ -58,7 +60,7 @@ class AnuncesBuscados extends React.Component {
 
                             <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillStar/></button>
                             <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillMessage/></button>
-                            <button type="button" className="btn btn-outline btn-list"><AiIcons.AiTwotoneMail/></button>
+                            <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillEye/></button>
                             <button type="button" className="btn btn-outline btn-list"><BsIcons.BsFillBookmarkFill/></button>
 
                             <div className="card-footer">
@@ -74,21 +76,56 @@ class AnuncesBuscados extends React.Component {
     }
 
     render(){
-        return(
-        <Grid container spacing={3}>
 
-            <Grid item xs={12}>
-                <NavBar/>
-            </Grid>
+        if(localStorage.getItem("token")){
+            return(
+                <div>
 
-            <Grid item xs={12}>
-                {this.state.Content}
-            </Grid>
+                    <div item xs={12}>
+                        <DashNav />
+                    </div>
 
+                    <div className="sort">
+                        <Link className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                              aria-haspopup="true" aria-expanded="false">Filtrar por</Link>
+                        <div className="dropdown-menu">
+                            <Link className="dropdown-item" href="#">Fecha</Link>
+                            <Link className="dropdown-item" href="#">Ubicación</Link>
+                        </div>
+                    </div>
 
+                    <div item xs={12}>
+                        {this.state.Content}
+                    </div>
 
-        </Grid>
-        )};
+                </div>
+            )
+        }else{
+            return(
+                <div>
+
+                    <div item xs={12}>
+                        <NavBar/>
+                    </div>
+
+                    <div className="sort">
+                        <Link className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                              aria-haspopup="true" aria-expanded="false">Filtrar por</Link>
+                        <div className="dropdown-menu">
+                            <Link className="dropdown-item" href="#">Fecha</Link>
+                            <Link className="dropdown-item" href="#">Ubicación</Link>
+                        </div>
+                    </div>
+
+                    <div item xs={12}>
+                        {this.state.Content}
+                    </div>
+
+                </div>
+            )
+        }
+
+    };
 
 }
 

@@ -118,12 +118,12 @@ export class Register extends React.Component {
                             </div>
                             <div className="form-group">
                                 <label htmlFor="phone">Titulo</label>
-                                <input type="file" name="titulo" placeholder="Titulo"
+                                <input type="file" name="titulo" placeholder="Titulo" required
                                        onChange={(e) => this.setState({tituloFile: e.target.files[0]})}/>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="username">Imagen de perfil</label>
-                                <input type="file" name="imagen" placeholder="imagen"
+                                <input type="file" name="imagen" placeholder="imagen" required
                                        onChange={(e) => this.setState({imagenFile: e.target.files[0]})}/>
                             </div>
                             <div className="footer">

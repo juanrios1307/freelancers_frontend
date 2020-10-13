@@ -26,7 +26,7 @@ class WorkersBuscados extends React.Component {
 
         const profesion = localStorage.getItem("profesion")
         localStorage.removeItem("profesion")
-
+        localStorage.removeItem("categoria")
 
          const url = 'https://peaceful-ridge-86113.herokuapp.com/api/main/workers'
 
@@ -57,7 +57,7 @@ class WorkersBuscados extends React.Component {
 
                             <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillStar/></button>
                             <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillMessage/></button>
-                            <button type="button" className="btn btn-outline btn-list"><AiIcons.AiTwotoneMail/></button>
+                            <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillEye/></button>
                             <button type="button" className="btn btn-outline btn-list"><BsIcons.BsFillBookmarkFill/></button>
                         </div>
 

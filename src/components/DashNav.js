@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { Link,Redirect } from 'react-router-dom';
@@ -9,22 +9,42 @@ import Axios from "axios";
 
 function DashNav() {
     const [sidebar, setSidebar] = useState(false);
-    const [click, setClick] = useState(false);
     const [nombre,setNombre] =useState('.');
-    const [sesion,setSesion] =useState(true);
+
+    const [profesion, setProfesion] = useState('');
+    const [categoria, setCategoria] = useState('workers');
 
     const showSidebar = () => setSidebar(!sidebar);
-    const render = () => {
-        window.location.reload(false);
-    };
+
+
+
+    const cerrarSesion = () => {
+        localStorage.removeItem("token");
+    }
+
+    const url1 = 'https://peaceful-ridge-86113.herokuapp.com/api/main'
+    //const url1='http://localhost:5000/api/main'
+
+    const buscar = () => {
+        const config = {
+            method: 'get',
+            url: url1,
+        };
+
+        Axios(config)
+            .then(function (response) {
+                console.log(JSON.stringify(response.data));
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
 
     const url='https://peaceful-ridge-86113.herokuapp.com/api/users'
     //const url='http://localhost:5000/api/users'
-
-    React.useEffect(async () =>{
-
-        const token=localStorage.getItem("token")
-        if(token) {
+    const name = async () => {
+        const token = localStorage.getItem("token")
+        if (token) {
             const config = {
                 method: 'get',
                 url: url,
@@ -39,88 +59,105 @@ function DashNav() {
 
             setNombre(data.nombre);
         }
-    },[]);
-
-    const cerrarSesion = () => {
-        localStorage.removeItem("token");
     }
 
-    if(localStorage.getItem("token")) {
+    const buscarProfesion = () => {
+        localStorage.setItem("profesion", profesion.toLowerCase())
+        localStorage.setItem("categoria",categoria)
+    }
+
+    useEffect(() => {
+        buscar()
+        name()
+    }, []);
+
+    if (localStorage.getItem("profesion")) {
+        if(localStorage.getItem("categoria") == "workers"){
+
+            return (
+                <Redirect to="/workers"/>
+            )
+        }else{
+
+            return (
+                <Redirect to="/anunces"/>
+            )
+        }
+    } else {
+
         return (
-            <>
                 <IconContext.Provider value={{color: '#fff'}}>
-                    <div className='dashnav'>
-                        <Link to='#' className='m-bars'>
-                            <FaIcons.FaBars onClick={showSidebar}/>
-                        </Link>
-                        <div className='name'>
-                            QuickServices
-                        </div>
-                        <ul className='nv-menu'>
-                            <div></div>
-                            <div className="buscador">
-                                <li className='nv-item'>
-                                    <form className="form-inline my-2 my-lg-0">
-                                        <input className="form-control mr-sm-2" type="search" placeholder="Buscar"
-                                               aria-label="Search"/>
-                                        <button className="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
-                                                role="button"
-                                                aria-haspopup="true" aria-expanded="false">Categorias
+                            <div className='dashnav'>
+                                <Link to='#' className='m-bars'>
+                                    <FaIcons.FaBars onClick={showSidebar}/>
+                                </Link>
+                                <div className='name'>
+                                    QuickServices
+                                </div>
+                                <ul className='nv-menu'>
+
+                                    <div className="buscador">
+                                        <li className='nv-item'>
+                                            <form className="form-inline my-2 my-lg-0" onSubmit={buscarProfesion}>
+                                                <input className="form-control mr-sm-2" type="search"
+                                                       placeholder="Buscar"
+                                                       aria-label="Search"
+                                                       onChange={e => setProfesion(e.target.value)}/>
+
+                                                <select onChange={e => setCategoria(e.target.value)} className="nav-link dropdown-toggle form-control">
+                                                    <option  value="workers" >Profesión</option>
+                                                    <option  value="anunces" >Anuncio</option>
+                                                </select>
+
+                                                <button className="my-sm-0" type="submit">
+                                                    Buscar
+                                                </button>
+                                            </form>
+
+                                        </li>
+                                    </div>
+                                    <li className='nv-item'>
+                                        <button className="nv-links" data-toggle="dropdown" href="#" role="button"
+                                                aria-haspopup="true" aria-expanded="false">
+                                            {nombre[0].toUpperCase()}
                                         </button>
                                         <div className="dropdown-menu">
-                                            <Link className="dropdown-item" href="#">Profesión</Link>
-                                            <Link className="dropdown-item" href="#">Anuncio</Link>
+                                            <a className="dropdown-item" href="/dashboard">Ver Perfil</a>
+                                            <a className="dropdown-item" onClick={cerrarSesion} href="/">
+                                                Cerrar Sesión
+                                            </a>
                                         </div>
-                                        <button className="my-sm-0" type="submit">
-                                            Buscar
-                                        </button>
-                                    </form>
-                                </li>
-                            </div>
-                            <li className='nv-item'>
-                                <button className="nv-links" data-toggle="dropdown" href="#" role="button"
-                                        aria-haspopup="true" aria-expanded="false">
-                                    {nombre[0].toUpperCase()}
-                                </button>
-                                <div className="dropdown-menu">
-                                    <a className="dropdown-item" href="/dashboard">Ver Perfil</a>
-                                    <a className="dropdown-item" onClick={cerrarSesion} href="/" >Cerrar Sesión</a>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </div>
-
-                    <nav className={sidebar ? 'n-menu active' : 'n-menu'}>
-                        <ul className='n-menu-items' onClick={showSidebar}>
-                            <li className='nb-toggle'>
-                                <Link to='#' className='m-bars'>
-                                    <AiIcons.AiOutlineClose/>
-                                </Link>
-                            </li>
-                            {SidebarData.map((item, index) => {
-                                return (
-                                    <li key={index} className={item.cName}>
-                                        <a href={item.path}>
-                                            {item.icon} <span>{item.title}</span>
-                                        </a>
                                     </li>
 
-                                );
-                            })}
+                                </ul>
+                            </div>
 
-                        </ul>
+                            <nav className={sidebar ? 'n-menu active' : 'n-menu'}>
+                                <ul className='n-menu-items' onClick={showSidebar}>
+                                    <li className='nb-toggle'>
+                                        <Link to='#' className='m-bars'>
+                                            <AiIcons.AiOutlineClose/>
+                                        </Link>
+                                    </li>
+                                    {SidebarData.map((item, index) => {
+                                        return (
+                                            <li key={index} className={item.cName}>
+                                                <a href={item.path}>
+                                                    {item.icon} <span>{item.title}</span>
+                                                </a>
+                                            </li>
 
-                    </nav>
-                </IconContext.Provider>
+                                        );
+                                    })}
 
-            </>
-        );
-    }else{
-        return (
-            <Redirect to="/" />
-        )
-    }
+                                </ul>
+
+                            </nav>
+                        </IconContext.Provider>
+
+                );
+            }
+
 }
 
 export default DashNav;
