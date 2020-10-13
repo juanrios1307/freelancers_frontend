@@ -2,7 +2,8 @@ import React from "react";
 import Axios from "axios";
 import '../assets/css/Listas.css';
 import {Grid} from "@material-ui/core";
-import NavBar from "../components/DashNav";
+import NavBar from "../components/NavBar";
+import DashNav from "../components/DashNav";
 import * as AiIcons from "react-icons/ai/index";
 import * as BsIcons from "react-icons/bs/index";
 import {Link} from "react-router-dom";
@@ -68,30 +69,56 @@ class WorkersBuscados extends React.Component {
     }
 
     render(){
-        return(
-        <div>
 
-            <div item xs={12}>
-                <NavBar/>
-            </div>
+        if(localStorage.getItem("token")){
+            return(
+                <div>
 
-            <div className="sort">
-                <Link className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                      aria-haspopup="true" aria-expanded="false">Filtrar por</Link>
-                <div className="dropdown-menu">
-                    <Link className="dropdown-item" href="#">Fecha</Link>
-                    <Link className="dropdown-item" href="#">Ubicación</Link>
+                    <div item xs={12}>
+                        <DashNav />
+                    </div>
+
+                    <div className="sort">
+                        <Link className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                              aria-haspopup="true" aria-expanded="false">Filtrar por</Link>
+                        <div className="dropdown-menu">
+                            <Link className="dropdown-item" href="#">Fecha</Link>
+                            <Link className="dropdown-item" href="#">Ubicación</Link>
+                        </div>
+                    </div>
+
+                    <div item xs={12}>
+                        {this.state.Content}
+                    </div>
+
                 </div>
-            </div>
+            )
+        }else{
+            return(
+                <div>
 
-            <div item xs={12}>
-                {this.state.Content}
-            </div>
+                    <div item xs={12}>
+                        <NavBar/>
+                    </div>
 
+                    <div className="sort">
+                        <Link className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                              aria-haspopup="true" aria-expanded="false">Filtrar por</Link>
+                        <div className="dropdown-menu">
+                            <Link className="dropdown-item" href="#">Fecha</Link>
+                            <Link className="dropdown-item" href="#">Ubicación</Link>
+                        </div>
+                    </div>
 
+                    <div item xs={12}>
+                        {this.state.Content}
+                    </div>
 
-        </div>
-        )};
+                </div>
+            )
+        }
+
+      };
 
 }
 

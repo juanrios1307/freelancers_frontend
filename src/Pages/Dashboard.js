@@ -52,23 +52,23 @@ function Dashboard(props) {
     React.useEffect(async () =>{
 
         const token=localStorage.getItem("token")
+        if(token) {
+            const config = {
+                method: 'get',
+                url: url,
+                headers: {
+                    'access-token': token
+                }
+            };
 
-        const config = {
-            method: 'get',
-            url: url,
-            headers: {
-                'access-token': token
-            }
-        };
+            const res = await Axios(config);
 
-        const res=await Axios(config);
+            const data = res.data.data;
 
-        const data = res.data.data;
-
-        setNombre(data.nombre);
-        setCiudad(data.ciudad);
-        setAnuncios(data.Anunces.length)
-
+            setNombre(data.nombre);
+            setCiudad(data.ciudad);
+            setAnuncios(data.Anunces.length)
+        }
     },[]);
 
     return (
