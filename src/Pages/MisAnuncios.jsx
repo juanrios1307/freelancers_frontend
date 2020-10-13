@@ -42,9 +42,9 @@ class MisAnuncios extends React.Component {
     async getData() {
 
         const token = localStorage.getItem("token")
-        // const url = 'https://peaceful-ridge-86113.herokuapp.com/api/anuncesWork'
+         const url = 'https://peaceful-ridge-86113.herokuapp.com/api/anuncesWork'
 
-        const url = 'http://localhost:5000/api/anuncesWork'
+        //const url = 'http://localhost:5000/api/anuncesWork'
 
         const config = {
             method: 'get',
@@ -70,7 +70,7 @@ class MisAnuncios extends React.Component {
                             <p className="card-text">Ciudad: {anunces.ciudad}</p>
 
                             <button type="button" className="btn btn-outline btn-list" key={anunces._id} ><AiIcons.AiFillEdit/></button>
-                            <button type="button" className="btn btn-outline btn-list" key={anunces._id} onClick={this.deleteAnuncio()}><AiIcons.AiFillDelete/></button>
+                            <button type="button" className="btn btn-outline btn-list" key={anunces._id} onClick={this.deleteAnuncio(this.props.key)}><AiIcons.AiFillDelete/></button>
 
                             <div className="card-footer">
                                 <small className="text-muted">Subido {moment(anunces.date).format('DD/MM/YYYY')} </small>
