@@ -26,6 +26,7 @@ function DashNav() {
                         QuickServices
                     </div>
                     <ul className='nv-menu'>
+                        <div></div>
                         <div className="buscador">
                             <li className='nv-item'>
                                 <form className="form-inline my-2 my-lg-0">
@@ -43,7 +44,7 @@ function DashNav() {
                                 </form>
                             </li>
                         </div>
-                        <li className='nv-item'>
+                        <li className='profile'>
                             <Link className="nv-links" data-toggle="dropdown" href="#" role="button"
                                   aria-haspopup="true" aria-expanded="false">
                                 UN

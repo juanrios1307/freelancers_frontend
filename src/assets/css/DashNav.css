@@ -24,7 +24,7 @@
     width: 250px;
     height: 100vh;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     position: fixed;
     top: 0;
     left: -100%;
@@ -81,22 +81,26 @@ span {
 
 .nv-menu {
     margin-top: 1em;
-    display: grid;
+    display: flex;
+    justify-content: space-between;
     grid-template-columns: repeat(3, auto);
-    grid-gap: 40px;
+    grid-gap: 20em;
     list-style: none;
     text-align: center;
     width: 100%;
-    justify-content: center;
     height: 100%;
-    align-items: center;
 }
 
 .nv-item {
     height: 50%;
     color: #222222;
 }
-
+.profile{
+    width: 3em;
+    height: 3em;
+    align-self: center;
+    margin-right: 1.5em;
+}
 .nv-links {
     color: black;
     display: flex;
@@ -121,5 +125,6 @@ span {
     text-decoration: none !important;
 }
 .buscador{
-    display: inline;
+   align-self: center;
+    align-items: center;
 }

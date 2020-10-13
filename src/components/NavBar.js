@@ -74,6 +74,12 @@ function NavBar() {
                                 <input className="form-control mr-sm-2" type="search" placeholder="Buscar"
                                        aria-label="Search"
                                        onChange={e => setProfesion(e.target.value)}/>
+                                <Link className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                                      aria-haspopup="true" aria-expanded="false">Categorias</Link>
+                                <div className="dropdown-menu">
+                                    <Link className="dropdown-item" href="#">Profesión</Link>
+                                    <Link className="dropdown-item" href="#">Anuncio</Link>
+                                </div>
                                 <button className="my-sm-0" type="submit">
                                     Buscar
                                 </button>
