@@ -61,7 +61,6 @@ class AnuncesBuscados extends React.Component {
                             <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillStar/></button>
                             <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillMessage/></button>
                             <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillEye/></button>
-                            <button type="button" className="btn btn-outline btn-list"><BsIcons.BsFillBookmarkFill/></button>
 
                             <div className="card-footer">
                                 <small className="text-muted">Subido {moment(anunces.date).format('DD/MM/YYYY')} </small>

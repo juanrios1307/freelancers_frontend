@@ -4,6 +4,7 @@ import '../assets/css/Listas.css';
 import {Grid} from "@material-ui/core";
 import DashNav from "../components/DashNav";
 import * as AiIcons from 'react-icons/ai';
+import Swal from "sweetalert2";
 
 class SavingPub extends React.Component {
 
@@ -13,10 +14,38 @@ class SavingPub extends React.Component {
             Content: ''
         };
         this.getData = this.getData.bind(this);
+        this.deletePub = this.deletePub.bind(this);
     }
 
     componentDidMount() {
         this.getData();
+    }
+
+    async deletePub(id,e){
+        e.preventDefault()
+        const token = localStorage.getItem("token")
+        // const url = 'https://peaceful-ridge-86113.herokuapp.com/api/saving/'
+
+        const url = 'http://localhost:5000/api/saving/'
+
+        console.log(url + id)
+
+        const config = {
+            method: 'put',
+            url: url + id,
+            headers: {
+                'access-token': token
+            }
+        };
+
+        var response = await Axios(config);
+
+        Swal.fire({
+            icon: 'success',
+            title: response.data.data
+        })
+
+        window.location.reload();
     }
 
     async getData() {
@@ -52,7 +81,7 @@ class SavingPub extends React.Component {
                             <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillStar/></button>
                             <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillMessage/></button>
                             <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillEye/></button>
-                            <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillDelete/></button>
+                            <button type="button" className="btn btn-outline btn-list" onClick={(e) => this.deletePub(worker._id,e)}><AiIcons.AiFillDelete/></button>
 
                             <div className="card-footer">
                                 <small className="text-muted">Last updated 3 mins ago</small>

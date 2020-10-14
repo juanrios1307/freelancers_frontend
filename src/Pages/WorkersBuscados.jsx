@@ -7,6 +7,7 @@ import DashNav from "../components/DashNav";
 import * as AiIcons from "react-icons/ai/index";
 import * as BsIcons from "react-icons/bs/index";
 import {Link} from "react-router-dom";
+import Swal from "sweetalert2";
 
 class WorkersBuscados extends React.Component {
 
@@ -20,6 +21,45 @@ class WorkersBuscados extends React.Component {
 
     componentDidMount() {
         this.getData();
+    }
+
+    async savePub(Save,e){
+        e.preventDefault()
+        const token=localStorage.getItem("token")
+
+
+        if(token && !token!=undefined){
+            // const url = 'https://peaceful-ridge-86113.herokuapp.com/api/saving'
+
+            const url = 'http://localhost:5000/api/saving'
+
+            console.log(Save)
+
+            const config = {
+                method: 'put',
+                url: url ,
+                headers: {
+                    'access-token': token
+                },
+                data: {
+                    "Save":Save
+                }
+            };
+
+            var response = await Axios(config);
+
+            Swal.fire({
+                icon: 'success',
+                title: response.data.data
+            })
+
+        }else{
+            Swal.fire({
+                icon: 'info',
+                title: "Por favor registrese antes de continuar"
+            })
+
+        }
     }
 
     async getData() {
@@ -40,6 +80,8 @@ class WorkersBuscados extends React.Component {
             }
         };
 
+
+
        var response=await Axios(config);
 
        var data = response.data.data;
@@ -58,7 +100,7 @@ class WorkersBuscados extends React.Component {
                             <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillStar/></button>
                             <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillMessage/></button>
                             <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillEye/></button>
-                            <button type="button" className="btn btn-outline btn-list"><BsIcons.BsFillBookmarkFill/></button>
+                            <button type="button" className="btn btn-outline btn-list"  onClick={(e) => this.savePub(worker._id,e)}><BsIcons.BsFillBookmarkFill/></button>
                         </div>
 
                     </div>

@@ -5,6 +5,8 @@ import {Grid} from "@material-ui/core";
 import DashNav from "../components/DashNav";
 import moment from "moment"
 import * as AiIcons from 'react-icons/ai';
+import Swal from "sweetalert2";
+import {Redirect} from "react-router-dom";
 
 class MisAnuncios extends React.Component {
 
@@ -21,22 +23,37 @@ class MisAnuncios extends React.Component {
         this.getData();
     }
 
-    deleteAnuncio(id){
+    async editAnuncio(id,e){
+
+        localStorage.setItem("editID",id)
+        window.location.reload()
+    }
+
+    async deleteAnuncio(id, e) {
+        e.preventDefault()
         const token = localStorage.getItem("token")
         // const url = 'https://peaceful-ridge-86113.herokuapp.com/api/anuncesWork'
 
         const url = 'http://localhost:5000/api/anuncesWork/'
 
+        console.log(url + id)
+
         const config = {
             method: 'delete',
-            url: url+id,
+            url: url + id,
             headers: {
                 'access-token': token
             }
         };
 
-        var response=Axios(config);
+        var response = await Axios(config);
 
+        Swal.fire({
+            icon: 'success',
+            title: response.data.data
+        })
+
+        window.location.reload();
     }
 
     async getData() {
@@ -69,9 +86,13 @@ class MisAnuncios extends React.Component {
                             <p className="card-text">Descripción: {anunces.especificaciones}</p>
                             <p className="card-text">Ciudad: {anunces.ciudad}</p>
 
-                            <button type="button" className="btn btn-outline btn-list" key={anunces._id} ><AiIcons.AiFillEdit/></button>
-                            <button type="button" className="btn btn-outline btn-list" key={anunces._id} onClick={this.deleteAnuncio(this.props.key)}><AiIcons.AiFillDelete/></button>
-                            <button type="button" className="btn btn-outline btn-list" key={anunces._id} ><AiIcons.AiFillEye/></button>
+                                <button type="button" className="btn btn-outline btn-list"  onClick={(e)=>this.editAnuncio(anunces._id,e)}>
+                                    <AiIcons.AiFillEdit/>
+                                </button>
+
+
+                            <button type="button" className="btn btn-outline btn-list"  onClick={(e) => this.deleteAnuncio(anunces._id,e)}><AiIcons.AiFillDelete/></button>
+                            <button type="button" className="btn btn-outline btn-list"  ><AiIcons.AiFillEye/></button>
 
                             <div className="card-footer">
                                 <small className="text-muted">Subido {moment(anunces.date).format('DD/MM/YYYY')} </small>
@@ -86,30 +107,39 @@ class MisAnuncios extends React.Component {
 
     }
 
-    render(){
-        return(
-        <Grid container spacing={3}>
+    render() {
+        if (localStorage.getItem("editID")) {
+            return(
+                <Redirect to="/editAnunce" />
+                )
 
-            <Grid item xs={12}>
-                <DashNav/>
-            </Grid>
+        } else {
+            return (
+                <Grid container spacing={3}>
 
-
-            <Grid item xs={12}>
-                {this.state.Content}
-            </Grid>
-
-            <Grid item xs={12} className='dashButtonDiv'>
-                <a href='/createAnunce'>
-                    <button className='buttonDash'>
-                        Publicar anuncio
-                    </button>
-                </a>
-            </Grid>
+                    <Grid item xs={12}>
+                        <DashNav/>
+                    </Grid>
 
 
-        </Grid>
-        )};
+                    <Grid item xs={12}>
+                        {this.state.Content}
+                    </Grid>
+
+                    <Grid item xs={12} className='dashButtonDiv'>
+                        <a href='/createAnunce'>
+                            <button className='buttonDash'>
+                                Publicar anuncio
+                            </button>
+                        </a>
+                    </Grid>
+
+
+                </Grid>
+            )
+        }
+        ;
+    }
 
 }
 
