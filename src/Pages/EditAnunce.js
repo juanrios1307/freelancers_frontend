@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
-import '../assets/css/EditAnunce.css';
+import '../assets/css/CreateAdvertisemets.css'
 import Axios from "axios";
 import Swal from "sweetalert2";
 import DashNav from "../components/DashNav";
 import {Redirect} from "react-router-dom";
 
-class EditProfile extends React.Component {
+class EditAnunce extends React.Component {
 
     constructor(props) {
         super(props);
@@ -125,45 +125,58 @@ class EditProfile extends React.Component {
 
             return (
                 <div>
-                    <DashNav/>
+                    <div>
+                        <DashNav/>
+                    </div>
 
-                    <div className="editA">
-
-
+                        <div className='TittleAN'>
+                            <h8>Edita tu Anuncio</h8>
+                            <hr/>
+                        </div>
+                        <div className='TittleIN'>
+                            <h10>Información del servicio</h10>
+                        </div>
+                        <div className="formato">
                         <form className="form" onSubmit={this.actualizar}>
-                            <div className="f-grou">
+                            <div className="f-g">
                                 <label htmlFor="titulo">Titulo: </label>
                                 <input type="text" name="titulo" placeholder={this.state.tituloA}
                                        onChange={e => this.setState({titulo:e.target.value})}/>
                             </div>
-                            <div className="f-grou">
+                            <div className="f-g">
                                 <label htmlFor="description">Descripcion: </label>
                                 <input type="text" name="description" placeholder={this.state.especificacionesA}
                                        onChange={e => this.setState({especificaciones:e.target.value})}/>
                             </div>
-                            <div className="f-grou">
-                                <label htmlFor="presupuesto">Presupuesto: </label>
+                            <div className="f-g">
+                                <label htmlFor="presupuesto">Presupuesto Hora: </label>
                                 <input type="number" name="presupuesto" placeholder={this.state.presupuestoA}
                                        onChange={e => this.setState({presupuesto:e.target.value})}/>
                             </div>
 
-                            <div className="f-grou">
+                            <hr/>
+                            <div className='TittleIN'>
+                                <h10>Información del trabajador</h10>
+                            </div>
+
+                            <div className="f-g">
                                 <label htmlFor="profesion">Profesion: </label>
                                 <input type="text" name="profesion" placeholder={this.state.profesionA}
                                        onChange={e => this.setState({profesion:e.target.value})}/>
                             </div>
-                            <div className="f-grou">
+                            <div className="f-g">
                                 <label htmlFor="ciudad">Ciudad: </label>
                                 <input type="text" name="ciudad" placeholder={this.state.ciudadA}
                                        onChange={e => this.setState({ciudad:e.target.value})}/>
                             </div>
 
-                            <div className="ftr">
+                            <div className="ft">
                                 <button type="submit" className="btn">
                                     Editar
                                 </button>
                             </div>
                         </form>
+
                     </div>
                 </div>
             );
@@ -171,4 +184,4 @@ class EditProfile extends React.Component {
     }
 }
 
-export default EditProfile;
+export default EditAnunce;

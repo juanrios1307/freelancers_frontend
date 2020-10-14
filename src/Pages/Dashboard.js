@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Grid} from '@material-ui/core';
-import {makeStyles} from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import DashNav from "../components/DashNav.js";
 import 'fontsource-roboto';
 import '../assets/css/Dashboard.css';
@@ -8,15 +8,14 @@ import PersonIcon from '@material-ui/icons/Person';
 import PublicIcon from '@material-ui/icons/Public';
 import AssessmentIcon from '@material-ui/icons/Assessment';
 import CardsHeader from '../components/CardsHeader';
-import Cards from '../components/Cards';
 import Graphics from '../components/Graphics';
 import TableMaterial from '../components/TableMaterial';
 import EditProfile from "../components/EditProfile";
 import Axios from "axios";
 import { Link } from 'react-router-dom';
-import NavBar from "../components/NavBar";
 
-const useStyles= makeStyles(()=>({
+
+const styles = (theme) => ({
     root:{
         flexGrow: 1
     },
@@ -36,24 +35,30 @@ const useStyles= makeStyles(()=>({
     containerButton:{
         alignItems: 'center'
     }
-}));
+});
 
-function Dashboard(props) {
-    const classes= useStyles();
+class Dashboard extends React.Component {
 
-    const [nombre,setNombre] =useState('...');
-    const [ciudad,setCiudad] =useState('...');
-    const [anuncios,setAnuncios] =useState('...');
+    constructor(props) {
+        super(props);
+        this.state = {
+            nombre: "...",
+            ciudad: "...",
+            anuncios: "..."
+        };
 
-    const url='https://peaceful-ridge-86113.herokuapp.com/api/users'
-    //const url='http://localhost:5000/api/users'
+        this.getData = this.getData.bind(this);
+    }
 
-    React.useEffect(async () =>{
-        getData()
+    componentDidMount() {
+        this.getData();
+    }
 
-    },[]);
+    async getData() {
 
-    const getData =async () => {
+        const url = 'https://peaceful-ridge-86113.herokuapp.com/api/users'
+        //const url='http://localhost:5000/api/users'
+
         const token = localStorage.getItem("token")
         if (token) {
             const config = {
@@ -68,56 +73,69 @@ function Dashboard(props) {
 
             const data = res.data.data;
 
-            setNombre(data.nombre);
-            setCiudad(data.ciudad);
-            setAnuncios(data.Anunces.length)
+            this.setState({nombre:data.nombre});
+            this.setState({ciudad:data.ciudad});
+            this.setState({anuncios:data.Anunces.length});
         }
     }
 
-    return (
-        <div className={classes.root}>
-            <Grid container spacing={3}>
+    render() {
 
-                <Grid item xs={12}>
-                    <DashNav/>
+        const { classes } = this.props;
+
+        return (
+            <div className={classes.root}>
+                <Grid container spacing={3}>
+
+                    <Grid item xs={12}>
+                        <DashNav/>
+                    </Grid>
+
+
+                    <Grid item xs={12} sm={4} md={4} lg={4} xl={4}>
+                        <CardsHeader icono={<PersonIcon className={classes.iconos}/>} titulo="Nombre" texto={this.state.nombre}
+                                     color="linear-gradient(90deg, rgb(29, 115, 91) 0%, rgb(40, 121, 19) 100%)"
+                                     font="white"/>
+                    </Grid>
+                    <Grid item xs={12} sm={4} md={4} lg={4} xl={4}>
+                        <CardsHeader icono={<PublicIcon className={classes.iconos}/>} titulo="Ciudad" texto={this.state.ciudad}
+                                     color="linear-gradient(90deg, rgb(29, 115, 91) 0%, rgb(40, 121, 19) 100%)"
+                                     font="white"/>
+                    </Grid>
+                    <Grid item xs={12} sm={4} md={4} lg={4} xl={4}>
+                        <CardsHeader icono={<AssessmentIcon className={classes.iconos}/>} titulo="Cantidad de Anuncios"
+                                     texto={this.state.anuncios}
+                                     color="linear-gradient(90deg, rgb(29, 115, 91) 0%, rgb(40, 121, 19) 100%)"
+                                     font="white"/>
+                    </Grid>
+
+                    <Grid container spacing={1} className={classes.container} xs={12} sm={12} md={6} lg={6} xl={6}>
+                        <EditProfile/>
+                    </Grid>
+
+                    <Grid item xs={0} sm={0} md={1} lg={1} xl={1}></Grid>
+
+                    <Grid item xs={12} sm={12} md={5} lg={5} xl={5} className={classes.containerGrafica}>
+                        <Graphics/>
+                    </Grid>
+
+
+                    <Grid item xs={12} className={classes.containerTabla}>
+                        <TableMaterial/>
+                    </Grid>
+
+                    <Grid item xs={12} className='dashButtonDiv'>
+                        <a href='/signupworker'>
+                            <button className='buttonDash'>
+                                Registrarse como trabajador
+                            </button>
+                        </a>
+                    </Grid>
                 </Grid>
+            </div>
+        );
 
 
-                <Grid item xs={12} sm={4} md={4} lg={4} xl={4}>
-                    <CardsHeader icono={<PersonIcon className={classes.iconos}/>} titulo="Nombre" texto={nombre} color="linear-gradient(90deg, rgb(29, 115, 91) 0%, rgb(40, 121, 19) 100%)" font="white"/>
-                </Grid>
-                <Grid item xs={12} sm={4} md={4} lg={4} xl={4}>
-                    <CardsHeader icono={<PublicIcon className={classes.iconos}/>} titulo="Ciudad" texto={ciudad} color="linear-gradient(90deg, rgb(29, 115, 91) 0%, rgb(40, 121, 19) 100%)" font="white"/>
-                </Grid>
-                <Grid item xs={12} sm={4} md={4} lg={4} xl={4}>
-                    <CardsHeader icono={<AssessmentIcon className={classes.iconos}/>} titulo="Cantidad de Anuncios" texto={anuncios} color="linear-gradient(90deg, rgb(29, 115, 91) 0%, rgb(40, 121, 19) 100%)" font="white"/>
-                </Grid>
-
-                <Grid container spacing={1} className={classes.container} xs={12} sm={12} md={6} lg={6} xl={6}>
-                    <EditProfile/>
-                </Grid>
-
-                <Grid item xs={0} sm={0} md={1} lg={1} xl={1}></Grid>
-
-                <Grid item xs={12} sm={12} md={5} lg={5} xl={5} className={classes.containerGrafica}>
-                    <Graphics />
-                </Grid>
-
-
-                <Grid item xs={12} className={classes.containerTabla}>
-                    <TableMaterial/>
-                </Grid>
-
-                <Grid item xs={12} className='dashButtonDiv'>
-                    <a href='/signupworker'>
-                        <button className='buttonDash'>
-                            Registrarse como trabajador
-                        </button>
-                    </a>
-                </Grid>
-            </Grid>
-        </div>
-    );
+    }
 }
-
-export default Dashboard;
+export default withStyles(styles)(Dashboard);;
