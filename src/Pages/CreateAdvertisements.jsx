@@ -33,9 +33,8 @@ class CreateAdvertisements extends Component {
         e.preventDefault()
 
         const token = localStorage.getItem("token")
-        //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/anunceswork'
-
-        const url='http://localhost:5000/api/anunceswork'
+        const url = 'https://peaceful-ridge-86113.herokuapp.com/api/anunceswork'
+        //const url='http://localhost:5000/api/anunceswork'
 
         const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/eia/image/upload';
         const UPLOAD_PRESET = 't2rsbe8l';
