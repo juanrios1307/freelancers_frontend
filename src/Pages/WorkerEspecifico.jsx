@@ -19,6 +19,14 @@ class WorkerEspecifico extends Component {
                     <div className="inforbox">
                         <div className="infoespec">
                             <h8>TITULO DEL ANUNCIO</h8>
+                            <hr/>
+                            <h10>Información del servicio</h10>
+                            <p>Descripción: Aquí va la descripción del anuncio a describir en le worker especifico</p>
+                            <p>Presupuesto por hora: </p>
+                            <h10>Información del trabajador</h10>
+                            <p>Profesión: </p>
+                            <p>Ciudad: </p>
+                            <p></p>
                         </div>
                         <div className="botnutl">
                             <div className="btnsaesp">
@@ -36,6 +44,13 @@ class WorkerEspecifico extends Component {
                             <input type="text"/>
                             <button type="submit">Guardar</button>
                         </form>
+                        <div className="contactbox">
+                            <h10>Contacto</h10>
+                            <hr/>
+                            <p>Nombre: </p>
+                            <p>Teléfono: </p>
+                            <p>Correo: </p>
+                        </div>
                     </div>
                 </div>
                 <Footer/>

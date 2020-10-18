@@ -2,19 +2,23 @@
     box-sizing: border-box;
     height: 26em;
     width: 100%;
+    padding-bottom: 2em;
 }
 .imgbox{
     width: 30%;
     float: left;
     height: 100%;
-    background: whitesmoke;
+    background: white;
 }
 .inforbox{
-    width: 70%;
+    width: 68%;
     float: left;
     height: 100%;
-    background: #dfff78;
-    padding: 2em;
+    padding: 1em;
+    margin-top: 1em;
+    border: 2px solid black;
+    background: white;
+    margin-bottom: 1em;
 }
 .imgbox img{
     width: 23em;
@@ -28,7 +32,7 @@
 }
 .comentbox{
     box-sizing: border-box;
-    height: fit-content;
+    height: 19em;
     width: 100%;
     background: linear-gradient(90deg, rgb(29, 115, 91) 0%, rgb(40, 121, 19) 100%);
 }
@@ -42,7 +46,7 @@
     color: white;
 }
 .comenta{
-    padding: 0.5em 3em 0.5em 2em;
+    padding: 0.5em 1em 0.5em 2em;
     height: 100%;
 }
 .comenta input{
@@ -69,11 +73,10 @@
     width: 100%;
     margin-top: -0.3em;
     background: white;
-    height: 85%;
+    height: 75%;
 }
 .botnutl{
     width: 100%;
-    margin-top: 1em;
     background: white;
     height: 15%;
 }
@@ -81,3 +84,32 @@
     margin-left: 55%;
     transform: translateX(-50%);
 }
+.infoespec p{
+    margin-top: 0.5em;
+    margin-left: 1.5em;
+}
+.comenta form{
+    width: 75%;
+    float: left;
+}
+.contactbox{
+    width: 20%;
+    float: left;
+    background: white;
+    margin-left: 2em;
+    margin-right: 2em;
+    height: fit-content;
+    border-radius: 20px;
+    border: 2px solid black;
+}
+.contactbox h10{
+    width: 100%;
+    justify-content: center;
+}
+hr{
+    margin-top: 0.3em;
+}
+.contactbox p{
+    margin-left: 1em;
+}
+
