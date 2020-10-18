@@ -26,7 +26,6 @@ class WorkerEspecifico extends Component {
                             <h10>Información del trabajador</h10>
                             <p>Profesión: </p>
                             <p>Ciudad: </p>
-                            <p></p>
                         </div>
                         <div className="botnutl">
                             <div className="btnsaesp">
