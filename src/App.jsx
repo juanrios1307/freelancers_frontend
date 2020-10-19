@@ -30,7 +30,7 @@ class App extends React.Component {
                     <Route exact path="/signupworker" component={RegisterWorker} />
                     <Route exact path="/workers" component={WorkersBuscados} />
                     <Route exact path="/anunces" component={AnuncesBuscados} />
-                    <Route exact path="/workesp" component={WorkerEspecifico}/>
+                    <Route exact path="/worker" component={WorkerEspecifico}/>
                     <Route exact path="/chat" component={ChatEspecifico}/>
                 </Switch>
             </Router>

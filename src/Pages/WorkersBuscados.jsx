@@ -6,7 +6,7 @@ import NavBar from "../components/NavBar";
 import DashNav from "../components/DashNav";
 import * as AiIcons from "react-icons/ai/index";
 import * as BsIcons from "react-icons/bs/index";
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import Swal from "sweetalert2";
 
 class WorkersBuscados extends React.Component {
@@ -17,6 +17,8 @@ class WorkersBuscados extends React.Component {
             Content: ''
         };
         this.getData = this.getData.bind(this);
+        this.savePub=this.savePub.bind(this);
+        this.specificWorker=this.specificWorker.bind(this);
     }
 
     componentDidMount() {
@@ -28,7 +30,7 @@ class WorkersBuscados extends React.Component {
         const token=localStorage.getItem("token")
 
 
-        if(token && !token!=undefined){
+        if(token && token!=undefined){
             const url = 'https://peaceful-ridge-86113.herokuapp.com/api/saving'
 
             //const url = 'http://localhost:5000/api/saving'
@@ -60,6 +62,12 @@ class WorkersBuscados extends React.Component {
             })
 
         }
+    }
+
+    specificWorker(id){
+        localStorage.setItem("workerID",id)
+
+        window.location.reload();
     }
 
     async getData() {
@@ -99,7 +107,7 @@ class WorkersBuscados extends React.Component {
 
                             <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillStar/></button>
                             <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillMessage/></button>
-                            <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillEye/></button>
+                            <button type="button" className="btn btn-outline btn-list"  onClick={(e) => this.specificWorker(worker._id)}><AiIcons.AiFillEye/></button>
                             <button type="button" className="btn btn-outline btn-list"  onClick={(e) => this.savePub(worker._id,e)}><BsIcons.BsFillBookmarkFill/></button>
                         </div>
 
@@ -113,53 +121,65 @@ class WorkersBuscados extends React.Component {
     render(){
 
         if(localStorage.getItem("token")){
-            return(
-                <div>
+            if(localStorage.getItem("workerID")){
+                return(
+                    <Redirect to="worker"/>
+                )
+            }else {
 
-                    <div item xs={12}>
-                        <DashNav />
-                    </div>
+                return (
+                    <div>
 
-                    <div className="sort">
-                        <Link className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                              aria-haspopup="true" aria-expanded="false">Filtrar por</Link>
-                        <div className="dropdown-menu">
-                            <Link className="dropdown-item" href="#">Fecha</Link>
-                            <Link className="dropdown-item" href="#">Ubicación</Link>
+                        <div item xs={12}>
+                            <DashNav/>
                         </div>
-                    </div>
 
-                    <div item xs={12}>
-                        {this.state.Content}
-                    </div>
-
-                </div>
-            )
-        }else{
-            return(
-                <div>
-
-                    <div item xs={12}>
-                        <NavBar/>
-                    </div>
-
-                    <div className="sort">
-                        <Link className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                              aria-haspopup="true" aria-expanded="false">Filtrar por</Link>
-                        <div className="dropdown-menu">
-                            <Link className="dropdown-item" href="#">Fecha</Link>
-                            <Link className="dropdown-item" href="#">Ubicación</Link>
+                        <div className="sort">
+                            <Link className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                                  aria-haspopup="true" aria-expanded="false">Filtrar por</Link>
+                            <div className="dropdown-menu">
+                                <Link className="dropdown-item" href="#">Fecha</Link>
+                                <Link className="dropdown-item" href="#">Ubicación</Link>
+                            </div>
                         </div>
-                    </div>
 
-                    <div item xs={12}>
-                        {this.state.Content}
-                    </div>
+                        <div item xs={12}>
+                            {this.state.Content}
+                        </div>
 
-                </div>
-            )
+                    </div>
+                )
+            }
+        }else {
+            if (localStorage.getItem("workerID")) {
+                return (
+                    <Redirect to="worker"/>
+                )
+            } else {
+                return (
+                    <div>
+
+                        <div item xs={12}>
+                            <NavBar/>
+                        </div>
+
+                        <div className="sort">
+                            <Link className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                                  aria-haspopup="true" aria-expanded="false">Filtrar por</Link>
+                            <div className="dropdown-menu">
+                                <Link className="dropdown-item" href="#">Fecha</Link>
+                                <Link className="dropdown-item" href="#">Ubicación</Link>
+                            </div>
+                        </div>
+
+                        <div item xs={12}>
+                            {this.state.Content}
+                        </div>
+
+                    </div>
+                )
+            }
         }
-
       };
 
 }

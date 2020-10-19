@@ -5,6 +5,7 @@ import {Grid} from "@material-ui/core";
 import DashNav from "../components/DashNav";
 import * as AiIcons from 'react-icons/ai';
 import Swal from "sweetalert2";
+import {Redirect} from "react-router-dom";
 
 class SavingPub extends React.Component {
 
@@ -15,6 +16,8 @@ class SavingPub extends React.Component {
         };
         this.getData = this.getData.bind(this);
         this.deletePub = this.deletePub.bind(this);
+        this.specificWorker=this.specificWorker.bind(this);
+
     }
 
     componentDidMount() {
@@ -44,6 +47,12 @@ class SavingPub extends React.Component {
             icon: 'success',
             title: response.data.data
         })
+
+        window.location.reload();
+    }
+
+    specificWorker(id){
+        localStorage.setItem("workerID",id)
 
         window.location.reload();
     }
@@ -80,7 +89,7 @@ class SavingPub extends React.Component {
 
                             <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillStar/></button>
                             <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillMessage/></button>
-                            <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillEye/></button>
+                            <button type="button" className="btn btn-outline btn-list" onClick={(e) => this.specificWorker(worker._id)}><AiIcons.AiFillEye/></button>
                             <button type="button" className="btn btn-outline btn-list" onClick={(e) => this.deletePub(worker._id,e)}><AiIcons.AiFillDelete/></button>
 
                             <div className="card-footer">
@@ -95,23 +104,30 @@ class SavingPub extends React.Component {
 
     }
 
-    render(){
-        return(
-        <Grid container spacing={3}>
+    render() {
+        if (localStorage.getItem("workerID")) {
+            return (
+                <Redirect to="/worker"/>
+            )
+        } else {
 
-            <Grid item xs={12}>
-                <DashNav/>
-            </Grid>
+            return (
+                <Grid container spacing={3}>
+
+                    <Grid item xs={12}>
+                        <DashNav/>
+                    </Grid>
 
 
-            <Grid item xs={12}>
-                {this.state.Content}
-            </Grid>
+                    <Grid item xs={12}>
+                        {this.state.Content}
+                    </Grid>
 
 
-
-        </Grid>
-        )};
+                </Grid>
+            )
+        };
+    }
 
 }
 
