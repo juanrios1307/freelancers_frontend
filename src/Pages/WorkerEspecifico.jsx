@@ -18,14 +18,13 @@ class WorkerEspecifico extends Component {
                     </div>
                     <div className="inforbox">
                         <div className="infoespec">
-                            <h8>TITULO DEL ANUNCIO</h8>
+                            <h8>NOMBRE DEL TRABAJADOR</h8>
                             <hr/>
-                            <h10>Información del servicio</h10>
-                            <p>Descripción: Aquí va la descripción del anuncio a describir en le worker especifico</p>
-                            <p>Presupuesto por hora: </p>
                             <h10>Información del trabajador</h10>
-                            <p>Profesión: </p>
+                            <p>Profesión:</p>
                             <p>Ciudad: </p>
+                            <p>Teléfono: </p>
+                            <p>Correo: </p>
                         </div>
                         <div className="botnutl">
                             <div className="btnsaesp">
