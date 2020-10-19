@@ -45,16 +45,15 @@
     font-weight: bold;
     color: white;
 }
-.coment{
-    padding: 0.5em 3em 0.5em 2em;
+.comenta{
+    padding: 0.5em 1em 0.5em 2em;
     height: 100%;
-    width: 100%;
 }
-.coment input{
+.comenta input{
     width: 100%;
     height: 10em;
 }
-.coment button{
+.comenta button{
     margin-top: 1em;
     margin-left: 50%;
     transform: translateX(-50%);
@@ -66,7 +65,7 @@
     font-weight: bold;
     margin-bottom: 1em;
 }
-.coment button:hover{
+.comenta button:hover{
     background: black;
     color: white;
 }
@@ -89,11 +88,28 @@
     margin-top: 0.5em;
     margin-left: 1.5em;
 }
-.coment form{
-    width: 100%;
+.comenta form{
+    width: 60%;
+    float: left;
 }
-
+.contactbox{
+    width: 30%;
+    float: right;
+    background: white;
+    margin-left: 2em;
+    margin-right: 2em;
+    height: fit-content;
+    border-radius: 20px;
+    border: 2px solid black;
+}
+.contactbox h10{
+    width: 100%;
+    justify-content: center;
+}
 hr{
     margin-top: 0.3em;
+}
+.contactbox p{
+    margin-left: 1em;
 }
 

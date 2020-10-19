@@ -129,4 +129,5 @@ span {
 .buscador{
    align-self: center;
     align-items: center;
+    min-width: fit-content;
 }

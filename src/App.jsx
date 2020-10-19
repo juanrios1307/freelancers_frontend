@@ -12,6 +12,7 @@ import MisAnuncios from "./Pages/MisAnuncios";
 import EditAnunce from "./Pages/EditAnunce"
 import WorkerEspecifico from "./Pages/WorkerEspecifico";
 import ChatEspecifico from "./Pages/ChatEspecifico";
+import AnuncioEspecifico from "./Pages/AnuncioEspecifico";
 
 
 class App extends React.Component {
@@ -30,7 +31,8 @@ class App extends React.Component {
                     <Route exact path="/signupworker" component={RegisterWorker} />
                     <Route exact path="/workers" component={WorkersBuscados} />
                     <Route exact path="/anunces" component={AnuncesBuscados} />
-                    <Route exact path="/worker" component={WorkerEspecifico}/>
+                    <Route exact path="/workesp" component={WorkerEspecifico}/>
+                    <Route exact path="/anunesp" component={AnuncioEspecifico}/>
                     <Route exact path="/chat" component={ChatEspecifico}/>
                 </Switch>
             </Router>

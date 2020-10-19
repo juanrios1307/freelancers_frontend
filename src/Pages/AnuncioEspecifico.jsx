@@ -1,12 +1,12 @@
 import React,{Component} from 'react';
-import '../assets/css/WorkerEspecifico.css';
+import '../assets/css/AnuncioEspecifico.css';
 import DashNav from "../components/DashNav";
 import img1 from "../assets/images/pi3.jpeg";
 import NavBar from "../components/NavBar.js";
 import Footer from "../components/Footer";
 import * as AiIcons from "react-icons/ai";
 
-class WorkerEspecifico extends Component {
+class AnuncioEspecifico extends Component {
 
     render(){
         return (
@@ -38,11 +38,18 @@ class WorkerEspecifico extends Component {
                 </div>
                 <div className="comentbox">
                     <div className="txtcoment">Comentarios</div>
-                    <div className="coment">
+                    <div className="comenta">
                         <form>
                             <input type="text"/>
                             <button type="submit">Guardar</button>
                         </form>
+                        <div className="contactbox">
+                            <h10>Contacto</h10>
+                            <hr/>
+                            <p>Nombre: </p>
+                            <p>Teléfono: </p>
+                            <p>Correo: </p>
+                        </div>
                     </div>
                 </div>
                 <Footer/>
@@ -50,4 +57,4 @@ class WorkerEspecifico extends Component {
         );
     }
 }
-export default WorkerEspecifico;
+export default AnuncioEspecifico;

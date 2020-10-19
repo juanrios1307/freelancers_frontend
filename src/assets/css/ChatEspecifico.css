@@ -1,10 +1,12 @@
 .chatbox{
     width: 100%;
-    height: max-content;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
     background: #61dafb;
 }
 .chattitle{
-    height: fit-content;
+    height: 7vh;
     display: flex;
     justify-content: center;
     padding: 1em 0 1em 0;
@@ -18,7 +20,7 @@
 .chatlistbox{
     background: whitesmoke;
     border: 2px solid black;
-    height: 37em;
+    height: 78vh;
     padding: 1em 2em 1em 2em;
 }
 .chatlistbox ul{
@@ -35,6 +37,7 @@
 .chatinput{
     background: linear-gradient(90deg, rgb(29, 115, 91) 0%, rgb(40, 121, 19) 100%);
     padding: 1em;
+    min-height: 7vh;
 }
 .chatinput input{
     width: 90%;
@@ -46,6 +49,7 @@
     transform: translateX(50%);
     font-family: "Open Sans", sans-serif;
     font-weight: bold;
+    min-width: fit-content;
 }
 .chatinput button:hover{
     background: black;
