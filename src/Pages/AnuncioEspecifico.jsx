@@ -6,6 +6,8 @@ import NavBar from "../components/NavBar.js";
 import Footer from "../components/Footer";
 import * as AiIcons from "react-icons/ai";
 import Axios from "axios";
+import Rating from "@material-ui/lab/Rating";
+import Comentario from "../components/Comentario";
 
 class AnuncioEspecifico extends Component {
 
@@ -93,21 +95,42 @@ class AnuncioEspecifico extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="comentbox">
-                    <div className="txtcoment">Comentarios</div>
-                    <div className="comenta">
-                        <form>
-                            <input type="text"/>
-                            <button type="submit">Guardar</button>
-                        </form>
-                        <div className="contactbox">
-                            <h10>Contacto</h10>
-                            <hr/>
-                            <p>Nombre: {this.state.nombre}</p>
-                            <p>Teléfono: {this.state.telefono}</p>
-                            <p>Correo: {this.state.correo}</p>
+                <div className="coments-container">
+                    <div className="comentbox">
+                        <div className="txtcoment">Comentarios y Valoraciones</div>
+                        <div className="comenta">
+                            <form>
+                                <div className="rating">
+                                    <Rating
+                                        name="simple-controlled"
+                                    /></div>
+                                <input type="text"/>
+                                <button type="submit">Guardar</button>
+                            </form>
                         </div>
                     </div>
+                    <div className="coments">
+                        <ul>
+                            <li><Comentario/></li>
+                            <li><Comentario/></li>
+                            <li><Comentario/></li>
+                        </ul>
+                    </div>
+                </div>
+                <div className="contactbox">
+                    <div className="contactbox-title">
+                        <h10>Contacto</h10>
+                    </div>
+                    <p>Nombre: {this.state.nombre}</p>
+                    <p>Teléfono: {this.state.telefono}</p>
+                    <p>Correo: {this.state.correo}</p>
+                    <form>
+                        <label>Asunto:</label>
+                        <input type="text"/>
+                        <label>Mensaje:</label>
+                        <input type="text"/>
+                        <button type="submit">Enviar</button>
+                    </form>
                 </div>
                 <Footer/>
             </div>
