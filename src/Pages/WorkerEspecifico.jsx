@@ -2,12 +2,15 @@ import React,{Component} from 'react';
 import '../assets/css/AnuncioEspecifico.css';
 import DashNav from "../components/DashNav";
 import img1 from "../assets/images/pi3.jpeg";
+import Rating from '@material-ui/lab/Rating';
+import Typography from '@material-ui/core/Typography';
 import NavBar from "../components/NavBar.js";
 import Footer from "../components/Footer";
 import * as AiIcons from "react-icons/ai";
 import Axios from "axios";
 import Swal from "sweetalert2";
 import * as BsIcons from "react-icons/bs/index";
+import Comentario from "../components/Comentario";
 
 class WorkerEspecifico extends Component {
 
@@ -133,21 +136,41 @@ class WorkerEspecifico extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="comentbox">
-                    <div className="txtcoment">Comentarios</div>
+                <div className="coments-container">
+                    <div className="comentbox">
+                    <div className="txtcoment">Comentarios y Valoraciones</div>
                     <div className="comenta">
                         <form>
+                            <div className="rating">
+                            <Rating
+                                name="simple-controlled"
+                            /></div>
                             <input type="text"/>
                             <button type="submit">Guardar</button>
                         </form>
-
-                        <div className="contactbox">
-                            <h10>Contacto</h10>
-                            <hr/>
-                            <p>Teléfono: {this.state.telefono}</p>
-                            <p>Correo: {this.state.correo}</p>
-                        </div>
                     </div>
+                </div>
+                <div className="coments">
+                    <ul>
+                        <li><Comentario/></li>
+                        <li><Comentario/></li>
+                        <li><Comentario/></li>
+                    </ul>
+                </div>
+                </div>
+                <div className="contactbox">
+                    <div className="contactbox-title">
+                    <h10>Contacto</h10>
+                    </div>
+                    <p>Teléfono: {this.state.telefono}</p>
+                    <p>Correo: {this.state.correo}</p>
+                    <form>
+                        <label>Asunto:</label>
+                        <input type="text"/>
+                        <label>Mensaje:</label>
+                        <input type="text"/>
+                        <button type="submit">Enviar</button>
+                    </form>
                 </div>
 
                 <Footer/>

@@ -3,7 +3,7 @@
     min-height: 90vh;
     display: flex;
     flex-direction: column;
-    background: #61dafb;
+    background: linear-gradient(90deg, rgb(29, 115, 91) 0%, rgb(40, 121, 19) 100%);
 }
 .chattitle{
     height: 7vh;
@@ -20,8 +20,9 @@
 .chatlistbox{
     background: whitesmoke;
     border: 2px solid black;
-    height: 78vh;
+    height: 75vh;
     padding: 1em 2em 1em 2em;
+    overflow-y: scroll;
 }
 .chatlistbox ul{
     list-style: none;
