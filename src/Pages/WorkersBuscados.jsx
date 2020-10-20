@@ -123,7 +123,7 @@ class WorkersBuscados extends React.Component {
         if(localStorage.getItem("token")){
             if(localStorage.getItem("workerID")){
                 return(
-                    <Redirect to="worker"/>
+                    <Redirect to="worker" id={localStorage.getItem("workerID")}/>
                 )
             }else {
 

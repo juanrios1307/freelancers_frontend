@@ -26,9 +26,13 @@ class WorkerEspecifico extends Component {
             experiencia:'',
             imagen:'',
             ciudad:'',
+
+            comment:'',
+            rating:''
         };
         this.getData = this.getData.bind(this);
         this.savePub=this.savePub.bind(this);
+        this.comment=this.comment.bind(this)
     }
 
     componentDidMount() {
@@ -68,6 +72,47 @@ class WorkerEspecifico extends Component {
             this.setState({yearsE:data.yearsXperience});
             this.setState({imagen:data.imagen});
 
+    }
+
+    async comment(e){
+        e.preventDefault()
+
+        const  token=localStorage.getItem("token")
+        if(token && !token!=undefined){
+
+            //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/rate/'+this.state.id
+
+            const url = 'http://localhost:5000/api/rate/'+this.state.id
+
+            var config = {
+                method: 'put',
+                url: url,
+                headers: {
+                    'access-token': token,
+                    'Content-Type': 'application/json'
+                },
+                data : {
+                    "comment" : this.state.comment,
+                    "rating" : this.state.rating
+                }
+            };
+
+            const res = await Axios(config);
+
+            const data = res.data.data;
+
+            Swal.fire({
+                icon: 'success',
+                title: data
+            })
+
+
+        }else{
+            Swal.fire({
+                icon: 'info',
+                title: "Por favor registrese antes de continuar"
+            })
+        }
     }
 
     async savePub(Save,e){
@@ -140,21 +185,17 @@ class WorkerEspecifico extends Component {
                     <div className="comentbox">
                     <div className="txtcoment">Comentarios y Valoraciones</div>
                     <div className="comenta">
-                        <form>
+                        <form onSubmit={this.comment}>
                             <div className="rating">
-                            <Rating
-                                name="simple-controlled"
-                            /></div>
-                            <input type="text"/>
+                            <Rating name="simple-controlled"  onChange={e => this.setState({rating:e.target.value})}/></div>
+                            <input type="text"  onChange={e => this.setState({comment:e.target.value})}/>
                             <button type="submit">Guardar</button>
                         </form>
                     </div>
                 </div>
                 <div className="coments">
                     <ul>
-                        <li><Comentario/></li>
-                        <li><Comentario/></li>
-                        <li><Comentario/></li>
+                        <Comentario id={localStorage.getItem("workerID")}/>
                     </ul>
                 </div>
                 </div>
