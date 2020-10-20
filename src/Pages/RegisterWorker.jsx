@@ -13,9 +13,7 @@ export class Register extends React.Component {
             profesion :'',
             experiencia:'',
             yearsXperience:'',
-            titulo:'',
             imagen:'',
-            tituloFile:'',
             imagenFile:'',
             bool:false
         }
@@ -44,16 +42,10 @@ export class Register extends React.Component {
         formImages.append('file', this.state.imagenFile);
         formImages.append('upload_preset', UPLOAD_PRESET);
 
-        const formTitle = new FormData();
-        formTitle.append('file', this.state.tituloFile);
-        formTitle.append('upload_preset', UPLOAD_PRESET);
 
         try {
             const resI = await Axios.post(CLOUDINARY_URL, formImages);
             this.setState({imagen:resI.data.secure_url});
-
-            const resT = await Axios.post(urlCloud, formTitle);
-            this.setState({titulo:resT.data.secure_url});
 
         } catch (err) {
             console.error(err);
@@ -115,11 +107,6 @@ export class Register extends React.Component {
                                        value={this.state.yearsXperience}
                                        onChange={(e) => this.setState({yearsXperience: e.target.value})}
                                />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="phone">Titulo</label>
-                                <input type="file" name="titulo" placeholder="Titulo" required
-                                       onChange={(e) => this.setState({tituloFile: e.target.files[0]})}/>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="username">Imagen de perfil</label>

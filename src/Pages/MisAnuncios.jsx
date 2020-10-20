@@ -17,6 +17,7 @@ class MisAnuncios extends React.Component {
         };
         this.getData = this.getData.bind(this);
         this.deleteAnuncio = this.deleteAnuncio.bind(this);
+        this.specificWorker=this.specificWorker.bind(this);
     }
 
     componentDidMount() {
@@ -52,6 +53,12 @@ class MisAnuncios extends React.Component {
             icon: 'success',
             title: response.data.data
         })
+
+        window.location.reload();
+    }
+
+    specificWorker(id){
+        localStorage.setItem("anunceID",id)
 
         window.location.reload();
     }
@@ -92,7 +99,7 @@ class MisAnuncios extends React.Component {
 
 
                             <button type="button" className="btn btn-outline btn-list"  onClick={(e) => this.deleteAnuncio(anunces._id,e)}><AiIcons.AiFillDelete/></button>
-                            <button type="button" className="btn btn-outline btn-list"  ><AiIcons.AiFillEye/></button>
+                            <button type="button" className="btn btn-outline btn-list"   onClick={(e) => this.specificWorker(anunces._id)}><AiIcons.AiFillEye/></button>
 
                             <div className="card-footer">
                                 <small className="text-muted">Subido {moment(anunces.date).format('DD/MM/YYYY')} </small>
@@ -114,31 +121,37 @@ class MisAnuncios extends React.Component {
                 )
 
         } else {
-            return (
-                <Grid container spacing={3}>
+            if (localStorage.getItem("anunceID")) {
+                return (
+                    <Redirect to="anunce"/>
+                )
+            } else {
+                return (
+                    <Grid container spacing={3}>
 
-                    <Grid item xs={12}>
-                        <DashNav/>
+                        <Grid item xs={12}>
+                            <DashNav/>
+                        </Grid>
+
+
+                        <Grid item xs={12}>
+                            {this.state.Content}
+                        </Grid>
+
+                        <Grid item xs={12} className='dashButtonDiv'>
+                            <a href='/createAnunce'>
+                                <button className='buttonDash'>
+                                    Publicar anuncio
+                                </button>
+                            </a>
+                        </Grid>
+
+
                     </Grid>
-
-
-                    <Grid item xs={12}>
-                        {this.state.Content}
-                    </Grid>
-
-                    <Grid item xs={12} className='dashButtonDiv'>
-                        <a href='/createAnunce'>
-                            <button className='buttonDash'>
-                                Publicar anuncio
-                            </button>
-                        </a>
-                    </Grid>
-
-
-                </Grid>
-            )
+                )
+            }
+            ;
         }
-        ;
     }
 
 }

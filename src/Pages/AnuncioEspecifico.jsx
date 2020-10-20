@@ -5,8 +5,67 @@ import img1 from "../assets/images/pi3.jpeg";
 import NavBar from "../components/NavBar.js";
 import Footer from "../components/Footer";
 import * as AiIcons from "react-icons/ai";
+import Axios from "axios";
 
 class AnuncioEspecifico extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            id:'',
+            nombre:'',
+            correo:'',
+            telefono:'',
+            profesion:'',
+            descripcion:'',
+            presupuesto:'',
+            imagen:'',
+            ciudad:'',
+            titulo:''
+        };
+        this.getData = this.getData.bind(this);
+
+    }
+
+    componentDidMount() {
+        this.getData();
+    }
+
+    async getData(){
+        this.state.id=localStorage.getItem("anunceID")
+
+        localStorage.removeItem("anunceID")
+
+        // const url = 'https://peaceful-ridge-86113.herokuapp.com/api/main/anunces'
+        const url='http://localhost:5000/api/main/anunces'
+
+        console.log("ID: "+this.state.id)
+
+        const config = {
+            method: 'get',
+            url: url,
+            headers: {
+                "id":this.state.id
+            }
+        };
+
+        const res = await Axios(config);
+
+        const data = res.data.data;
+
+
+
+        this.setState({nombre:data.user.nombre});
+        this.setState({ciudad:data.user.ciudad});
+        this.setState({telefono:data.user.telefono});
+        this.setState({correo:data.user.correo});
+        this.setState({profesion:data.profesion});
+        this.setState({descripcion:data.descripcion});
+        this.setState({presupuesto:data.presupuesto});
+        this.setState({imagen:data.imagen});
+        this.setState({titulo:data.titulo});
+
+    }
 
     render(){
         return (
@@ -14,24 +73,22 @@ class AnuncioEspecifico extends Component {
                 <NavBar/>
                 <div className="boxcontainer">
                     <div className="imgbox">
-                        <img className="imgPub" src={img1} alt="imagen de publicacion"/>
+                        <img className="imgPub" src={this.state.imagen} alt="imagen de publicacion"/>
                     </div>
                     <div className="inforbox">
                         <div className="infoespec">
-                            <h8>TITULO DEL ANUNCIO</h8>
+                            <h8>{this.state.titulo}</h8>
                             <hr/>
                             <h10>Información del servicio</h10>
-                            <p>Descripción: Aquí va la descripción del anuncio a describir en le worker especifico</p>
-                            <p>Presupuesto por hora: </p>
+                            <p>Descripción: {this.state.descripcion}</p>
+                            <p>Presupuesto por hora: {this.state.presupuesto}</p>
                             <h10>Información del trabajador</h10>
-                            <p>Profesión: </p>
-                            <p>Ciudad: </p>
+                            <p>Profesión: {this.state.profesion}</p>
+                            <p>Ciudad: {this.state.ciudad}</p>
                         </div>
                         <div className="botnutl">
                             <div className="btnsaesp">
-                            <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillStar/></button>
                             <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillMessage/></button>
-                            <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillEye/></button>
                             </div>
                         </div>
                     </div>
@@ -46,9 +103,9 @@ class AnuncioEspecifico extends Component {
                         <div className="contactbox">
                             <h10>Contacto</h10>
                             <hr/>
-                            <p>Nombre: </p>
-                            <p>Teléfono: </p>
-                            <p>Correo: </p>
+                            <p>Nombre: {this.state.nombre}</p>
+                            <p>Teléfono: {this.state.telefono}</p>
+                            <p>Correo: {this.state.correo}</p>
                         </div>
                     </div>
                 </div>

@@ -7,7 +7,7 @@ import NavBar from "../components/NavBar";
 import * as AiIcons from "react-icons/ai/index";
 import * as BsIcons from "react-icons/bs/index";
 import moment from "moment";
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 
 class AnuncesBuscados extends React.Component {
 
@@ -17,11 +17,18 @@ class AnuncesBuscados extends React.Component {
             Content: ''
         };
         this.getData = this.getData.bind(this);
+        this.specificWorker=this.specificWorker.bind(this);
     }
 
     componentDidMount() {
 
         this.getData();
+    }
+
+    specificWorker(id){
+        localStorage.setItem("anunceID",id)
+
+        window.location.reload();
     }
 
     async getData() {
@@ -60,7 +67,7 @@ class AnuncesBuscados extends React.Component {
 
                             <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillStar/></button>
                             <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillMessage/></button>
-                            <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillEye/></button>
+                            <button type="button" className="btn btn-outline btn-list"  onClick={(e) => this.specificWorker(anunces._id)}><AiIcons.AiFillEye/></button>
 
                             <div className="card-footer">
                                 <small className="text-muted">Subido {moment(anunces.date).format('DD/MM/YYYY')} </small>
@@ -74,57 +81,70 @@ class AnuncesBuscados extends React.Component {
 
     }
 
-    render(){
+    render() {
 
-        if(localStorage.getItem("token")){
-            return(
-                <div>
+        if (localStorage.getItem("token")) {
+            if (localStorage.getItem("anunceID")) {
+                return (
+                    <Redirect to="anunce"/>
+                )
+            } else {
+                return (
+                    <div>
 
-                    <div item xs={12}>
-                        <DashNav />
-                    </div>
-
-                    <div className="sort">
-                        <Link className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                              aria-haspopup="true" aria-expanded="false">Filtrar por</Link>
-                        <div className="dropdown-menu">
-                            <Link className="dropdown-item" href="#">Fecha</Link>
-                            <Link className="dropdown-item" href="#">Ubicación</Link>
+                        <div item xs={12}>
+                            <DashNav/>
                         </div>
-                    </div>
 
-                    <div item xs={12}>
-                        {this.state.Content}
-                    </div>
-
-                </div>
-            )
-        }else{
-            return(
-                <div>
-
-                    <div item xs={12}>
-                        <NavBar/>
-                    </div>
-
-                    <div className="sort">
-                        <Link className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                              aria-haspopup="true" aria-expanded="false">Filtrar por</Link>
-                        <div className="dropdown-menu">
-                            <Link className="dropdown-item" href="#">Fecha</Link>
-                            <Link className="dropdown-item" href="#">Ubicación</Link>
+                        <div className="sort">
+                            <Link className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                                  aria-haspopup="true" aria-expanded="false">Filtrar por</Link>
+                            <div className="dropdown-menu">
+                                <Link className="dropdown-item" href="#">Fecha</Link>
+                                <Link className="dropdown-item" href="#">Ubicación</Link>
+                            </div>
                         </div>
-                    </div>
 
-                    <div item xs={12}>
-                        {this.state.Content}
-                    </div>
+                        <div item xs={12}>
+                            {this.state.Content}
+                        </div>
 
-                </div>
-            )
+                    </div>
+                )
+            }
+        } else {
+            if (localStorage.getItem("anunceID")) {
+                return (
+                    <Redirect to="anunce"/>
+                )
+            } else {
+                return (
+                    <div>
+
+                        <div item xs={12}>
+                            <NavBar/>
+                        </div>
+
+                        <div className="sort">
+                            <Link className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                                  aria-haspopup="true" aria-expanded="false">Filtrar por</Link>
+                            <div className="dropdown-menu">
+                                <Link className="dropdown-item" href="#">Fecha</Link>
+                                <Link className="dropdown-item" href="#">Ubicación</Link>
+                            </div>
+                        </div>
+
+                        <div item xs={12}>
+                            {this.state.Content}
+                        </div>
+
+                    </div>
+                )
+            }
+
         }
-
-    };
+        ;
+    }
 
 }
 
