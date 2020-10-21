@@ -28,11 +28,15 @@ class WorkerEspecifico extends Component {
             ciudad:'',
 
             comment:'',
-            rating:''
+            rating:'',
+
+            asunto:'',
+            mensaje:''
         };
         this.getData = this.getData.bind(this);
         this.savePub=this.savePub.bind(this);
-        this.comment=this.comment.bind(this)
+        this.comment=this.comment.bind(this);
+        this.sendMessage=this.sendMessage.bind(this);
     }
 
     componentDidMount() {
@@ -154,6 +158,48 @@ class WorkerEspecifico extends Component {
         }
     }
 
+    async sendMessage(e){
+        e.preventDefault()
+
+        const  token=localStorage.getItem("token")
+        if(token && !token!=undefined){
+
+            //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/contact/'+this.state.id
+
+            const url = 'http://localhost:5000/api/contact/'+this.state.id
+
+            var config = {
+                method: 'post',
+                url: url,
+                headers: {
+                    'access-token': token,
+                    'Content-Type': 'application/json'
+                },
+                data : {
+                    "asunto":this.state.asunto,
+                    "mensaje":this.state.mensaje
+                }
+            };
+
+            const res = await Axios(config);
+
+            const data = res.data.data;
+
+            Swal.fire({
+                icon: 'success',
+                title: data
+            })
+
+
+        }else{
+            Swal.fire({
+                icon: 'info',
+                title: "Por favor registrese antes de continuar"
+            })
+        }
+
+    }
+
     render(){
         return (
             <div className="allcontainer">
@@ -205,11 +251,11 @@ class WorkerEspecifico extends Component {
                     </div>
                     <p>Teléfono: {this.state.telefono}</p>
                     <p>Correo: {this.state.correo}</p>
-                    <form>
+                    <form onSubmit={this.sendMessage}>
                         <label>Asunto:</label>
-                        <input type="text"/>
+                        <input type="text" onChange={e => this.setState({asunto:e.target.value})}/>
                         <label>Mensaje:</label>
-                        <input type="text"/>
+                        <input type="text" onChange={e => this.setState({mensaje:e.target.value})}/>
                         <button type="submit">Enviar</button>
                     </form>
                 </div>
