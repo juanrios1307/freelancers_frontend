@@ -63,7 +63,6 @@ class AnuncesBuscados extends React.Component {
                             <p className="card-text">Profesión : {anunces.profesion}</p>
                             <p className="card-text">Ciudad : {anunces.ciudad}</p>
 
-                            <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillStar/></button>
                             <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillMessage/></button>
                             <button type="button" className="btn btn-outline btn-list"  onClick={(e) => this.specificWorker(anunces._id)}><AiIcons.AiFillEye/></button>
 
