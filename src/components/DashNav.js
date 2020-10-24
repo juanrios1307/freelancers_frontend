@@ -72,7 +72,7 @@ function DashNav() {
     }, []);
 
     if (localStorage.getItem("profesion")) {
-        if(localStorage.getItem("categoria") == "workers"){
+        if(localStorage.getItem("categoria") === "workers"){
 
             return (
                 <Redirect to="/workers"/>

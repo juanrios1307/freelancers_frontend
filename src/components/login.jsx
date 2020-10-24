@@ -2,7 +2,7 @@ import React from "react";
 import Logo from '../assets/images/Logo/BLACK PNG.png'
 import Axios from "axios";
 import Swal from "sweetalert2";
-import { Link,Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 
 export class Login extends React.Component {
@@ -42,7 +42,7 @@ export class Login extends React.Component {
 
 
 
-        if(status==200){
+        if(status===200){
             Swal.fire({
                 icon: 'success',
                 title: mensaje,

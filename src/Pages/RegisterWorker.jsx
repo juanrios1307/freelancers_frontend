@@ -33,11 +33,6 @@ export class Register extends React.Component {
         const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/eia/image/upload';
         const UPLOAD_PRESET = 'iiq0b57e';
 
-
-
-        const urlCloud='https://api.cloudinary.com/v1_1/eia/image/upload'
-
-
         const formImages = new FormData();
         formImages.append('file', this.state.imagenFile);
         formImages.append('upload_preset', UPLOAD_PRESET);

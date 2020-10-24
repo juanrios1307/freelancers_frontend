@@ -1,8 +1,5 @@
 import React,{Component} from 'react';
 import '../assets/css/CardCarousel.css';
-import icono1 from '../assets/images/pi1.jpeg';
-import icono2 from '../assets/images/pi2.jpeg';
-import icono3 from '../assets/images/pi3.jpeg';
 import Axios from "axios";
 
 

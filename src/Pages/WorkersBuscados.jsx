@@ -1,7 +1,6 @@
 import React from "react";
 import Axios from "axios";
 import '../assets/css/Listas.css';
-import {Grid} from "@material-ui/core";
 import NavBar from "../components/NavBar";
 import DashNav from "../components/DashNav";
 import * as AiIcons from "react-icons/ai/index";
@@ -30,7 +29,7 @@ class WorkersBuscados extends React.Component {
         const token=localStorage.getItem("token")
 
 
-        if(token && token!=undefined){
+        if(token && token!==undefined){
             const url = 'https://peaceful-ridge-86113.herokuapp.com/api/saving'
 
             //const url = 'http://localhost:5000/api/saving'
@@ -123,7 +122,7 @@ class WorkersBuscados extends React.Component {
         if(localStorage.getItem("token")){
             if(localStorage.getItem("workerID")){
                 return(
-                    <Redirect to="worker" id={localStorage.getItem("workerID")}/>
+                    <Redirect to="worker" />
                 )
             }else {
 

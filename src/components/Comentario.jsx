@@ -2,7 +2,6 @@ import React,{Component} from 'react';
 import '../assets/css/Comentario.css';
 import Rating from "@material-ui/lab/Rating";
 import Axios from "axios";
-import {Grid} from "@material-ui/core";
 import moment from "moment";
 
 class Comentario extends Component {

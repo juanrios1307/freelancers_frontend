@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import '../assets/css/CreateAdvertisemets.css'
 import DashNav from "../components/DashNav";
-import Upload from "../assets/images/Upload2.png";
 import Axios from "axios";
 import Swal from "sweetalert2";
 import {Redirect} from "react-router-dom";

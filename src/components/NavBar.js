@@ -52,7 +52,7 @@ function NavBar() {
     window.addEventListener('resize', showButton);
 
     if (localStorage.getItem("profesion")) {
-        if(localStorage.getItem("categoria") == "workers"){
+        if(localStorage.getItem("categoria") === "workers"){
 
             return (
                 <Redirect to="/workers"/>

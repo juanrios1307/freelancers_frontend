@@ -1,11 +1,9 @@
 import React from "react";
 import Axios from "axios";
 import '../assets/css/Listas.css';
-import {Grid} from "@material-ui/core";
 import DashNav from "../components/DashNav";
 import NavBar from "../components/NavBar";
 import * as AiIcons from "react-icons/ai/index";
-import * as BsIcons from "react-icons/bs/index";
 import moment from "moment";
 import {Link, Redirect} from "react-router-dom";
 

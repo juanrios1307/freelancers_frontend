@@ -41,7 +41,7 @@ function TableMaterial(props) {
 
         setContent( data.map((elemento) => (
             <TableRow key={elemento.id}>
-                <TableCell><img src={elemento.imagen} width="40px" height="40px"/>{"  "}</TableCell>
+                <TableCell><img src={elemento.imagen} width="40px" height="40px" alt="Imagen"/>{"  "}</TableCell>
                 <TableCell align="center">{elemento.user.nombre}</TableCell>
                 <TableCell align="center">{elemento.profesion}</TableCell>
             </TableRow>

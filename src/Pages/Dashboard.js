@@ -12,7 +12,6 @@ import Graphics from '../components/Graphics';
 import TableMaterial from '../components/TableMaterial';
 import EditProfile from "../components/EditProfile";
 import Axios from "axios";
-import { Link } from 'react-router-dom';
 
 
 const styles = (theme) => ({

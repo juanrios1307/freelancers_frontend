@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import '../assets/css/CreateAdvertisemets.css'
 import Axios from "axios";
 import Swal from "sweetalert2";
