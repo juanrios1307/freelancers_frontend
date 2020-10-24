@@ -3,6 +3,7 @@ import '../assets/css/ChatEspecifico.css';
 import DashNav from "../components/DashNav";
 import Axios from "axios";
 import moment from "moment";
+import Swal from "sweetalert2";
 
 class ChatEspecifico extends Component {
 
@@ -10,10 +11,11 @@ class ChatEspecifico extends Component {
         super(props);
         this.state = {
             Messages: '',
-            id:''
+            id:'',
+            mensaje:''
         };
         this.getMessages = this.getMessages.bind(this);
-
+        this.sendMessage = this.sendMessage.bind(this);
     }
 
     componentDidMount() {
@@ -44,18 +46,75 @@ class ChatEspecifico extends Component {
 
             console.log(JSON.stringify(data))
 
-            this.setState({
-                Messages: data.Mensajes.map((messages) => (
 
-                        <li className={messages.emisor=="user"?"user":"worker"}>
-                            {messages.mensaje}
-                            <small className="text-muted">{moment(messages.date).format('DD/MM/YYYY')} </small>
-                        </li>
+            if(data[0].isUser===false) {
+                this.setState({
+                    Messages: data[1].Mensajes.map((messages) => (
 
+                            <li className={messages.emisor == "user" ? "user" : "worker"}>
+                                {messages.mensaje}
+                                <small className="text-muted" >{moment(messages.date).format('DD/MM/YYYY')} </small>
+                            </li>
+
+                        )
                     )
-                )
+                })
+
+            }else{
+                this.setState({
+                    Messages: data[1].Mensajes.map((messages) => (
+
+                            <li className={messages.emisor == "user" ? "worker" : "user"}>
+                                {messages.mensaje}
+                                <small className="text-muted" >{moment(messages.date).format('DD/MM/YYYY')} </small>
+                            </li>
+
+                        )
+                    )
+                })
+            }
+        }
+    }
+
+    async sendMessage(e){
+        e.preventDefault()
+
+       const token=localStorage.getItem("token")
+
+        // const url = 'https://peaceful-ridge-86113.herokuapp.com/api/chat/'
+        const url = 'http://localhost:5000/api/chat/'
+
+
+        var config = {
+            method: 'put',
+            url: url+this.state.id,
+            headers: {
+                'access-token': token,
+                'Content-Type': 'application/json'
+            },
+            data : {
+                "mensaje":this.state.mensaje
+            }
+        };
+
+        const res = await Axios(config);
+
+        const data = res.data.data;
+
+
+        if(data.status==200) {
+            Swal.fire({
+                icon: 'success',
+                title: data
+            })
+        }else{
+            Swal.fire({
+                icon: 'error',
+                title: data
             })
         }
+
+        window.location.reload();
     }
 
 
@@ -75,8 +134,8 @@ class ChatEspecifico extends Component {
                       </ul>
                   </div>
                   <div className="chatinput">
-                    <form>
-                        <input type="text"/>
+                    <form onSubmit={this.sendMessage}>
+                        <input type="text" value={this.state.mensaje} onChange={e => this.setState({mensaje: e.target.value})}/>
                         <button type="submit">Enviar</button>
                     </form>
                   </div>
