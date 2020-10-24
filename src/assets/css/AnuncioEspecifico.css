@@ -1,3 +1,7 @@
+.DashNav{
+    position: absolute;
+    z-index: 1;
+}
 .boxcontainer{
     box-sizing: border-box;
     height: 26em;
@@ -162,5 +166,8 @@
 }
 hr{
     margin-top: 0.3em;
+}
+.mensajetxt{
+    min-height: 3em;
 }
 

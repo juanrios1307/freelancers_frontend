@@ -38,7 +38,7 @@ export const SidebarData = [
     },
     {
         title: 'Chat',
-        path: '/chat',
+        path: '/mischats',
         icon: <AiIcons.AiFillMessage />,
         cName: 'n-text'
     },

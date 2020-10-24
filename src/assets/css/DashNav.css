@@ -34,6 +34,8 @@
 .n-menu.active {
     left: 0;
     transition: 350ms;
+    position: absolute;
+    z-index: 1;
 }
 
 .n-text {
