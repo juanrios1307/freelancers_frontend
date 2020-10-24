@@ -12,26 +12,32 @@ class ChatEspecifico extends Component {
         this.state = {
             Messages: '',
             id:'',
-            mensaje:''
+            mensaje:'',
+            nombre:''
         };
         this.getMessages = this.getMessages.bind(this);
         this.sendMessage = this.sendMessage.bind(this);
+        this.crearChat = this.crearChat.bind(this);
     }
 
     componentDidMount() {
-        this.getMessages();
+        this.getID();
+        this.crearChat()
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         this.getMessages()
     }
 
+    getID(){
+        this.setState({id:localStorage.getItem("ChatID")})
+        localStorage.removeItem("ChatID")
+    }
+
     async getMessages(){
-        this.state.id = localStorage.getItem("ChatID")
-        const token = localStorage.getItem("token")
 
         if(this.state.id) {
-            // localStorage.removeItem("ChatID")
+            const token = localStorage.getItem("token")
 
             // const url = 'https://peaceful-ridge-86113.herokuapp.com/api/chat/'
             const url = 'http://localhost:5000/api/chat/'
@@ -48,10 +54,10 @@ class ChatEspecifico extends Component {
 
             const data = res.data.data;
 
-            console.log(JSON.stringify(data))
-
-
             if(data[0].isUser===false) {
+
+                this.setState({nombre:data[1].user.nombre})
+
                 this.setState({
                     Messages: data[1].Mensajes.map((messages) => (
 
@@ -65,6 +71,9 @@ class ChatEspecifico extends Component {
                 })
 
             }else{
+
+                this.setState({nombre:data[1].worker.nombre})
+
                 this.setState({
                     Messages: data[1].Mensajes.map((messages) => (
 
@@ -77,6 +86,52 @@ class ChatEspecifico extends Component {
                     )
                 })
             }
+
+
+        }
+    }
+
+    async crearChat(){
+        const worker=localStorage.getItem("workerIDChat")
+        localStorage.removeItem("workerIDChat")
+        const token=localStorage.getItem("token")
+
+        if(worker){
+            var axios = require('axios');
+
+            // const url = 'https://peaceful-ridge-86113.herokuapp.com/api/chat/'
+            const url = 'http://localhost:5000/api/chat/'
+
+            var config = {
+                method: 'post',
+                url: url+worker,
+                headers: {
+                    'access-token': token,
+                    'Content-Type': 'application/json'
+                },
+
+            };
+
+            const response=await Axios(config)
+
+            const mensaje = response.data.data
+
+            console.log(mensaje)
+
+            this.setState({id:response.data.id})
+
+            if(response.status==200) {
+
+                Swal.fire({
+                    icon: 'success',
+                    title: mensaje
+                })
+
+            }else{
+
+                this.getMessages()
+            }
+
         }
     }
 
@@ -129,7 +184,7 @@ class ChatEspecifico extends Component {
               <div className="chatbox">
                   <div className="chattitle">
                       <div className="namechat">
-                          Nombre del contacto
+                          {this.state.nombre}
                       </div>
                   </div>
                   <div className="chatlistbox">
