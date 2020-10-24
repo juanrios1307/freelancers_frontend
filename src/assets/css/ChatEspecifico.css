@@ -27,7 +27,7 @@
 .chatlistbox ul{
     list-style: none;
 }
-.chatlistbox li{
+li.user {
     border-radius: 10px;
     background: linear-gradient(90deg, rgb(29, 115, 91) 0%, rgb(40, 121, 19) 100%);
     color: white;
@@ -35,6 +35,17 @@
     width: fit-content;
     margin-bottom: 8px;
 }
+
+li.worker {
+    border-radius: 10px;
+    background: darkgray;
+    color: black;
+    padding: 8px;
+    width: fit-content;
+    margin-bottom: 8px;
+    margin-left: 500px;
+}
+
 .chatinput{
     background: linear-gradient(90deg, rgb(29, 115, 91) 0%, rgb(40, 121, 19) 100%);
     padding: 1em;
