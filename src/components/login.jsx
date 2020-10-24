@@ -2,7 +2,7 @@ import React from "react";
 import Logo from '../assets/images/Logo/BLACK PNG.png'
 import Axios from "axios";
 import Swal from "sweetalert2";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 
 export class Login extends React.Component {
@@ -93,6 +93,8 @@ export class Login extends React.Component {
                                        onChange={(e) => this.setState({pwd: e.target.value})}/>
                             </div>
                             <div className="footer">
+                                <Link>¿Olvidaste tu contraseña?</Link>
+                                <hr/>
                                 <button type="submit" className="btn">
                                         Login
                                 </button>

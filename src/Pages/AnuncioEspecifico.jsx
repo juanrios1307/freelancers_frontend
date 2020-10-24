@@ -71,7 +71,7 @@ class AnuncioEspecifico extends Component {
         if (localStorage.getItem("token")) {
             return (
                 <div className="allcontainer">
-                    <DashNav/>
+                    <DashNav className="DashNav"/>
                     <div className="boxcontainer">
                         <div className="imgbox">
                             <img className="imgPub" src={this.state.imagen} alt="imagen de publicacion"/>
@@ -93,28 +93,6 @@ class AnuncioEspecifico extends Component {
                                     </button>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div className="coments-container">
-                        <div className="comentbox">
-                            <div className="txtcoment">Comentarios y Valoraciones</div>
-                            <div className="comenta">
-                                <form>
-                                    <div className="rating">
-                                        <Rating
-                                            name="simple-controlled"
-                                        /></div>
-                                    <input type="text"/>
-                                    <button type="submit">Guardar</button>
-                                </form>
-                            </div>
-                        </div>
-                        <div className="coments">
-                            <ul>
-                                <li><Comentario/></li>
-                                <li><Comentario/></li>
-                                <li><Comentario/></li>
-                            </ul>
                         </div>
                     </div>
                     <div className="contactbox">
@@ -195,7 +173,7 @@ class AnuncioEspecifico extends Component {
                             <label>Asunto:</label>
                             <input type="text"/>
                             <label>Mensaje:</label>
-                            <input type="text"/>
+                            <input type="text" className="mensajetxt"/>
                             <button type="submit">Enviar</button>
                         </form>
                     </div>
