@@ -9,7 +9,6 @@ import Axios from "axios";
 import Swal from "sweetalert2";
 import * as BsIcons from "react-icons/bs/index";
 import Comentario from "../components/Comentario";
-import {Redirect} from "react-router-dom";
 
 class WorkerEspecifico extends Component {
 
@@ -36,7 +35,6 @@ class WorkerEspecifico extends Component {
         this.savePub=this.savePub.bind(this);
         this.comment=this.comment.bind(this);
         this.sendMessage=this.sendMessage.bind(this);
-        this.crearChat=this.crearChat.bind(this);
     }
 
     componentDidMount() {
@@ -201,158 +199,145 @@ class WorkerEspecifico extends Component {
 
     }
 
-    crearChat(id,e){
-        e.preventDefault()
-        localStorage.setItem("workerIDChat",id)
-
-        window.location.reload();
-    }
-
     render() {
-        if(localStorage.getItem("workerIDChat")) {
-            return(
-                <Redirect to="chat" />
-            )
+        if (localStorage.getItem("token")) {
+            return (
+                <div className="allcontainer">
+                    <DashNav/>
+                    <div className="boxcontainer">
+                        <div className="imgbox">
+                            <img className="imgPub" src={this.state.imagen} alt="imagen de publicacion"/>
+                        </div>
+                        <div className="inforbox">
+
+                            <div className="infoespec">
+                                <h8>{this.state.nombre}</h8>
+                                <hr/>
+                                <h10>Información del trabajador</h10>
+                                <p>Profesión: {this.state.profesion}</p>
+                                <p>Ciudad: {this.state.ciudad}</p>
+                                <p>Experiencia: {this.state.experiencia}</p>
+                                <p>Años de experiencia: {this.state.yearsE}</p>
+                            </div>
+                            <div className="botnutl">
+                                <div className="btnsaesp">
+                                    <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillMessage/>
+                                    </button>
+                                    <button type="button" className="btn btn-outline btn-list"
+                                            onClick={(e) => this.savePub(this.state.id, e)}>
+                                        <BsIcons.BsFillBookmarkFill/></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="coments-container">
+                        <div className="comentbox">
+                            <div className="txtcoment">Comentarios y Valoraciones</div>
+                            <div className="comenta">
+                                <form onSubmit={this.comment}>
+                                    <div className="rating">
+                                        <Rating name="simple-controlled"
+                                                onChange={e => this.setState({rating: e.target.value})}/></div>
+                                    <input type="text" onChange={e => this.setState({comment: e.target.value})}/>
+                                    <button type="submit">Guardar</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div className="coments">
+                            <ul>
+                                <Comentario id={localStorage.getItem("workerID")}/>
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="contactbox">
+                        <div className="contactbox-title">
+                            <h10>Contacto</h10>
+                        </div>
+                        <p>Teléfono: {this.state.telefono}</p>
+                        <p>Correo: {this.state.correo}</p>
+                        <form onSubmit={this.sendMessage}>
+                            <label>Asunto:</label>
+                            <input type="text" onChange={e => this.setState({asunto: e.target.value})}/>
+                            <label>Mensaje:</label>
+                            <input type="text" onChange={e => this.setState({mensaje: e.target.value})}/>
+                            <button type="submit">Enviar</button>
+                        </form>
+                    </div>
+
+                    <Footer/>
+                </div>
+            );
         }else{
-            if (localStorage.getItem("token")) {
+            return (
+                <div className="allcontainer">
+                    <NavBar/>
+                    <div className="boxcontainer">
+                        <div className="imgbox">
+                            <img className="imgPub" src={this.state.imagen} alt="imagen de publicacion"/>
+                        </div>
+                        <div className="inforbox">
 
-                return (
-                    <div className="allcontainer">
-                        <DashNav/>
-                        <div className="boxcontainer">
-                            <div className="imgbox">
-                                <img className="imgPub" src={this.state.imagen} alt="imagen de publicacion"/>
+                            <div className="infoespec">
+                                <h8>{this.state.nombre}</h8>
+                                <hr/>
+                                <h10>Información del trabajador</h10>
+                                <p>Profesión: {this.state.profesion}</p>
+                                <p>Ciudad: {this.state.ciudad}</p>
+                                <p>Experiencia: {this.state.experiencia}</p>
+                                <p>Años de experiencia: {this.state.yearsE}</p>
                             </div>
-                            <div className="inforbox">
-
-                                <div className="infoespec">
-                                    <h8>{this.state.nombre}</h8>
-                                    <hr/>
-                                    <h10>Información del trabajador</h10>
-                                    <p>Profesión: {this.state.profesion}</p>
-                                    <p>Ciudad: {this.state.ciudad}</p>
-                                    <p>Experiencia: {this.state.experiencia}</p>
-                                    <p>Años de experiencia: {this.state.yearsE}</p>
-                                </div>
-                                <div className="botnutl">
-                                    <div className="btnsaesp">
-                                        <button type="button" className="btn btn-outline btn-list"
-                                                onClick={(e) => this.crearChat(this.state.id, e)}>
-                                            <AiIcons.AiFillMessage/>
-                                        </button>
-                                        <button type="button" className="btn btn-outline btn-list"
-                                                onClick={(e) => this.savePub(this.state.id, e)}>
-                                            <BsIcons.BsFillBookmarkFill/></button>
-                                    </div>
+                            <div className="botnutl">
+                                <div className="btnsaesp">
+                                    <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillMessage/>
+                                    </button>
+                                    <button type="button" className="btn btn-outline btn-list"
+                                            onClick={(e) => this.savePub(this.state.id, e)}>
+                                        <BsIcons.BsFillBookmarkFill/></button>
                                 </div>
                             </div>
                         </div>
-                        <div className="coments-container">
-                            <div className="comentbox">
-                                <div className="txtcoment">Comentarios y Valoraciones</div>
-                                <div className="comenta">
-                                    <form onSubmit={this.comment}>
-                                        <div className="rating">
-                                            <Rating name="simple-controlled"
-                                                    onChange={e => this.setState({rating: e.target.value})}/></div>
-                                        <input type="text" onChange={e => this.setState({comment: e.target.value})}/>
-                                        <button type="submit">Guardar</button>
-                                    </form>
-                                </div>
-                            </div>
-                            <div className="coments">
-                                <ul>
-                                    <Comentario id={localStorage.getItem("workerID")}/>
-                                </ul>
-                            </div>
-                        </div>
-                        <div className="contactbox">
-                            <div className="contactbox-title">
-                                <h10>Contacto</h10>
-                            </div>
-                            <p>Teléfono: {this.state.telefono}</p>
-                            <p>Correo: {this.state.correo}</p>
-                            <form onSubmit={this.sendMessage}>
-                                <label>Asunto:</label>
-                                <input type="text" onChange={e => this.setState({asunto: e.target.value})}/>
-                                <label>Mensaje:</label>
-                                <input type="text" onChange={e => this.setState({mensaje: e.target.value})}/>
-                                <button type="submit">Enviar</button>
-                            </form>
-                        </div>
-
-                        <Footer/>
                     </div>
-                );
-            } else {
-                return (
-                    <div className="allcontainer">
-                        <NavBar/>
-                        <div className="boxcontainer">
-                            <div className="imgbox">
-                                <img className="imgPub" src={this.state.imagen} alt="imagen de publicacion"/>
-                            </div>
-                            <div className="inforbox">
-
-                                <div className="infoespec">
-                                    <h8>{this.state.nombre}</h8>
-                                    <hr/>
-                                    <h10>Información del trabajador</h10>
-                                    <p>Profesión: {this.state.profesion}</p>
-                                    <p>Ciudad: {this.state.ciudad}</p>
-                                    <p>Experiencia: {this.state.experiencia}</p>
-                                    <p>Años de experiencia: {this.state.yearsE}</p>
-                                </div>
-                                <div className="botnutl">
-                                    <div className="btnsaesp">
-                                        <button type="button" className="btn btn-outline btn-list">
-                                            <AiIcons.AiFillMessage/>
-                                        </button>
-                                        <button type="button" className="btn btn-outline btn-list"
-                                                onClick={(e) => this.savePub(this.state.id, e)}>
-                                            <BsIcons.BsFillBookmarkFill/></button>
-                                    </div>
-                                </div>
+                    <div className="coments-container">
+                        <div className="comentbox">
+                            <div className="txtcoment">Comentarios y Valoraciones</div>
+                            <div className="comenta">
+                                <form onSubmit={this.comment}>
+                                    <div className="rating">
+                                        <Rating name="simple-controlled"
+                                                onChange={e => this.setState({rating: e.target.value})}/></div>
+                                    <input type="text" onChange={e => this.setState({comment: e.target.value})}/>
+                                    <button type="submit">Guardar</button>
+                                </form>
                             </div>
                         </div>
-                        <div className="coments-container">
-                            <div className="comentbox">
-                                <div className="txtcoment">Comentarios y Valoraciones</div>
-                                <div className="comenta">
-                                    <form onSubmit={this.comment}>
-                                        <div className="rating">
-                                            <Rating name="simple-controlled"
-                                                    onChange={e => this.setState({rating: e.target.value})}/></div>
-                                        <input type="text" onChange={e => this.setState({comment: e.target.value})}/>
-                                        <button type="submit">Guardar</button>
-                                    </form>
-                                </div>
-                            </div>
-                            <div className="coments">
-                                <ul>
-                                    <Comentario id={localStorage.getItem("workerID")}/>
-                                </ul>
-                            </div>
+                        <div className="coments">
+                            <ul>
+                                <Comentario id={localStorage.getItem("workerID")}/>
+                            </ul>
                         </div>
-                        <div className="contactbox">
-                            <div className="contactbox-title">
-                                <h10>Contacto</h10>
-                            </div>
-                            <p>Teléfono: {this.state.telefono}</p>
-                            <p>Correo: {this.state.correo}</p>
-                            <form onSubmit={this.sendMessage}>
-                                <label>Asunto:</label>
-                                <input type="text" onChange={e => this.setState({asunto: e.target.value})}/>
-                                <label>Mensaje:</label>
-                                <input type="text" onChange={e => this.setState({mensaje: e.target.value})}/>
-                                <button type="submit">Enviar</button>
-                            </form>
-                        </div>
-
-                        <Footer/>
                     </div>
-                );
-            }
+                    <div className="contactbox">
+                        <div className="contactbox-title">
+                            <h10>Contacto</h10>
+                        </div>
+                        <p>Teléfono: {this.state.telefono}</p>
+                        <p>Correo: {this.state.correo}</p>
+                        <form onSubmit={this.sendMessage}>
+                            <div>
+                            <label>Asunto:</label>
+                            <input type="text" onChange={e => this.setState({asunto: e.target.value})}/>
+                            </div>
+                            <div className="mensajelabel">
+                            <label>Mensaje:</label>
+                            <input type="text" className="mensajetxt" onChange={e => this.setState({mensaje: e.target.value})}/>
+                            </div>
+                            <button type="submit">Enviar</button>
+                        </form>
+                    </div>
+
+                    <Footer/>
+                </div>
+            );
         }
     }
 }

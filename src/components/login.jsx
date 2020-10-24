@@ -93,7 +93,7 @@ export class Login extends React.Component {
                                        onChange={(e) => this.setState({pwd: e.target.value})}/>
                             </div>
                             <div className="footer">
-                                <Link>¿Olvidaste tu contraseña?</Link>
+                                <Link to="/forgotpwd">¿Olvidaste tu contraseña?</Link>
                                 <hr/>
                                 <button type="submit" className="btn">
                                         Login
