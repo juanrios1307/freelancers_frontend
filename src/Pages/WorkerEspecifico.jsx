@@ -323,10 +323,14 @@ class WorkerEspecifico extends Component {
                         <p>Teléfono: {this.state.telefono}</p>
                         <p>Correo: {this.state.correo}</p>
                         <form onSubmit={this.sendMessage}>
+                            <div>
                             <label>Asunto:</label>
                             <input type="text" onChange={e => this.setState({asunto: e.target.value})}/>
+                            </div>
+                            <div className="mensajelabel">
                             <label>Mensaje:</label>
-                            <input type="text" onChange={e => this.setState({mensaje: e.target.value})}/>
+                            <input type="text" className="mensajetxt" onChange={e => this.setState({mensaje: e.target.value})}/>
+                            </div>
                             <button type="submit">Enviar</button>
                         </form>
                     </div>
