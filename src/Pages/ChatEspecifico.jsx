@@ -22,6 +22,10 @@ class ChatEspecifico extends Component {
         this.getMessages();
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        this.getMessages()
+    }
+
     async getMessages(){
         this.state.id = localStorage.getItem("ChatID")
         const token = localStorage.getItem("token")
@@ -102,19 +106,19 @@ class ChatEspecifico extends Component {
         const data = res.data.data;
 
 
-        if(data.status==200) {
+        if(res.status==200) {
             Swal.fire({
                 icon: 'success',
                 title: data
             })
-        }else{
+        }else if(res.status==400){
             Swal.fire({
                 icon: 'error',
                 title: data
             })
         }
 
-        window.location.reload();
+        //window.location.reload();
     }
 
 
