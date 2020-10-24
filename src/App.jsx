@@ -13,6 +13,7 @@ import EditAnunce from "./Pages/EditAnunce"
 import WorkerEspecifico from "./Pages/WorkerEspecifico";
 import ChatEspecifico from "./Pages/ChatEspecifico";
 import AnuncioEspecifico from "./Pages/AnuncioEspecifico";
+import MisChats from "./Pages/MisChats";
 
 
 class App extends React.Component {
@@ -34,6 +35,7 @@ class App extends React.Component {
                     <Route exact path="/worker" component={WorkerEspecifico}/>
                     <Route exact path="/anunce" component={AnuncioEspecifico}/>
                     <Route exact path="/chat" component={ChatEspecifico}/>
+                    <Route exact path="/chats" component={MisChats}/>
                 </Switch>
             </Router>
 
