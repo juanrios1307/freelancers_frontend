@@ -17,7 +17,7 @@ class SavingPub extends React.Component {
         this.getData = this.getData.bind(this);
         this.deletePub = this.deletePub.bind(this);
         this.specificWorker=this.specificWorker.bind(this);
-
+        this.crearChat=this.crearChat.bind(this);
     }
 
     componentDidMount() {
@@ -57,6 +57,13 @@ class SavingPub extends React.Component {
         window.location.reload();
     }
 
+    crearChat(id,e){
+        e.preventDefault()
+        localStorage.setItem("workerIDChat",id)
+
+        window.location.reload();
+    }
+
     async getData() {
 
         const token = localStorage.getItem("token")
@@ -87,8 +94,8 @@ class SavingPub extends React.Component {
                             <p className="card-text">Experiencia: {worker.experiencia}</p>
                             <p className="card-text">Años de experiencia: {worker.yearsXperience}</p>
 
-                            <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillStar/></button>
-                            <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillMessage/></button>
+
+                            <button type="button" className="btn btn-outline btn-list" onClick={(e) => this.crearChat(worker._id,e)}><AiIcons.AiFillMessage/></button>
                             <button type="button" className="btn btn-outline btn-list" onClick={(e) => this.specificWorker(worker._id)}><AiIcons.AiFillEye/></button>
                             <button type="button" className="btn btn-outline btn-list" onClick={(e) => this.deletePub(worker._id,e)}><AiIcons.AiFillDelete/></button>
 
@@ -105,7 +112,11 @@ class SavingPub extends React.Component {
     }
 
     render() {
-        if (localStorage.getItem("workerID")) {
+        if(localStorage.getItem("workerIDChat")){
+            return (
+                <Redirect to="/chat"/>
+            )
+        }else if (localStorage.getItem("workerID")) {
             return (
                 <Redirect to="/worker"/>
             )

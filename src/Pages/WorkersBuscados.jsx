@@ -18,6 +18,7 @@ class WorkersBuscados extends React.Component {
         this.getData = this.getData.bind(this);
         this.savePub=this.savePub.bind(this);
         this.specificWorker=this.specificWorker.bind(this);
+        this.crearChat=this.crearChat.bind(this);
     }
 
     componentDidMount() {
@@ -69,6 +70,13 @@ class WorkersBuscados extends React.Component {
         window.location.reload();
     }
 
+    crearChat(id,e){
+        e.preventDefault()
+        localStorage.setItem("workerIDChat",id)
+
+        window.location.reload();
+    }
+
     async getData() {
 
         const profesion = localStorage.getItem("profesion")
@@ -104,8 +112,7 @@ class WorkersBuscados extends React.Component {
                             <p className="card-text">Experiencia: {worker.experiencia}</p>
                             <p className="card-text">Años de experiencia: {worker.yearsXperience}</p>
 
-                            <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillStar/></button>
-                            <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillMessage/></button>
+                            <button type="button" className="btn btn-outline btn-list"  onClick={(e) => this.crearChat(worker._id,e)}><AiIcons.AiFillMessage/></button>
                             <button type="button" className="btn btn-outline btn-list"  onClick={(e) => this.specificWorker(worker._id)}><AiIcons.AiFillEye/></button>
                             <button type="button" className="btn btn-outline btn-list"  onClick={(e) => this.savePub(worker._id,e)}><BsIcons.BsFillBookmarkFill/></button>
                         </div>
@@ -117,70 +124,76 @@ class WorkersBuscados extends React.Component {
 
     }
 
-    render(){
+    render() {
+        if (localStorage.getItem("workerIDChat")) {
+            return (
+                <Redirect to="/chat"/>
+            )
+        } else {
 
-        if(localStorage.getItem("token")){
-            if(localStorage.getItem("workerID")){
-                return(
-                    <Redirect to="worker" />
-                )
-            }else {
+            if (localStorage.getItem("token")) {
+                if (localStorage.getItem("workerID")) {
+                    return (
+                        <Redirect to="worker"/>
+                    )
+                } else {
 
-                return (
-                    <div>
+                    return (
+                        <div>
 
-                        <div item xs={12}>
-                            <DashNav/>
-                        </div>
-
-                        <div className="sort">
-                            <Link className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                                  aria-haspopup="true" aria-expanded="false">Filtrar por</Link>
-                            <div className="dropdown-menu">
-                                <Link className="dropdown-item" href="#">Fecha</Link>
-                                <Link className="dropdown-item" href="#">Ubicación</Link>
+                            <div item xs={12}>
+                                <DashNav/>
                             </div>
-                        </div>
 
-                        <div item xs={12}>
-                            {this.state.Content}
-                        </div>
+                            <div className="sort">
+                                <Link className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                                      aria-haspopup="true" aria-expanded="false">Filtrar por</Link>
+                                <div className="dropdown-menu">
+                                    <Link className="dropdown-item" href="#">Fecha</Link>
+                                    <Link className="dropdown-item" href="#">Ubicación</Link>
+                                </div>
+                            </div>
 
-                    </div>
-                )
-            }
-        }else {
-            if (localStorage.getItem("workerID")) {
-                return (
-                    <Redirect to="worker"/>
-                )
+                            <div item xs={12}>
+                                {this.state.Content}
+                            </div>
+
+                        </div>
+                    )
+                }
             } else {
-                return (
-                    <div>
+                if (localStorage.getItem("workerID")) {
+                    return (
+                        <Redirect to="worker"/>
+                    )
+                } else {
+                    return (
+                        <div>
 
-                        <div item xs={12}>
-                            <NavBar/>
-                        </div>
-
-                        <div className="sort">
-                            <Link className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                                  aria-haspopup="true" aria-expanded="false">Filtrar por</Link>
-                            <div className="dropdown-menu">
-                                <Link className="dropdown-item" href="#">Fecha</Link>
-                                <Link className="dropdown-item" href="#">Ubicación</Link>
+                            <div item xs={12}>
+                                <NavBar/>
                             </div>
-                        </div>
 
-                        <div item xs={12}>
-                            {this.state.Content}
-                        </div>
+                            <div className="sort">
+                                <Link className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                                      aria-haspopup="true" aria-expanded="false">Filtrar por</Link>
+                                <div className="dropdown-menu">
+                                    <Link className="dropdown-item" href="#">Fecha</Link>
+                                    <Link className="dropdown-item" href="#">Ubicación</Link>
+                                </div>
+                            </div>
 
-                    </div>
-                )
+                            <div item xs={12}>
+                                {this.state.Content}
+                            </div>
+
+                        </div>
+                    )
+                }
             }
         }
-      };
-
+        ;
+    }
 }
 
 export default WorkersBuscados

@@ -22,20 +22,23 @@ class ChatEspecifico extends Component {
 
     componentDidMount() {
         this.getID();
-        this.crearChat()
+        this.crearChat();
+        this.getMessages();
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        this.getMessages()
+
     }
 
     getID(){
+        this.state.id=localStorage.getItem("ChatID")
         this.setState({id:localStorage.getItem("ChatID")})
         localStorage.removeItem("ChatID")
     }
 
     async getMessages(){
 
+        console.log("ID: "+this.state.id)
         if(this.state.id) {
             const token = localStorage.getItem("token")
 
@@ -61,7 +64,7 @@ class ChatEspecifico extends Component {
                 this.setState({
                     Messages: data[1].Mensajes.map((messages) => (
 
-                            <li className={messages.emisor == "user" ? "user" : "worker"}>
+                            <li className={messages.emisor === "user" ? "user" : "worker"}>
                                 {messages.mensaje}
                                 <small className="text-muted" >{moment(messages.date).format('DD/MM/YYYY')} </small>
                             </li>
@@ -77,7 +80,7 @@ class ChatEspecifico extends Component {
                 this.setState({
                     Messages: data[1].Mensajes.map((messages) => (
 
-                            <li className={messages.emisor == "user" ? "worker" : "user"}>
+                            <li className={messages.emisor === "user" ? "worker" : "user"}>
                                 {messages.mensaje}
                                 <small className="text-muted" >{moment(messages.date).format('DD/MM/YYYY')} </small>
                             </li>
@@ -116,22 +119,18 @@ class ChatEspecifico extends Component {
 
             const mensaje = response.data.data
 
-            console.log(mensaje)
-
             this.setState({id:response.data.id})
 
-            if(response.status==200) {
+            if(response.status===200) {
 
                 Swal.fire({
                     icon: 'success',
                     title: mensaje
                 })
 
-            }else{
-
                 this.getMessages()
-            }
 
+            }
         }
     }
 
@@ -161,19 +160,20 @@ class ChatEspecifico extends Component {
         const data = res.data.data;
 
 
-        if(res.status==200) {
+        if(res.status===200) {
             Swal.fire({
                 icon: 'success',
                 title: data
             })
-        }else if(res.status==400){
+        }else if(res.status===400){
             Swal.fire({
                 icon: 'error',
                 title: data
             })
         }
 
-        //window.location.reload();
+
+        await this.getMessages();
     }
 
 
