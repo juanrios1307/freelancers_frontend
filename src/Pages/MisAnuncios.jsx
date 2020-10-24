@@ -18,6 +18,7 @@ class MisAnuncios extends React.Component {
         this.getData = this.getData.bind(this);
         this.deleteAnuncio = this.deleteAnuncio.bind(this);
         this.specificWorker=this.specificWorker.bind(this);
+        this.editAnuncio=this.editAnuncio.bind(this);
     }
 
     componentDidMount() {
@@ -33,9 +34,9 @@ class MisAnuncios extends React.Component {
     async deleteAnuncio(id, e) {
         e.preventDefault()
         const token = localStorage.getItem("token")
-        // const url = 'https://peaceful-ridge-86113.herokuapp.com/api/anuncesWork'
+         const url = 'https://peaceful-ridge-86113.herokuapp.com/api/anuncesWork/'
 
-        const url = 'http://localhost:5000/api/anuncesWork/'
+       // const url = 'http://localhost:5000/api/anuncesWork/'
 
         console.log(url + id)
 

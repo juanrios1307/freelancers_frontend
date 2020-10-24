@@ -42,8 +42,8 @@ class ChatEspecifico extends Component {
         if(this.state.id) {
             const token = localStorage.getItem("token")
 
-            // const url = 'https://peaceful-ridge-86113.herokuapp.com/api/chat/'
-            const url = 'http://localhost:5000/api/chat/'
+            const url = 'https://peaceful-ridge-86113.herokuapp.com/api/chat/'
+            //const url = 'http://localhost:5000/api/chat/'
 
             const config = {
                 method: 'get',
@@ -102,8 +102,8 @@ class ChatEspecifico extends Component {
         if(worker){
             var axios = require('axios');
 
-            // const url = 'https://peaceful-ridge-86113.herokuapp.com/api/chat/'
-            const url = 'http://localhost:5000/api/chat/'
+            const url = 'https://peaceful-ridge-86113.herokuapp.com/api/chat/'
+            //const url = 'http://localhost:5000/api/chat/'
 
             var config = {
                 method: 'post',
@@ -139,8 +139,8 @@ class ChatEspecifico extends Component {
 
        const token=localStorage.getItem("token")
 
-        // const url = 'https://peaceful-ridge-86113.herokuapp.com/api/chat/'
-        const url = 'http://localhost:5000/api/chat/'
+        const url = 'https://peaceful-ridge-86113.herokuapp.com/api/chat/'
+        //const url = 'http://localhost:5000/api/chat/'
 
 
         var config = {

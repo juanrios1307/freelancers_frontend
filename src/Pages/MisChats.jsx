@@ -16,40 +16,12 @@ class MisChats extends React.Component {
             Content: ''
         };
         this.getData = this.getData.bind(this);
-        this.deletePub = this.deletePub.bind(this);
         this.specificChat=this.specificChat.bind(this);
 
     }
 
     componentDidMount() {
         this.getData();
-    }
-
-    async deletePub(id,e){
-        e.preventDefault()
-        const token = localStorage.getItem("token")
-         const url = 'https://peaceful-ridge-86113.herokuapp.com/api/saving/'
-
-        //const url = 'http://localhost:5000/api/saving/'
-
-        console.log(url + id)
-
-        const config = {
-            method: 'put',
-            url: url + id,
-            headers: {
-                'access-token': token
-            }
-        };
-
-        var response = await Axios(config);
-
-        Swal.fire({
-            icon: 'success',
-            title: response.data.data
-        })
-
-        window.location.reload();
     }
 
     specificChat(id){
@@ -61,9 +33,9 @@ class MisChats extends React.Component {
     async getData() {
 
         const token = localStorage.getItem("token")
-        // const url = 'https://peaceful-ridge-86113.herokuapp.com/api/chat'
+         const url = 'https://peaceful-ridge-86113.herokuapp.com/api/chat'
 
-        const url = 'http://localhost:5000/api/chat'
+        //const url = 'http://localhost:5000/api/chat'
 
         const config = {
             method: 'get',
