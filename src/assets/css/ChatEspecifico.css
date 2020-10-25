@@ -34,16 +34,21 @@ li.user {
     padding: 8px;
     width: fit-content;
     margin-bottom: 8px;
+    font-family: "Open Sans", sans-serif;
 }
 
 li.worker {
     border-radius: 10px;
     background: darkgray;
     color: black;
+    font-family: "Open Sans", sans-serif;
     padding: 8px;
-    width: fit-content;
+    height: fit-content;
+    width: max-content;
+    max-width: 20em;
     margin-bottom: 8px;
-    margin-left: 500px;
+    margin-left: 100%;
+    transform: translateX(-100%);
 }
 
 .chatinput{
