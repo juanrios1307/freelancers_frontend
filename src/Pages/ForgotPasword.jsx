@@ -58,7 +58,7 @@ class ForgotPasword extends Component {
                                onChange={e => this.setState({correo: e.target.value})}/>
                         <button>Enviar Link</button>
                         <div className="loglink">
-                        <Link to="/sing-up">Volver a Login</Link>
+                        <Link to="/sing-up">Volver a Iniciar Sesión</Link>
                         </div>
                     </form>
                 </div>

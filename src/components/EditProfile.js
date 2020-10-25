@@ -1,6 +1,7 @@
 import React from 'react';
 import '../assets/css/EditProfile.css';
 import Axios from "axios";
+import {Link} from 'react-router-dom';
 
 
 class EditProfile extends React.Component {
@@ -110,6 +111,7 @@ class EditProfile extends React.Component {
                                onChange={e => this.setState({newCiudad:e.target.value})}/>
                     </div>
                     <div className="ftr">
+                        <Link to="/changepwd"><button className="btn">Cambiar contraseña</button></Link>
                         <button type="submit" className="btn">
                             Editar
                         </button>

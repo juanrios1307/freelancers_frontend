@@ -15,6 +15,7 @@ import ChatEspecifico from "./Pages/ChatEspecifico";
 import AnuncioEspecifico from "./Pages/AnuncioEspecifico";
 import MisChats from "./Pages/MisChats";
 import ForgotPasword from "./Pages/ForgotPasword";
+import ChangePassword from "./Pages/ChangePassword";
 
 
 class App extends React.Component {
@@ -38,6 +39,7 @@ class App extends React.Component {
                     <Route exact path="/chat" component={ChatEspecifico}/>
                     <Route exact path="/chats" component={MisChats}/>
                     <Route exact path="/forgotpwd" component={ForgotPasword}/>
+                    <Route exact path="/changepwd" component={ChangePassword}/>
                 </Switch>
             </Router>
 
