@@ -111,7 +111,6 @@ class EditProfile extends React.Component {
                                onChange={e => this.setState({newCiudad:e.target.value})}/>
                     </div>
                     <div className="ftr">
-                        <Link to="/changepwd"><button className="btn">Cambiar contraseña</button></Link>
                         <button type="submit" className="btn">
                             Editar
                         </button>

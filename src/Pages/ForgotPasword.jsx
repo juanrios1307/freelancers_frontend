@@ -18,8 +18,8 @@ class ForgotPasword extends Component {
     async enviarForm(e) {
         e.preventDefault()
 
-        const url = 'https://peaceful-ridge-86113.herokuapp.com/api/updatepwd'
-        //const url = 'http://localhost:5000/api/updatepwd/';
+        //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/updatepwd'
+        const url = 'http://localhost:5000/api/updatepwd/';
 
         var config = {
             method: 'post',
@@ -40,6 +40,8 @@ class ForgotPasword extends Component {
             icon: 'success',
             title: data
         })
+
+        localStorage.setItem("correo",this.state.correo)
     }
 
     render(){

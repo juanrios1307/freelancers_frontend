@@ -39,7 +39,7 @@ class App extends React.Component {
                     <Route exact path="/chat" component={ChatEspecifico}/>
                     <Route exact path="/chats" component={MisChats}/>
                     <Route exact path="/forgotpwd" component={ForgotPasword}/>
-                    <Route exact path="/changepwd" component={ChangePassword}/>
+                    <Route exact path="/updatepwd" component={ChangePassword}/>
                 </Switch>
             </Router>
 
