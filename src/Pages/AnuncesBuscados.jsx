@@ -36,9 +36,8 @@ class AnuncesBuscados extends React.Component {
         localStorage.removeItem("categoria")
 
 
-         const url = 'https://peaceful-ridge-86113.herokuapp.com/api/main/anunces'
-
-         //const url = 'http://localhost:5000/api/main/anunces'
+        // const url = 'https://peaceful-ridge-86113.herokuapp.com/api/main/anunces'
+        const url = 'http://localhost:5000/api/main/anunces'
 
         const config = {
             method: 'get',

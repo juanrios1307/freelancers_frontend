@@ -21,9 +21,9 @@ class Comentario extends Component {
 
     async getData() {
 
-        const url = 'https://peaceful-ridge-86113.herokuapp.com/api/rate/'+this.props.id
+        //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/rate/'+this.props.id
 
-        //const url = 'http://localhost:5000/api/rate/'+this.props.id
+        const url = 'http://localhost:5000/api/rate/'+this.props.id
 
         console.log("id prop: " +this.props.id)
 

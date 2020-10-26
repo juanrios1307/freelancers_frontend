@@ -22,8 +22,8 @@ function DashNav() {
         localStorage.removeItem("token");
     }
 
-    const url1 = 'https://peaceful-ridge-86113.herokuapp.com/api/main'
-    //const url1='http://localhost:5000/api/main'
+    //const url1 = 'https://peaceful-ridge-86113.herokuapp.com/api/main'
+    const url1='http://localhost:5000/api/main'
 
     const buscar = () => {
         const config = {
@@ -40,8 +40,9 @@ function DashNav() {
             });
     }
 
-    const url='https://peaceful-ridge-86113.herokuapp.com/api/users'
-    //const url='http://localhost:5000/api/users'
+    //const url='https://peaceful-ridge-86113.herokuapp.com/api/users'
+    const url='http://localhost:5000/api/users'
+
     const name = async () => {
         const token = localStorage.getItem("token")
         if (token) {

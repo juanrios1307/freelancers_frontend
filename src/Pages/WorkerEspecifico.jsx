@@ -50,8 +50,8 @@ class WorkerEspecifico extends Component {
 
         if(this.state.id) {
 
-            const url = 'https://peaceful-ridge-86113.herokuapp.com/api/main/workers'
-            //const url = 'http://localhost:5000/api/main/workers'
+            //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/main/workers'
+            const url = 'http://localhost:5000/api/main/workers'
 
             console.log("ID: " + this.state.id)
 
@@ -85,9 +85,8 @@ class WorkerEspecifico extends Component {
         const  token=localStorage.getItem("token")
         if(token && !token!=undefined){
 
-            const url = 'https://peaceful-ridge-86113.herokuapp.com/api/rate/'+this.state.id
-
-            //const url = 'http://localhost:5000/api/rate/'+this.state.id
+            //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/rate/'+this.state.id
+            const url = 'http://localhost:5000/api/rate/'+this.state.id
 
             var config = {
                 method: 'put',
@@ -126,9 +125,9 @@ class WorkerEspecifico extends Component {
 
 
         if(token && !token!=undefined){
-            const url = 'https://peaceful-ridge-86113.herokuapp.com/api/saving'
 
-            //const url = 'http://localhost:5000/api/saving'
+            //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/saving'
+            const url = 'http://localhost:5000/api/saving'
 
             console.log(Save)
 
@@ -165,9 +164,8 @@ class WorkerEspecifico extends Component {
         const  token=localStorage.getItem("token")
         if(token && !token!=undefined){
 
-            const url = 'https://peaceful-ridge-86113.herokuapp.com/api/contact/'+this.state.id
-
-            //const url = 'http://localhost:5000/api/contact/'+this.state.id
+            //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/contact/'+this.state.id
+            const url = 'http://localhost:5000/api/contact/'+this.state.id
 
             var config = {
                 method: 'post',
@@ -200,6 +198,7 @@ class WorkerEspecifico extends Component {
         }
 
     }
+
     crearChat(id,e){
         e.preventDefault()
         localStorage.setItem("workerIDChat",id)

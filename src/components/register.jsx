@@ -23,9 +23,9 @@ export class Register extends React.Component {
     async signinUser(e) {
         e.preventDefault()
 
-        const url = 'https://peaceful-ridge-86113.herokuapp.com/api/users'
+        //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/users'
 
-       // const url='http://localhost:5000/api/users'
+        const url='http://localhost:5000/api/users'
 
         if(this.validarPwd()){
 

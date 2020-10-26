@@ -34,9 +34,9 @@ class MisAnuncios extends React.Component {
     async deleteAnuncio(id, e) {
         e.preventDefault()
         const token = localStorage.getItem("token")
-         const url = 'https://peaceful-ridge-86113.herokuapp.com/api/anuncesWork/'
 
-       // const url = 'http://localhost:5000/api/anuncesWork/'
+        //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/anuncesWork/'
+        const url = 'http://localhost:5000/api/anuncesWork/'
 
         console.log(url + id)
 
@@ -67,9 +67,9 @@ class MisAnuncios extends React.Component {
     async getData() {
 
         const token = localStorage.getItem("token")
-         const url = 'https://peaceful-ridge-86113.herokuapp.com/api/anuncesWork'
 
-        //const url = 'http://localhost:5000/api/anuncesWork'
+        //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/anuncesWork'
+        const url = 'http://localhost:5000/api/anuncesWork'
 
         const config = {
             method: 'get',
