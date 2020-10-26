@@ -65,7 +65,7 @@ class ChatEspecifico extends Component {
                     Messages: data[1].Mensajes.map((messages) => (
 
                             <li className={messages.emisor === "user" ? "user" : "worker"}>
-                                {messages.mensaje}
+                                <p>{messages.mensaje}</p>
                                 <small className="text-muted" >{moment(messages.date).format('DD/MM/YYYY')} </small>
                             </li>
 
@@ -81,7 +81,7 @@ class ChatEspecifico extends Component {
                     Messages: data[1].Mensajes.map((messages) => (
 
                             <li className={messages.emisor === "user" ? "worker" : "user"}>
-                                {messages.mensaje}
+                                <p className="messages">{messages.mensaje}</p>
                                 <small className="text-muted" >{moment(messages.date).format('DD/MM/YYYY')} </small>
                             </li>
 
