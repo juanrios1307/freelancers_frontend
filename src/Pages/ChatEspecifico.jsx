@@ -97,23 +97,40 @@ class ChatEspecifico extends Component {
     async crearChat(){
         const worker=localStorage.getItem("workerIDChat")
         localStorage.removeItem("workerIDChat")
+
+        const anunce=localStorage.getItem("anunceIDChat")
+        localStorage.removeItem("anunceIDChat")
+
         const token=localStorage.getItem("token")
 
-        if(worker){
-            var axios = require('axios');
+        if(worker || anunce){
 
             //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/chat/'
             const url = 'http://localhost:5000/api/chat/'
 
-            var config = {
-                method: 'post',
-                url: url+worker,
-                headers: {
-                    'access-token': token,
-                    'Content-Type': 'application/json'
-                },
+            if(worker) {
+                var config = {
+                    method: 'post',
+                    url: url + worker,
+                    headers: {
+                        'access-token': token,
+                        'Content-Type': 'application/json',
+                        'isWorker': true
+                    }
 
-            };
+                };
+            }else if(anunce){
+                var config = {
+                    method: 'post',
+                    url: url + anunce,
+                    headers: {
+                        'access-token': token,
+                        'Content-Type': 'application/json',
+                        'isWorker': false
+                    }
+
+                };
+            }
 
             const response=await Axios(config)
 

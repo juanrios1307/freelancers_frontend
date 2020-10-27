@@ -176,7 +176,8 @@ class WorkerEspecifico extends Component {
                 },
                 data : {
                     "asunto":this.state.asunto,
-                    "mensaje":this.state.mensaje
+                    "mensaje":this.state.mensaje,
+                    "isWorker":true
                 }
             };
 
@@ -201,9 +202,16 @@ class WorkerEspecifico extends Component {
 
     crearChat(id,e){
         e.preventDefault()
-        localStorage.setItem("workerIDChat",id)
+        if(localStorage.getItem("token")) {
+            localStorage.setItem("workerIDChat", id)
 
-        window.location.reload();
+            window.location.reload();
+        }else{
+            Swal.fire({
+                icon: 'info',
+                title: "Por favor registrese antes de continuar"
+            })
+        }
     }
 
     render() {
@@ -211,8 +219,7 @@ class WorkerEspecifico extends Component {
             return (
                 <Redirect to="chat"/>
             )
-        }else
-            {
+        }else {
                 if (localStorage.getItem("token")) {
                     return (
                         <div className="allcontainer">
