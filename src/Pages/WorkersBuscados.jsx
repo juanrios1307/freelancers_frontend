@@ -148,8 +148,10 @@ class WorkersBuscados extends React.Component {
                                 <Link className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                                       aria-haspopup="true" aria-expanded="false">Filtrar por</Link>
                                 <div className="dropdown-menu">
-                                    <Link className="dropdown-item" href="#">Fecha</Link>
-                                    <Link className="dropdown-item" href="#">Ubicación</Link>
+                                <Link className="dropdown-item" href="#">Fecha: Reciente - Antiguo</Link>
+                                    <Link className="dropdown-item" href="#">Fecha: Antiguo - Reciente</Link>
+                                    <Link className="dropdown-item" href="#">Valoración: Mayor - Menor</Link>
+                                    <Link className="dropdown-item" href="#">Valoración: Menor - Mayor</Link>
                                 </div>
                             </div>
 
