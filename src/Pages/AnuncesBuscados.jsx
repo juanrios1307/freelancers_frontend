@@ -6,6 +6,7 @@ import NavBar from "../components/NavBar";
 import * as AiIcons from "react-icons/ai/index";
 import moment from "moment";
 import {Link, Redirect} from "react-router-dom";
+import Swal from "sweetalert2";
 
 class AnuncesBuscados extends React.Component {
 
@@ -16,6 +17,7 @@ class AnuncesBuscados extends React.Component {
         };
         this.getData = this.getData.bind(this);
         this.specificWorker=this.specificWorker.bind(this);
+        this.crearChat=this.crearChat.bind(this);
     }
 
     componentDidMount() {
@@ -27,6 +29,20 @@ class AnuncesBuscados extends React.Component {
         localStorage.setItem("anunceID",id)
 
         window.location.reload();
+    }
+
+    crearChat(id,e){
+        e.preventDefault()
+        if(localStorage.getItem("token")) {
+            localStorage.setItem("anunceIDChat", id)
+
+            window.location.reload();
+        }else{
+            Swal.fire({
+                icon: 'info',
+                title: "Por favor registrese antes de continuar"
+            })
+        }
     }
 
     async getData() {
@@ -62,7 +78,9 @@ class AnuncesBuscados extends React.Component {
                             <p className="card-text">Profesión : {anunces.profesion}</p>
                             <p className="card-text">Ciudad : {anunces.ciudad}</p>
 
-                            <button type="button" className="btn btn-outline btn-list"><AiIcons.AiFillMessage/></button>
+                            <button type="button" className="btn btn-outline btn-list">
+                                <AiIcons.AiFillMessage onClick={(e) => this.crearChat(anunces._id, e)}/>
+                            </button>
                             <button type="button" className="btn btn-outline btn-list"  onClick={(e) => this.specificWorker(anunces._id)}><AiIcons.AiFillEye/></button>
 
                             <div className="card-footer">
@@ -78,70 +96,75 @@ class AnuncesBuscados extends React.Component {
     }
 
     render() {
-
-        if (localStorage.getItem("token")) {
-            if (localStorage.getItem("anunceID")) {
-                return (
-                    <Redirect to="anunce"/>
-                )
-            } else {
-                return (
-                    <div>
-
-                        <div item xs={12}>
-                            <DashNav/>
-                        </div>
-
-                        <div className="sort">
-                            <Link className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                                  aria-haspopup="true" aria-expanded="false">Filtrar por</Link>
-                            <div className="dropdown-menu">
-                                <Link className="dropdown-item" href="#">Fecha: Antiguo-Reciente</Link>
-                                <Link className="dropdown-item" href="#">Ubicación: Cercano-Lejano</Link>
-                                <p>Valoracion</p>
-                                <Link className="dropdown-item" href="#">Valoracion: Cercano-Lejano</Link>
-                            </div>
-                        </div>
-
-                        <div item xs={12}>
-                            {this.state.Content}
-                        </div>
-
-                    </div>
-                )
-            }
+        if (localStorage.getItem("anunceIDChat")) {
+            return (
+                <Redirect to="/chat"/>
+            )
         } else {
-            if (localStorage.getItem("anunceID")) {
-                return (
-                    <Redirect to="anunce"/>
-                )
-            } else {
-                return (
-                    <div>
+            if (localStorage.getItem("token")) {
+                if (localStorage.getItem("anunceID")) {
+                    return (
+                        <Redirect to="anunce"/>
+                    )
+                } else {
+                    return (
+                        <div>
 
-                        <div item xs={12}>
-                            <NavBar/>
-                        </div>
-
-                        <div className="sort">
-                            <Link className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                                  aria-haspopup="true" aria-expanded="false">Filtrar por</Link>
-                            <div className="dropdown-menu">
-                                <Link className="dropdown-item" href="#">Fecha</Link>
-                                <Link className="dropdown-item" href="#">Ubicación</Link>
+                            <div item xs={12}>
+                                <DashNav/>
                             </div>
-                        </div>
 
-                        <div item xs={12}>
-                            {this.state.Content}
-                        </div>
+                            <div className="sort">
+                                <Link className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                                      aria-haspopup="true" aria-expanded="false">Filtrar por</Link>
+                                <div className="dropdown-menu">
+                                    <Link className="dropdown-item" href="#">Fecha: Antiguo-Reciente</Link>
+                                    <Link className="dropdown-item" href="#">Ubicación: Cercano-Lejano</Link>
+                                    <p>Valoracion</p>
+                                    <Link className="dropdown-item" href="#">Valoracion: Cercano-Lejano</Link>
+                                </div>
+                            </div>
 
-                    </div>
-                )
+                            <div item xs={12}>
+                                {this.state.Content}
+                            </div>
+
+                        </div>
+                    )
+                }
+            } else {
+                if (localStorage.getItem("anunceID")) {
+                    return (
+                        <Redirect to="anunce"/>
+                    )
+                } else {
+                    return (
+                        <div>
+
+                            <div item xs={12}>
+                                <NavBar/>
+                            </div>
+
+                            <div className="sort">
+                                <Link className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                                      aria-haspopup="true" aria-expanded="false">Filtrar por</Link>
+                                <div className="dropdown-menu">
+                                    <Link className="dropdown-item" href="#">Fecha</Link>
+                                    <Link className="dropdown-item" href="#">Ubicación</Link>
+                                </div>
+                            </div>
+
+                            <div item xs={12}>
+                                {this.state.Content}
+                            </div>
+
+                        </div>
+                    )
+                }
+
             }
-
+            ;
         }
-        ;
     }
 
 }
