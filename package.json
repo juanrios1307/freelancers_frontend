@@ -22,7 +22,7 @@
     "react-elastic-carousel": "^0.7.5",
     "react-icons": "^3.11.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.3",
+    "react-scripts": "^3.4.4",
     "styled-components": "^5.2.0"
   },
   "scripts": {

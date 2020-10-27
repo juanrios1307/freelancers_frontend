@@ -96,8 +96,10 @@ class AnuncesBuscados extends React.Component {
                             <Link className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                                   aria-haspopup="true" aria-expanded="false">Filtrar por</Link>
                             <div className="dropdown-menu">
-                                <Link className="dropdown-item" href="#">Fecha</Link>
-                                <Link className="dropdown-item" href="#">Ubicación</Link>
+                                <Link className="dropdown-item" href="#">Fecha: Antiguo-Reciente</Link>
+                                <Link className="dropdown-item" href="#">Ubicación: Cercano-Lejano</Link>
+                                <p>Valoracion</p>
+                                <Link className="dropdown-item" href="#">Valoracion: Cercano-Lejano</Link>
                             </div>
                         </div>
 
