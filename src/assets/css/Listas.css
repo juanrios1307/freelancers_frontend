@@ -42,7 +42,21 @@
     border: 1px solid black;
     margin: 1em;
     border-radius: 10px;
-    padding-left: 1em;
-    padding-top: 0.2em;
-    padding-bottom: 0.2em;
+    padding: 0.2em 1em;
+    display: flex;
+    justify-content: space-between;
+}
+.sort-drop{
+    font-family: "Open Sans", sans-serif;
+    background: white;
+    border: white;
+}
+.sort button{
+    padding: 0.3em;
+    border-radius: 10px;
+    background: linear-gradient(90deg, rgb(29, 115, 91) 0%, rgb(40, 121, 19) 100%);
+    color: whitesmoke;
+}
+.sort button:hover{
+    background: #060b26;
 }

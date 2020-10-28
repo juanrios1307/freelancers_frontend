@@ -115,14 +115,28 @@ class AnuncesBuscados extends React.Component {
                             </div>
 
                             <div className="sort">
-                                <Link className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                                      aria-haspopup="true" aria-expanded="false">Filtrar por</Link>
-                                <div className="dropdown-menu">
-                                    <Link className="dropdown-item" href="#">Fecha: Antiguo-Reciente</Link>
-                                    <Link className="dropdown-item" href="#">Ubicación: Cercano-Lejano</Link>
-                                    <p>Valoracion</p>
-                                    <Link className="dropdown-item" href="#">Valoracion: Cercano-Lejano</Link>
-                                </div>
+                                <h8>Filtrar por</h8>
+                                <select className="sort-drop">
+                                    <option  value="workers" >Fecha</option>
+                                    <option  value="workers" >Reciente - Antiguo</option>
+                                    <option  value="anunces" >Antiguo - Reciente</option>
+                                </select>
+                                <select className="sort-drop">
+                                    <option  value="workers" >Valoración</option>
+                                    <option  value="anunces" >Mayor - Menor</option>
+                                    <option  value="workers" >Menor - Mayor</option>
+                                </select>
+                                <select className="sort-drop">
+                                    <option  value="workers" >Años de experiencia</option>
+                                    <option  value="anunces" >Mayor - Menor</option>
+                                    <option  value="workers" >Menor - Mayor</option>
+                                </select>
+                                <select className="sort-drop">
+                                    <option  value="workers" >Ciudad</option>
+                                    <option  value="anunces" >Medellin</option>
+                                    <option  value="workers" >Bogota</option>
+                                    <option  value="workers" >Cali</option>
+                                </select>
                             </div>
 
                             <div item xs={12}>
