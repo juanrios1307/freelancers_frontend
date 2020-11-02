@@ -193,24 +193,24 @@ class WorkersBuscados extends React.Component {
                                 <h8>Filtrar por</h8>
                                 <select className="sort-drop">
                                     <option  value="workers" >Fecha</option>
-                                    <option  value="workers" >Reciente - Antiguo</option>
-                                    <option  value="anunces" >Antiguo - Reciente</option>
+                                    <option  value="reciente" >Reciente - Antiguo</option>
+                                    <option  value="antiguo" >Antiguo - Reciente</option>
                                 </select>
                                 <select className="sort-drop">
                                     <option  value="workers" >Valoración</option>
-                                    <option  value="anunces" >Mayor - Menor</option>
-                                    <option  value="workers" >Menor - Mayor</option>
+                                    <option  value="mayor" >Mayor - Menor</option>
+                                    <option  value="menor" >Menor - Mayor</option>
                                 </select>
                                 <select className="sort-drop">
                                     <option  value="workers" >Años de experiencia</option>
-                                    <option  value="anunces" >Mayor - Menor</option>
-                                    <option  value="workers" >Menor - Mayor</option>
+                                    <option  value="mayor" >Mayor - Menor</option>
+                                    <option  value="menor" >Menor - Mayor</option>
                                 </select>
                                 <select className="sort-drop">
                                     <option  value="workers" >Ciudad</option>
-                                    <option  value="anunces" >Medellin</option>
-                                    <option  value="workers" >Bogota</option>
-                                    <option  value="workers" >Cali</option>
+                                    <option  value="medellin" >Medellin</option>
+                                    <option  value="bogota" >Bogota</option>
+                                    <option  value="cali" >Cali</option>
                                 </select>
                                 <button>Aplicar</button>
                             </div>
