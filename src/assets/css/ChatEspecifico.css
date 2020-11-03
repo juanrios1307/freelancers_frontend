@@ -72,3 +72,12 @@ li.worker {
     background: black;
     color: white;
 }
+.date{
+    color: whitesmoke;
+    font-size: 10px;
+    margin-bottom: 0;
+    text-align: right;
+}
+.messages{
+    margin-bottom: 0.2em;
+}
