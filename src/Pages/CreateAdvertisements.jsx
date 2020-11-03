@@ -81,7 +81,7 @@ class CreateAdvertisements extends Component {
 
     render() {
         if (this.state.bool) {
-            return <Redirect to='/dashboard'/>
+            return <Redirect to='/misanuncios'/>
         } else {
             return (
                 <div>
