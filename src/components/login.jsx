@@ -44,7 +44,6 @@ export class Login extends React.Component {
 
         if(status===200){
             Swal.fire({
-                icon: 'success',
                 title: mensaje,
 
             })
@@ -56,7 +55,6 @@ export class Login extends React.Component {
             })
         }else{
             Swal.fire({
-                icon: 'error',
                 title: mensaje,
 
             })

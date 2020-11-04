@@ -17,7 +17,7 @@ class MisAnuncios extends React.Component {
         };
         this.getData = this.getData.bind(this);
         this.deleteAnuncio = this.deleteAnuncio.bind(this);
-        this.specificWorker=this.specificWorker.bind(this);
+        this.specificAnunce=this.specificAnunce.bind(this);
         this.editAnuncio=this.editAnuncio.bind(this);
     }
 
@@ -28,6 +28,7 @@ class MisAnuncios extends React.Component {
     async editAnuncio(id,e){
 
         localStorage.setItem("editID",id)
+        localStorage.setItem("editIDAux",id)
         window.location.reload()
     }
 
@@ -51,15 +52,15 @@ class MisAnuncios extends React.Component {
         var response = await Axios(config);
 
         Swal.fire({
-            icon: 'success',
             title: response.data.data
         })
 
         window.location.reload();
     }
 
-    specificWorker(id){
+    specificAnunce(id){
         localStorage.setItem("anunceID",id)
+        localStorage.setItem("anunceIDAux",id)
 
         window.location.reload();
     }
@@ -100,7 +101,7 @@ class MisAnuncios extends React.Component {
 
 
                             <button type="button" className="btn btn-outline btn-list"  onClick={(e) => this.deleteAnuncio(anunces._id,e)}><AiIcons.AiFillDelete/></button>
-                            <button type="button" className="btn btn-outline btn-list"   onClick={(e) => this.specificWorker(anunces._id)}><AiIcons.AiFillEye/></button>
+                            <button type="button" className="btn btn-outline btn-list"   onClick={(e) => this.specificAnunce(anunces._id)}><AiIcons.AiFillEye/></button>
 
                             <div className="card-footer">
                                 <small className="text-muted">Subido {moment(anunces.date).format('DD/MM/YYYY')} </small>

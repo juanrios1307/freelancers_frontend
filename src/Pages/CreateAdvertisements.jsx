@@ -70,7 +70,6 @@ class CreateAdvertisements extends Component {
 
         console.log(mensaje)
         Swal.fire({
-            icon: 'success',
             title: mensaje
         })
 

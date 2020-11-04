@@ -15,7 +15,6 @@ class Comentario extends Component {
     }
 
     componentDidMount() {
-        console.log("Hola este es un comentario")
         this.getData();
     }
 

@@ -37,7 +37,6 @@ export class Register extends React.Component {
 
             console.log(mensaje)
             Swal.fire({
-                icon: 'success',
                 title: mensaje
             })
         }
@@ -49,26 +48,22 @@ export class Register extends React.Component {
 
         if (str.length < 6) {
             Swal.fire({
-                icon: 'error',
                 title: "La contraseña debe contener al menos 6 caracteres"
             })
             return true
         } if (str.length > 50) {
             Swal.fire({
-                icon: 'error',
                 title: "La contraseña debe contener menos de 50 caracteres"
             })
             return true
         } if (str.match(/\d/) == null) {
             Swal.fire({
-                icon: 'error',
                 title: "La contraseña debe contener al menos 1 numero"
             })
 
             return true
         } if (str.match(/[a-zA-Z]/) == null) {
             Swal.fire({
-                icon: 'error',
                 title: "La contraseña debe contener al menos 1 letra"
             })
             return true

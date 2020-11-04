@@ -39,7 +39,6 @@ class AnuncesBuscados extends React.Component {
             window.location.reload();
         }else{
             Swal.fire({
-                icon: 'info',
                 title: "Por favor registrese antes de continuar"
             })
         }
@@ -47,7 +46,7 @@ class AnuncesBuscados extends React.Component {
 
     async getData() {
 
-        const profesion = localStorage.getItem("profesion")
+        const profesion = localStorage.getItem("profesionAux")
         localStorage.removeItem("profesion")
         localStorage.removeItem("categoria")
 

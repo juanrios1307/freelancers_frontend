@@ -44,7 +44,7 @@ class WorkerEspecifico extends Component {
     }
 
     async getData(){
-        this.state.id=localStorage.getItem("workerID")
+        this.state.id=localStorage.getItem("workerIDAux")
 
         localStorage.removeItem("workerID")
 
@@ -106,17 +106,19 @@ class WorkerEspecifico extends Component {
             const data = res.data.data;
 
             Swal.fire({
-                icon: 'success',
                 title: data
             })
 
+            window.location.reload()
 
         }else{
             Swal.fire({
-                icon: 'info',
                 title: "Por favor registrese antes de continuar"
             })
         }
+
+        this.setState({comment:''})
+
     }
 
     async savePub(Save,e){
@@ -145,13 +147,11 @@ class WorkerEspecifico extends Component {
             var response = await Axios(config);
 
             Swal.fire({
-                icon: 'success',
                 title: response.data.data
             })
 
         }else{
             Swal.fire({
-                icon: 'info',
                 title: "Por favor registrese antes de continuar"
             })
 
@@ -186,17 +186,18 @@ class WorkerEspecifico extends Component {
             const data = res.data.data;
 
             Swal.fire({
-                icon: 'success',
                 title: data
             })
 
+            window.location.reload();
 
         }else{
             Swal.fire({
-                icon: 'info',
                 title: "Por favor registrese antes de continuar"
             })
         }
+
+        this.setState({mensaje:''})
 
     }
 
@@ -208,7 +209,6 @@ class WorkerEspecifico extends Component {
             window.location.reload();
         }else{
             Swal.fire({
-                icon: 'info',
                 title: "Por favor registrese antes de continuar"
             })
         }
@@ -268,7 +268,7 @@ class WorkerEspecifico extends Component {
                                 </div>
                                 <div className="coments">
                                     <ul>
-                                        <Comentario id={localStorage.getItem("workerID")}/>
+                                        <Comentario id={localStorage.getItem("workerIDAux")}/>
                                     </ul>
                                 </div>
                             </div>
@@ -337,7 +337,7 @@ class WorkerEspecifico extends Component {
                                 </div>
                                 <div className="coments">
                                     <ul>
-                                        <Comentario id={localStorage.getItem("workerID")}/>
+                                        <Comentario id={localStorage.getItem("workerIDAux")}/>
                                     </ul>
                                 </div>
                             </div>
@@ -348,15 +348,10 @@ class WorkerEspecifico extends Component {
                                 <p>Teléfono: {this.state.telefono}</p>
                                 <p>Correo: {this.state.correo}</p>
                                 <form onSubmit={this.sendMessage}>
-                                    <div>
-                                        <label>Asunto:</label>
-                                        <input type="text" onChange={e => this.setState({asunto: e.target.value})}/>
-                                    </div>
-                                    <div className="mensajelabel">
-                                        <label>Mensaje:</label>
-                                        <input type="text" className="mensajetxt"
-                                               onChange={e => this.setState({mensaje: e.target.value})}/>
-                                    </div>
+                                    <label>Asunto:</label>
+                                    <input type="text" onChange={e => this.setState({asunto: e.target.value})}/>
+                                    <label>Mensaje:</label>
+                                    <input type="text" onChange={e => this.setState({mensaje: e.target.value})}/>
                                     <button type="submit">Enviar</button>
                                 </form>
                             </div>

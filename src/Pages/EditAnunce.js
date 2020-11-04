@@ -11,6 +11,8 @@ class EditAnunce extends React.Component {
         super(props);
         this.state = {
             bool:false,
+            id:'',
+
             tituloA:'',
             especificacionesA:'',
             presupuestoA:'',
@@ -39,9 +41,10 @@ class EditAnunce extends React.Component {
         const url='http://localhost:5000/api/anuncesWork/'
 
         const token = localStorage.getItem("token")
-        const id=localStorage.getItem("editID")
+        const id=localStorage.getItem("editIDAux")
         localStorage.removeItem("editID")
-        localStorage.setItem("id",id)
+
+        this.setState({id:id})
 
         const config = {
             method: 'get',
@@ -72,8 +75,7 @@ class EditAnunce extends React.Component {
         const url='http://localhost:5000/api/anuncesWork/'
 
         const token = localStorage.getItem("token")
-        const id=localStorage.getItem("id")
-        localStorage.removeItem("id")
+        const id=this.state.id
 
         if(this.state.titulo.length<=0){
             this.state.titulo=this.state.tituloA
@@ -106,12 +108,11 @@ class EditAnunce extends React.Component {
         const mensaje = response.data.data
 
         Swal.fire({
-            icon: 'success',
             title: mensaje
         })
 
         this.setState({bool:true});
-        //window.location.reload()
+        window.location.reload()
     }
 
     render()

@@ -31,8 +31,8 @@ class ChatEspecifico extends Component {
     }
 
     getID(){
-        this.state.id=localStorage.getItem("ChatID")
-        this.setState({id:localStorage.getItem("ChatID")})
+        this.state.id=localStorage.getItem("ChatIDAux")
+        this.setState({id:localStorage.getItem("ChatIDAux")})
         localStorage.removeItem("ChatID")
     }
 
@@ -109,28 +109,33 @@ class ChatEspecifico extends Component {
             const url = 'http://localhost:5000/api/chat/'
 
             if(worker) {
+                console.log("IsWorker: "+worker)
                 var config = {
                     method: 'post',
                     url: url + worker,
                     headers: {
                         'access-token': token,
                         'Content-Type': 'application/json',
-                        'isWorker': true
+                        'isworker': "true"
                     }
 
                 };
             }else if(anunce){
+                console.log("IsAnunce: "+anunce)
+
                 var config = {
                     method: 'post',
                     url: url + anunce,
                     headers: {
                         'access-token': token,
                         'Content-Type': 'application/json',
-                        'isWorker': false
+                        'isworker': "false"
                     }
 
                 };
             }
+
+            console.log(config)
 
             const response=await Axios(config)
 
@@ -138,10 +143,11 @@ class ChatEspecifico extends Component {
 
             this.setState({id:response.data.id})
 
+            localStorage.setItem("ChatIDAux",response.data.id)
+
             if(response.status===200) {
 
                 Swal.fire({
-                    icon: 'success',
                     title: mensaje
                 })
 
@@ -179,16 +185,15 @@ class ChatEspecifico extends Component {
 
         if(res.status===200) {
             Swal.fire({
-                icon: 'success',
                 title: data
             })
         }else if(res.status===400){
             Swal.fire({
-                icon: 'error',
                 title: data
             })
         }
 
+        this.setState({mensaje:''})
 
         await this.getMessages();
     }

@@ -33,7 +33,9 @@ function NavBar() {
 
     const buscarProfesion = () => {
         localStorage.setItem("profesion", profesion.toLowerCase())
+        localStorage.setItem("profesionAux", profesion.toLowerCase())
         localStorage.setItem("categoria",categoria)
+        localStorage.setItem("categoriaAux",categoria)
     }
 
     const showButton = () => {

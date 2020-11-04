@@ -62,7 +62,6 @@ export class Register extends React.Component {
 
         console.log(mensaje)
         Swal.fire({
-            icon: 'success',
             title: mensaje
         })
 

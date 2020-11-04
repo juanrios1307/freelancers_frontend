@@ -26,6 +26,7 @@ class MisChats extends React.Component {
 
     specificChat(id){
         localStorage.setItem("ChatID",id)
+        localStorage.setItem("ChatIDAux",id)
 
         window.location.reload();
     }

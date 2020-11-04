@@ -44,7 +44,6 @@ class SavingPub extends React.Component {
         var response = await Axios(config);
 
         Swal.fire({
-            icon: 'success',
             title: response.data.data
         })
 
@@ -53,6 +52,7 @@ class SavingPub extends React.Component {
 
     specificWorker(id){
         localStorage.setItem("workerID",id)
+        localStorage.setItem("workerIDAux",id)
 
         window.location.reload();
     }
@@ -60,6 +60,7 @@ class SavingPub extends React.Component {
     crearChat(id,e){
         e.preventDefault()
         localStorage.setItem("workerIDChat",id)
+        localStorage.setItem("workerIDChatAux",id)
 
         window.location.reload();
     }

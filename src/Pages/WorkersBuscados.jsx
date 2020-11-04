@@ -51,13 +51,11 @@ class WorkersBuscados extends React.Component {
             var response = await Axios(config);
 
             Swal.fire({
-                icon: 'success',
                 title: response.data.data
             })
 
         }else{
             Swal.fire({
-                icon: 'info',
                 title: "Por favor registrese antes de continuar"
             })
 
@@ -66,6 +64,7 @@ class WorkersBuscados extends React.Component {
 
     specificWorker(id){
         localStorage.setItem("workerID",id)
+        localStorage.setItem("workerIDAux",id)
 
         window.location.reload();
     }
@@ -79,7 +78,7 @@ class WorkersBuscados extends React.Component {
 
     async getData() {
 
-        const profesion = localStorage.getItem("profesion")
+        const profesion = localStorage.getItem("profesionAux")
         localStorage.removeItem("profesion")
         localStorage.removeItem("categoria")
 

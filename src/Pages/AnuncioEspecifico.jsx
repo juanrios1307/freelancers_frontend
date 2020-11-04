@@ -39,7 +39,7 @@ class AnuncioEspecifico extends Component {
     }
 
     async getData(){
-        this.state.id=localStorage.getItem("anunceID")
+        this.state.id=localStorage.getItem("anunceIDAux")
         if(this.state.id) {
             localStorage.removeItem("anunceID")
 
@@ -101,14 +101,12 @@ class AnuncioEspecifico extends Component {
             const data = res.data.data;
 
             Swal.fire({
-                icon: 'success',
                 title: data
             })
 
 
         }else{
             Swal.fire({
-                icon: 'info',
                 title: "Por favor registrese antes de continuar"
             })
         }
@@ -124,7 +122,6 @@ class AnuncioEspecifico extends Component {
             window.location.reload();
         }else{
             Swal.fire({
-                icon: 'info',
                 title: "Por favor registrese antes de continuar"
             })
         }
