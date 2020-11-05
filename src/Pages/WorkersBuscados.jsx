@@ -13,16 +13,28 @@ class WorkersBuscados extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            Content: ''
+            Content: '',
+            Profesiones :'',
+            profesion:''
         };
         this.getData = this.getData.bind(this);
+        this.getCiudades=this.getCiudades.bind(this);
+        this.getContent=this.getContent.bind(this)
+
         this.savePub=this.savePub.bind(this);
         this.specificWorker=this.specificWorker.bind(this);
         this.crearChat=this.crearChat.bind(this);
+
+        this.getFiltroCiudad=this.getFiltroCiudad.bind(this)
+        this.getFiltroValoracion=this.getFiltroValoracion.bind(this)
+        this.getFiltroYearsExperience=this.getFiltroYearsExperience.bind(this)
+
+
     }
 
     componentDidMount() {
         this.getData();
+        this.getCiudades();
     }
 
     async savePub(Save,e){
@@ -78,7 +90,10 @@ class WorkersBuscados extends React.Component {
 
     async getData() {
 
-        const profesion = localStorage.getItem("profesionAux")
+        this.state.profesion = localStorage.getItem("profesionAux")
+
+        this.setState({profesion:localStorage.getItem("profesionAux")})
+
         localStorage.removeItem("profesion")
         localStorage.removeItem("categoria")
 
@@ -89,7 +104,7 @@ class WorkersBuscados extends React.Component {
             method: 'get',
             url: url,
             headers: {
-                'profesion': profesion
+                'profesion':  this.state.profesion
             }
         };
 
@@ -99,27 +114,122 @@ class WorkersBuscados extends React.Component {
 
        var data = response.data.data;
 
+       this.getContent(data)
+
+    }
+
+    async getCiudades() {
+        //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/filters/ciudades'
+        const url = 'http://localhost:5000/api/filters/ciudades'
+
+        const config = {
+            method: 'get',
+            url: url,
+            headers: {
+            }
+        };
+
+
+        var response=await Axios(config);
+
+        var data = response.data.data;
+
+        this.setState({
+            Profesiones: data.map((ciudad) => (
+                <option  value={ciudad} >{ciudad}</option>
+            ))
+        })
+    }
+
+    async getFiltroCiudad(ciudad){
+
+        //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/filters/ciudades'
+        const url = 'http://localhost:5000/api/filters/ciudades'
+
+        const config = {
+            method: 'get',
+            url: url,
+            headers: {
+                'profesion':  this.state.profesion,
+                'ciudad': ciudad
+            }
+        };
+
+
+        var response=await Axios(config);
+
+        var data = response.data.data;
+
+        this.getContent(data)
+
+    }
+
+    async getFiltroYearsExperience(ismayor){
+
+        //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/filters/years'
+        const url = 'http://localhost:5000/api/filters/years'
+
+        const config = {
+            method: 'get',
+            url: url,
+            headers: {
+                'profesion':  this.state.profesion,
+                'ismayor': ismayor
+            }
+        };
+
+
+        var response=await Axios(config);
+
+        var data = response.data.data;
+
+        this.getContent(data)
+    }
+
+    async getFiltroValoracion(ismayor){
+
+        //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/filters/promedio'
+        const url = 'http://localhost:5000/api/filters/promedio'
+
+        const config = {
+            method: 'get',
+            url: url,
+            headers: {
+                'profesion':  this.state.profesion,
+                'ismayor': ismayor
+            }
+        };
+
+
+        var response=await Axios(config);
+
+        var data = response.data.data;
+
+        this.getContent(data)
+
+    }
+
+    getContent(data){
         this.setState({
             Content: data.map((worker) => (
-                    <div className="media" key={worker._id}>
-                        <img className="mr-3 imgList" src={worker.imagen} alt='imagen' />
-                        <div className="media-body">
-                            <h6 className="mt-0">Nombre: {worker.user.nombre}</h6>
-                            <p className="card-text">Email: {worker.user.correo}</p>
-                            <p className="card-text">Profesión : {worker.profesion}</p>
-                            <p className="card-text">Experiencia: {worker.experiencia}</p>
-                            <p className="card-text">Años de experiencia: {worker.yearsXperience}</p>
+                <div className="media" key={worker._id}>
+                    <img className="mr-3 imgList" src={worker.imagen} alt='imagen' />
+                    <div className="media-body">
+                        <h6 className="mt-0">Nombre: {worker.user.nombre}</h6>
+                        <p className="card-text">Email: {worker.user.correo}</p>
+                        <p className="card-text">Profesión : {worker.profesion}</p>
+                        <p className="card-text">Experiencia: {worker.experiencia}</p>
+                        <p className="card-text">Años de experiencia: {worker.yearsXperience}</p>
 
-                            <button type="button" className="btn btn-outline btn-list"  onClick={(e) => this.crearChat(worker._id,e)}><AiIcons.AiFillMessage/></button>
-                            <button type="button" className="btn btn-outline btn-list"  onClick={(e) => this.specificWorker(worker._id)}><AiIcons.AiFillEye/></button>
-                            <button type="button" className="btn btn-outline btn-list"  onClick={(e) => this.savePub(worker._id,e)}><BsIcons.BsFillBookmarkFill/></button>
-                        </div>
-
+                        <button type="button" className="btn btn-outline btn-list"  onClick={(e) => this.crearChat(worker._id,e)}><AiIcons.AiFillMessage/></button>
+                        <button type="button" className="btn btn-outline btn-list"  onClick={(e) => this.specificWorker(worker._id)}><AiIcons.AiFillEye/></button>
+                        <button type="button" className="btn btn-outline btn-list"  onClick={(e) => this.savePub(worker._id,e)}><BsIcons.BsFillBookmarkFill/></button>
                     </div>
 
-                ))
-        })
+                </div>
 
+            ))
+        })
     }
 
     render() {
@@ -145,28 +255,22 @@ class WorkersBuscados extends React.Component {
 
                             <div className="sort">
                                 <h8>Filtrar por</h8>
-                            <select className="sort-drop">
-                                <option  value="workers" >Fecha</option>
-                                <option  value="workers" >Reciente - Antiguo</option>
-                                <option  value="anunces" >Antiguo - Reciente</option>
+
+                            <select className="sort-drop" onChange={(e) => this.getFiltroValoracion(e.target.value)} >
+                                <option >Valoración</option>
+                                <option  value="true" >Mayor - Menor</option>
+                                <option  value="false" >Menor - Mayor</option>
                             </select>
-                            <select className="sort-drop">
-                                <option  value="workers" >Valoración</option>
-                                <option  value="anunces" >Mayor - Menor</option>
-                                <option  value="workers" >Menor - Mayor</option>
+                            <select className="sort-drop" onChange={(e) => this.getFiltroYearsExperience(e.target.value)}>
+                                <option  >Años de experiencia</option>
+                                <option  value="true" >Mayor - Menor</option>
+                                <option  value="false" >Menor - Mayor</option>
                             </select>
-                            <select className="sort-drop">
-                                <option  value="workers" >Años de experiencia</option>
-                                <option  value="anunces" >Mayor - Menor</option>
-                                <option  value="workers" >Menor - Mayor</option>
+                            <select className="sort-drop" onChange={(e) => this.getFiltroCiudad(e.target.value)}>
+                                <option >Ciudad</option>
+                                {this.state.Profesiones}
                             </select>
-                            <select className="sort-drop">
-                                <option  value="workers" >Ciudad</option>
-                                <option  value="anunces" >Medellin</option>
-                                <option  value="workers" >Bogota</option>
-                                <option  value="workers" >Cali</option>
-                            </select>
-                                <button>Aplicar</button>
+
                             </div>
                             <div item xs={12}>
                                 {this.state.Content}
@@ -190,28 +294,22 @@ class WorkersBuscados extends React.Component {
 
                             <div className="sort">
                                 <h8>Filtrar por</h8>
-                                <select className="sort-drop">
-                                    <option  value="workers" >Fecha</option>
-                                    <option  value="reciente" >Reciente - Antiguo</option>
-                                    <option  value="antiguo" >Antiguo - Reciente</option>
+
+                                <select className="sort-drop" onChange={(e) => this.getFiltroValoracion(e.target.value)} >
+                                    <option >Valoración</option>
+                                    <option  value="true" >Mayor - Menor</option>
+                                    <option  value="false" >Menor - Mayor</option>
                                 </select>
-                                <select className="sort-drop">
-                                    <option  value="workers" >Valoración</option>
-                                    <option  value="mayor" >Mayor - Menor</option>
-                                    <option  value="menor" >Menor - Mayor</option>
+                                <select className="sort-drop" onChange={(e) => this.getFiltroYearsExperience(e.target.value)}>
+                                    <option  >Años de experiencia</option>
+                                    <option  value="true" >Mayor - Menor</option>
+                                    <option  value="false" >Menor - Mayor</option>
                                 </select>
-                                <select className="sort-drop">
-                                    <option  value="workers" >Años de experiencia</option>
-                                    <option  value="mayor" >Mayor - Menor</option>
-                                    <option  value="menor" >Menor - Mayor</option>
+                                <select className="sort-drop" onChange={(e) => this.getFiltroCiudad(e.target.value)}>
+                                    <option >Ciudad</option>
+                                    {this.state.Profesiones}
                                 </select>
-                                <select className="sort-drop">
-                                    <option  value="workers" >Ciudad</option>
-                                    <option  value="medellin" >Medellin</option>
-                                    <option  value="bogota" >Bogota</option>
-                                    <option  value="cali" >Cali</option>
-                                </select>
-                                <button>Aplicar</button>
+
                             </div>
 
                             <div item xs={12}>

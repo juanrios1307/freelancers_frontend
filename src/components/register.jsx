@@ -31,6 +31,8 @@ export class Register extends React.Component {
 
         }else {
 
+            this.state.ciudad=this.state.ciudad.toLowerCase()
+
             const response = await Axios.post(url, this.state)
 
             const mensaje = response.data.mensaje
