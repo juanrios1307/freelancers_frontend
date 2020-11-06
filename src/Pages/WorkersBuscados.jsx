@@ -14,7 +14,7 @@ class WorkersBuscados extends React.Component {
         super(props);
         this.state = {
             Content: '',
-            Profesiones :'',
+            Ciudades :'',
             profesion:''
         };
         this.getData = this.getData.bind(this);
@@ -135,7 +135,7 @@ class WorkersBuscados extends React.Component {
         var data = response.data.data;
 
         this.setState({
-            Profesiones: data.map((ciudad) => (
+            Ciudades: data.map((ciudad) => (
                 <option  value={ciudad} >{ciudad}</option>
             ))
         })
@@ -268,7 +268,7 @@ class WorkersBuscados extends React.Component {
                             </select>
                             <select className="sort-drop" onChange={(e) => this.getFiltroCiudad(e.target.value)}>
                                 <option >Ciudad</option>
-                                {this.state.Profesiones}
+                                {this.state.Ciudades}
                             </select>
 
                             </div>
@@ -307,7 +307,7 @@ class WorkersBuscados extends React.Component {
                                 </select>
                                 <select className="sort-drop" onChange={(e) => this.getFiltroCiudad(e.target.value)}>
                                     <option >Ciudad</option>
-                                    {this.state.Profesiones}
+                                    {this.state.Ciudades}
                                 </select>
 
                             </div>

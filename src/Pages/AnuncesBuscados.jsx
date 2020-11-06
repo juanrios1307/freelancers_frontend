@@ -14,10 +14,11 @@ class AnuncesBuscados extends React.Component {
         super(props);
         this.state = {
             Content: '',
-            Profesiones:'',
+            Ciudades:'',
             profesion:''
         };
         this.getData = this.getData.bind(this);
+        this.getCiudades=this.getCiudades.bind(this);
         this.getContent=this.getContent.bind(this)
 
         this.specificWorker=this.specificWorker.bind(this);
@@ -99,7 +100,7 @@ class AnuncesBuscados extends React.Component {
         var data = response.data.data;
 
         this.setState({
-            Profesiones: data.map((ciudad) => (
+            Ciudades: data.map((ciudad) => (
                 <option  value={ciudad} >{ciudad}</option>
             ))
         })
@@ -235,7 +236,7 @@ class AnuncesBuscados extends React.Component {
                                 </select>
                                 <select className="sort-drop" onChange={(e) => this.getFiltroCiudad(e.target.value)}>
                                     <option >Ciudad</option>
-                                    {this.state.Profesiones}
+                                    {this.state.Ciudades}
                                 </select>
 
                             </div>
@@ -260,30 +261,23 @@ class AnuncesBuscados extends React.Component {
                             </div>
 
                             <div className="sort">
-                            <h8>Filtrar por</h8>
-                            <select className="sort-drop">
-                                <option  value="workers" >Fecha</option>
-                                <option  value="workers" >Reciente - Antiguo</option>
-                                <option  value="anunces" >Antiguo - Reciente</option>
-                            </select>
-                            <select className="sort-drop">
-                                <option  value="workers" >Valoración</option>
-                                <option  value="anunces" >Mayor - Menor</option>
-                                <option  value="workers" >Menor - Mayor</option>
-                            </select>
-                            <select className="sort-drop">
-                                <option  value="workers" >Años de experiencia</option>
-                                <option  value="anunces" >Mayor - Menor</option>
-                                <option  value="workers" >Menor - Mayor</option>
-                            </select>
-                            <select className="sort-drop">
-                                <option  value="workers" >Ciudad</option>
-                                <option  value="anunces" >Medellin</option>
-                                <option  value="workers" >Bogota</option>
-                                <option  value="workers" >Cali</option>
-                            </select>
-                            <button>Aplicar</button>
-                        </div>
+                                <h8>Filtrar por</h8>
+                                <select className="sort-drop" onChange={(e) => this.getFiltroDate(e.target.value)}>
+                                    <option >Fecha</option>
+                                    <option  value="true" >Reciente - Antiguo</option>
+                                    <option  value="false" >Antiguo - Reciente</option>
+                                </select>
+                                <select className="sort-drop" onChange={(e) => this.getFiltroPresupuesto(e.target.value)}>
+                                    <option >Presupuesto</option>
+                                    <option  value="true" >Mayor - Menor</option>
+                                    <option  value="false" >Menor - Mayor</option>
+                                </select>
+                                <select className="sort-drop" onChange={(e) => this.getFiltroCiudad(e.target.value)}>
+                                    <option >Ciudad</option>
+                                    {this.state.Ciudades}
+                                </select>
+
+                            </div>
 
                             <div item xs={12}>
                                 {this.state.Content}
