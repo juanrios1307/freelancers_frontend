@@ -7,6 +7,7 @@ import * as AiIcons from "react-icons/ai/index";
 import * as BsIcons from "react-icons/bs/index";
 import {Link, Redirect} from "react-router-dom";
 import Swal from "sweetalert2";
+import {fiFI} from "@material-ui/core/locale";
 
 class WorkersBuscados extends React.Component {
 
@@ -15,7 +16,11 @@ class WorkersBuscados extends React.Component {
         this.state = {
             Content: '',
             Ciudades :'',
-            profesion:''
+            profesion:'',
+
+            ciudad:'',
+            valoracion:"true",
+            yearsExp:"true",
         };
         this.getData = this.getData.bind(this);
         this.getCiudades=this.getCiudades.bind(this);
@@ -104,11 +109,11 @@ class WorkersBuscados extends React.Component {
             method: 'get',
             url: url,
             headers: {
-                'profesion':  this.state.profesion
+                'profesion':    this.state.profesion,
+                'valoracion':   this.state.valoracion,
+                'years':        this.state.yearsExp
             }
         };
-
-
 
        var response=await Axios(config);
 
@@ -143,28 +148,42 @@ class WorkersBuscados extends React.Component {
 
     async getFiltroCiudad(ciudad){
 
-        //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/filters/ciudades'
-        const url = 'http://localhost:5000/api/filters/ciudades'
+        this.state.ciudad=ciudad
+        this.setState({ciudad:ciudad})
 
-        const config = {
-            method: 'get',
-            url: url,
-            headers: {
-                'profesion':  this.state.profesion,
-                'ciudad': ciudad
-            }
-        };
+       if(ciudad != ' ') {
+           //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/filters/ciudades'
+           const url = 'http://localhost:5000/api/filters/ciudades'
+
+           const config = {
+               method: 'get',
+               url: url,
+               headers: {
+                   'profesion': this.state.profesion,
+                   'ciudad': ciudad,
+                   'valoracion':this.state.valoracion,
+                   'years':this.state.yearsExp
+               }
+           };
 
 
-        var response=await Axios(config);
+           var response = await Axios(config);
 
-        var data = response.data.data;
+           var data = response.data.data;
 
-        this.getContent(data)
+           this.getContent(data)
+       }else{
+           this.getData()
+       }
 
     }
 
-    async getFiltroYearsExperience(ismayor){
+    async getFiltroYearsExperience(yearsExp){
+
+        this.state.yearsExp=yearsExp
+        this.setState({yearsExp:yearsExp})
+
+
 
         //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/filters/years'
         const url = 'http://localhost:5000/api/filters/years'
@@ -174,7 +193,9 @@ class WorkersBuscados extends React.Component {
             url: url,
             headers: {
                 'profesion':  this.state.profesion,
-                'ismayor': ismayor
+                'ismayor': this.state.yearsExp,
+                'ciudad':this.state.ciudad==''?'':this.state.ciudad,
+                'valoracion':this.state.valoracion
             }
         };
 
@@ -188,6 +209,9 @@ class WorkersBuscados extends React.Component {
 
     async getFiltroValoracion(ismayor){
 
+        this.state.valoracion=ismayor
+        this.setState({valoracion:ismayor})
+
         //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/filters/promedio'
         const url = 'http://localhost:5000/api/filters/promedio'
 
@@ -196,7 +220,9 @@ class WorkersBuscados extends React.Component {
             url: url,
             headers: {
                 'profesion':  this.state.profesion,
-                'ismayor': ismayor
+                'ismayor': this.state.valoracion,
+                'ciudad':this.state.ciudad==''?'':this.state.ciudad,
+                'years':this.state.yearsExp
             }
         };
 
@@ -206,6 +232,7 @@ class WorkersBuscados extends React.Component {
         var data = response.data.data;
 
         this.getContent(data)
+
 
     }
 
@@ -218,7 +245,7 @@ class WorkersBuscados extends React.Component {
                         <h6 className="mt-0">Nombre: {worker.user.nombre}</h6>
                         <p className="card-text">Email: {worker.user.correo}</p>
                         <p className="card-text">Profesión : {worker.profesion}</p>
-                        <p className="card-text">Experiencia: {worker.experiencia}</p>
+                        <p className="card-text">Promedio: {worker.promedio}</p>
                         <p className="card-text">Años de experiencia: {worker.yearsXperience}</p>
 
                         <button type="button" className="btn btn-outline btn-list"  onClick={(e) => this.crearChat(worker._id,e)}><AiIcons.AiFillMessage/></button>
@@ -256,22 +283,31 @@ class WorkersBuscados extends React.Component {
                             <div className="sort">
                                 <h8>Filtrar por</h8>
 
-                            <select className="sort-drop" onChange={(e) => this.getFiltroValoracion(e.target.value)} >
-                                <option >Valoración</option>
-                                <option  value="true" >Mayor - Menor</option>
-                                <option  value="false" >Menor - Mayor</option>
-                            </select>
-                            <select className="sort-drop" onChange={(e) => this.getFiltroYearsExperience(e.target.value)}>
-                                <option  >Años de experiencia</option>
-                                <option  value="true" >Mayor - Menor</option>
-                                <option  value="false" >Menor - Mayor</option>
-                            </select>
-                            <select className="sort-drop" onChange={(e) => this.getFiltroCiudad(e.target.value)}>
-                                <option >Ciudad</option>
-                                {this.state.Ciudades}
-                            </select>
+                                <div className="form-group">
+                                    <label htmlFor="exampleFormControlSelect1">Valoración</label>
+                                    <select className="form-control" onChange={(e) => this.getFiltroValoracion(e.target.value)} >
+                                        <option  value="true" >Mayor - Menor</option>
+                                        <option  value="false" >Menor - Mayor</option>
+                                    </select>
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="exampleFormControlSelect1">Años experiencia</label>
+                                    <select className="form-control" onChange={(e) => this.getFiltroYearsExperience(e.target.value)} >
+                                        <option  value="true"  >Mayor - Menor</option>
+                                        <option  value="false" >Menor - Mayor</option>
+                                    </select>
+                                </div>
+
+                                <div className="form-group">
+                                    <label htmlFor="exampleFormControlSelect1">Ciudad</label>
+                                    <select className="form-control" onChange={(e) => this.getFiltroCiudad(e.target.value)} >
+                                        <option value=" ">Todos</option>
+                                        {this.state.Ciudades}
+                                    </select>
+                                </div>
 
                             </div>
+
                             <div item xs={12}>
                                 {this.state.Content}
                             </div>
@@ -295,20 +331,28 @@ class WorkersBuscados extends React.Component {
                             <div className="sort">
                                 <h8>Filtrar por</h8>
 
-                                <select className="sort-drop" onChange={(e) => this.getFiltroValoracion(e.target.value)} >
-                                    <option >Valoración</option>
-                                    <option  value="true" >Mayor - Menor</option>
-                                    <option  value="false" >Menor - Mayor</option>
-                                </select>
-                                <select className="sort-drop" onChange={(e) => this.getFiltroYearsExperience(e.target.value)}>
-                                    <option  >Años de experiencia</option>
-                                    <option  value="true" >Mayor - Menor</option>
-                                    <option  value="false" >Menor - Mayor</option>
-                                </select>
-                                <select className="sort-drop" onChange={(e) => this.getFiltroCiudad(e.target.value)}>
-                                    <option >Ciudad</option>
-                                    {this.state.Ciudades}
-                                </select>
+                                <div className="form-group">
+                                    <label htmlFor="exampleFormControlSelect1">Valoración</label>
+                                    <select className="form-control" onChange={(e) => this.getFiltroValoracion(e.target.value)} >
+                                        <option  value="true" >Mayor - Menor</option>
+                                        <option  value="false" >Menor - Mayor</option>
+                                    </select>
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="exampleFormControlSelect1">Años experiencia</label>
+                                    <select className="form-control" onChange={(e) => this.getFiltroYearsExperience(e.target.value)} >
+                                        <option  value="true"  >Mayor - Menor</option>
+                                        <option  value="false" >Menor - Mayor</option>
+                                    </select>
+                                </div>
+
+                                <div className="form-group">
+                                    <label htmlFor="exampleFormControlSelect1">Ciudad</label>
+                                    <select className="form-control" onChange={(e) => this.getFiltroCiudad(e.target.value)} >
+                                        <option value=" ">Todos</option>
+                                        {this.state.Ciudades}
+                                    </select>
+                                </div>
 
                             </div>
 
