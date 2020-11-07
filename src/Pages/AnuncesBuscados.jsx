@@ -15,7 +15,11 @@ class AnuncesBuscados extends React.Component {
         this.state = {
             Content: '',
             Ciudades:'',
-            profesion:''
+
+            profesion:'',
+            ciudad:'',
+            presupuesto:'true',
+            date:'true'
         };
         this.getData = this.getData.bind(this);
         this.getCiudades=this.getCiudades.bind(this);
@@ -71,7 +75,9 @@ class AnuncesBuscados extends React.Component {
             method: 'get',
             url: url,
             headers: {
-                'profesion': this.state.profesion
+                'profesion': this.state.profesion,
+                'fecha':this.state.date,
+                'presupuesto':this.state.presupuesto
             }
         };
 
@@ -108,27 +114,39 @@ class AnuncesBuscados extends React.Component {
 
     async getFiltroCiudad(ciudad){
 
-        //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/filters/ciudadesa'
-        const url = 'http://localhost:5000/api/filters/ciudadesa'
+        this.state.ciudad=ciudad
+        this.setState({ciudad:ciudad})
 
-        const config = {
-            method: 'get',
-            url: url,
-            headers: {
-                'profesion':  this.state.profesion,
-                'ciudad': ciudad
-            }
-        };
+        if(ciudad != ' ') {
+            //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/filters/ciudadesa'
+            const url = 'http://localhost:5000/api/filters/ciudadesa'
+
+            const config = {
+                method: 'get',
+                url: url,
+                headers: {
+                    'profesion': this.state.profesion,
+                    'ciudad':  this.state.ciudad,
+                    'fecha':this.state.date,
+                    'presupuesto':this.state.presupuesto
+                }
+            };
 
 
-        var response=await Axios(config);
+            var response = await Axios(config);
 
-        var data = response.data.data;
+            var data = response.data.data;
 
-        this.getContent(data)
+            this.getContent(data)
+        }else{
+            this.getData()
+        }
     }
 
     async getFiltroDate(ismayor){
+
+        this.state.date=ismayor
+        this.setState({date:ismayor})
 
         //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/filters/date'
         const url = 'http://localhost:5000/api/filters/date'
@@ -138,7 +156,9 @@ class AnuncesBuscados extends React.Component {
             url: url,
             headers: {
                 'profesion':  this.state.profesion,
-                'ismayor': ismayor
+                'ismayor': ismayor,
+                'presupuesto':this.state.presupuesto,
+                'ciudad':this.state.ciudad==''?'':this.state.ciudad,
             }
         };
 
@@ -153,6 +173,9 @@ class AnuncesBuscados extends React.Component {
 
     async getFiltroPresupuesto(ismayor){
 
+        this.state.presupuesto=ismayor
+        this.setState({presupuesto:ismayor})
+
         //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/filters/presupuesto'
         const url = 'http://localhost:5000/api/filters/presupuesto'
 
@@ -161,7 +184,9 @@ class AnuncesBuscados extends React.Component {
             url: url,
             headers: {
                 'profesion':  this.state.profesion,
-                'ismayor': ismayor
+                'ismayor': ismayor,
+                'fecha':this.state.date,
+                'ciudad':this.state.ciudad==''?'':this.state.ciudad,
             }
         };
 
@@ -224,22 +249,33 @@ class AnuncesBuscados extends React.Component {
 
                             <div className="sort">
                                 <h8>Filtrar por</h8>
-                                <select className="sort-drop" onChange={(e) => this.getFiltroDate(e.target.value)}>
-                                    <option >Fecha</option>
-                                    <option  value="true" >Reciente - Antiguo</option>
-                                    <option  value="false" >Antiguo - Reciente</option>
-                                </select>
-                                <select className="sort-drop" onChange={(e) => this.getFiltroPresupuesto(e.target.value)}>
-                                    <option >Presupuesto</option>
-                                    <option  value="true" >Mayor - Menor</option>
-                                    <option  value="false" >Menor - Mayor</option>
-                                </select>
-                                <select className="sort-drop" onChange={(e) => this.getFiltroCiudad(e.target.value)}>
-                                    <option >Ciudad</option>
-                                    {this.state.Ciudades}
-                                </select>
+
+                                <div className="form-group">
+                                    <label htmlFor="exampleFormControlSelect1">Fecha</label>
+                                    <select className="form-control" onChange={(e) => this.getFiltroDate(e.target.value)} >
+                                        <option  value="true"  >Reciente - Antiguo</option>
+                                        <option  value="false" >Antiguo - Reciente</option>
+                                    </select>
+                                </div>
+
+                                <div className="form-group">
+                                    <label htmlFor="exampleFormControlSelect1">Presupuesto</label>
+                                    <select className="form-control" onChange={(e) => this.getFiltroPresupuesto(e.target.value)} >
+                                        <option  value="true"  >Mayor - Menor</option>
+                                        <option  value="false" >Menor - Mayor</option>
+                                    </select>
+                                </div>
+
+                                <div className="form-group">
+                                    <label htmlFor="exampleFormControlSelect1">Ciudad</label>
+                                    <select className="form-control" onChange={(e) => this.getFiltroCiudad(e.target.value)} >
+                                        <option value=" ">Todos</option>
+                                        {this.state.Ciudades}
+                                    </select>
+                                </div>
 
                             </div>
+
                             <div item xs={12}>
                                 {this.state.Content}
                             </div>
@@ -262,20 +298,30 @@ class AnuncesBuscados extends React.Component {
 
                             <div className="sort">
                                 <h8>Filtrar por</h8>
-                                <select className="sort-drop" onChange={(e) => this.getFiltroDate(e.target.value)}>
-                                    <option >Fecha</option>
-                                    <option  value="true" >Reciente - Antiguo</option>
-                                    <option  value="false" >Antiguo - Reciente</option>
-                                </select>
-                                <select className="sort-drop" onChange={(e) => this.getFiltroPresupuesto(e.target.value)}>
-                                    <option >Presupuesto</option>
-                                    <option  value="true" >Mayor - Menor</option>
-                                    <option  value="false" >Menor - Mayor</option>
-                                </select>
-                                <select className="sort-drop" onChange={(e) => this.getFiltroCiudad(e.target.value)}>
-                                    <option >Ciudad</option>
-                                    {this.state.Ciudades}
-                                </select>
+
+                                <div className="form-group">
+                                    <label htmlFor="exampleFormControlSelect1">Fecha</label>
+                                    <select className="form-control" onChange={(e) => this.getFiltroDate(e.target.value)} >
+                                        <option  value="true"  >Reciente - Antiguo</option>
+                                        <option  value="false" >Antiguo - Reciente</option>
+                                    </select>
+                                </div>
+
+                                <div className="form-group">
+                                    <label htmlFor="exampleFormControlSelect1">Presupuesto</label>
+                                    <select className="form-control" onChange={(e) => this.getFiltroPresupuesto(e.target.value)} >
+                                        <option  value="true"  >Mayor - Menor</option>
+                                        <option  value="false" >Menor - Mayor</option>
+                                    </select>
+                                </div>
+
+                                <div className="form-group">
+                                    <label htmlFor="exampleFormControlSelect1">Ciudad</label>
+                                    <select className="form-control" onChange={(e) => this.getFiltroCiudad(e.target.value)} >
+                                        <option value=" ">Todos</option>
+                                        {this.state.Ciudades}
+                                    </select>
+                                </div>
 
                             </div>
 
