@@ -88,9 +88,15 @@ class WorkersBuscados extends React.Component {
 
     crearChat(id,e){
         e.preventDefault()
-        localStorage.setItem("workerIDChat",id)
+        if(localStorage.getItem("token")) {
+            localStorage.setItem("workerIDChat", id)
 
-        window.location.reload();
+            window.location.reload();
+        }else{
+            Swal.fire({
+                title: "Por favor registrese antes de continuar"
+            })
+        }
     }
 
     async getData() {
