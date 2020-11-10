@@ -35,8 +35,8 @@ class MisChats extends React.Component {
 
         const token = localStorage.getItem("token")
 
-        //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/chat'
-        const url = 'http://localhost:5000/api/chat'
+        const url = 'https://peaceful-ridge-86113.herokuapp.com/api/chat'
+        //const url = 'http://localhost:5000/api/chat'
 
         const config = {
             method: 'get',

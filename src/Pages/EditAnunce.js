@@ -37,8 +37,8 @@ class EditAnunce extends React.Component {
 
     async user() {
 
-        //const url='https://peaceful-ridge-86113.herokuapp.com/api/anuncesWork/'
-        const url='http://localhost:5000/api/anuncesWork/'
+        const url='https://peaceful-ridge-86113.herokuapp.com/api/anuncesWork/'
+        //const url='http://localhost:5000/api/anuncesWork/'
 
         const token = localStorage.getItem("token")
         const id=localStorage.getItem("editIDAux")
@@ -71,8 +71,8 @@ class EditAnunce extends React.Component {
 
         e.preventDefault()
 
-        //const url='https://peaceful-ridge-86113.herokuapp.com/api/anuncesWork/'
-        const url='http://localhost:5000/api/anuncesWork/'
+        const url='https://peaceful-ridge-86113.herokuapp.com/api/anuncesWork/'
+        //const url='http://localhost:5000/api/anuncesWork/'
 
         const token = localStorage.getItem("token")
         const id=this.state.id
