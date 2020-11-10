@@ -51,25 +51,34 @@ class MisChats extends React.Component {
        var data = response.data.data;
        var bool = response.data.bool;
 
-        this.setState({
-            Content: data.map((chat,index) => (
-                    <div className="media" key={chat._id}>
-                        <div className="media-body">
-                            <h4 className="mt-0">{bool[index]?chat.worker.nombre:chat.user.nombre}</h4>
-                            <p className="card-text">{chat.Mensajes.length>0?(chat.Mensajes[chat.Mensajes.length-1].emisor=="user"?chat.user.nombre:chat.worker.nombre):1} : {chat.Mensajes.length>0?(chat.Mensajes[chat.Mensajes.length-1].mensaje):1}</p>
+       if(data.length>0) {
+           this.setState({
+               Content: data.map((chat, index) => (
+                   <div className="media" key={chat._id}>
+                       <div className="media-body">
+                           <h4 className="mt-0">{bool[index] ? chat.worker.nombre : chat.user.nombre}</h4>
+                           <p className="card-text">{chat.Mensajes.length > 0 ? (chat.Mensajes[chat.Mensajes.length - 1].emisor == "user" ? chat.user.nombre : chat.worker.nombre) : 1} : {chat.Mensajes.length > 0 ? (chat.Mensajes[chat.Mensajes.length - 1].mensaje) : 1}</p>
 
-                            <button type="button" className="btn btn-outline btn-list" onClick={(e) => this.specificChat(chat._id)}><AiIcons.AiFillEye/></button>
+                           <button type="button" className="btn btn-outline btn-list"
+                                   onClick={(e) => this.specificChat(chat._id)}><AiIcons.AiFillEye/></button>
 
-                            <div className="card-footer">
-                                <small className="text-muted">{chat.Mensajes.length>0?(moment(chat.Mensajes[chat.Mensajes.length-1].date).format('DD/MM/YYYY')):1}</small>
-                            </div>
-                        </div>
+                           <div className="card-footer">
+                               <small
+                                   className="text-muted">{chat.Mensajes.length > 0 ? (moment(chat.Mensajes[chat.Mensajes.length - 1].date).format('DD/MM/YYYY')) : 1}</small>
+                           </div>
+                       </div>
 
-                    </div>
+                   </div>
 
-                ))
-        })
-
+               ))
+           })
+       }else{
+           this.setState({
+               Content: <div>
+                   <h4 className="noProduct">No tienes chats.</h4>
+               </div>
+           })
+       }
     }
 
     render() {

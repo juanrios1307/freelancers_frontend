@@ -242,26 +242,38 @@ class WorkersBuscados extends React.Component {
     }
 
     getContent(data){
-        this.setState({
-            Content: data.map((worker) => (
-                <div className="media" key={worker._id}>
-                    <img className="mr-3 imgList" src={worker.imagen} alt='imagen' />
-                    <div className="media-body">
-                        <h6 className="mt-0">Nombre: {worker.user.nombre}</h6>
-                        <p className="card-text">Email: {worker.user.correo}</p>
-                        <p className="card-text">Profesión : {worker.profesion}</p>
-                        <p className="card-text">Experiencia: {worker.experiencia}</p>
-                        <p className="card-text">Años de experiencia: {worker.yearsXperience}</p>
+        if(data.length>0) {
+            this.setState({
+                Content: data.map((worker) => (
+                    <div className="media" key={worker._id}>
+                        <img className="mr-3 imgList" src={worker.imagen} alt='imagen'/>
+                        <div className="media-body">
+                            <h6 className="mt-0">Nombre: {worker.user.nombre}</h6>
+                            <p className="card-text">Email: {worker.user.correo}</p>
+                            <p className="card-text">Profesión : {worker.profesion}</p>
+                            <p className="card-text">Experiencia: {worker.experiencia}</p>
+                            <p className="card-text">Años de experiencia: {worker.yearsXperience}</p>
 
-                        <button type="button" className="btn btn-outline btn-list"  onClick={(e) => this.crearChat(worker._id,e)}><AiIcons.AiFillMessage/></button>
-                        <button type="button" className="btn btn-outline btn-list"  onClick={(e) => this.specificWorker(worker._id)}><AiIcons.AiFillEye/></button>
-                        <button type="button" className="btn btn-outline btn-list"  onClick={(e) => this.savePub(worker._id,e)}><BsIcons.BsFillBookmarkFill/></button>
+                            <button type="button" className="btn btn-outline btn-list"
+                                    onClick={(e) => this.crearChat(worker._id, e)}><AiIcons.AiFillMessage/></button>
+                            <button type="button" className="btn btn-outline btn-list"
+                                    onClick={(e) => this.specificWorker(worker._id)}><AiIcons.AiFillEye/></button>
+                            <button type="button" className="btn btn-outline btn-list"
+                                    onClick={(e) => this.savePub(worker._id, e)}><BsIcons.BsFillBookmarkFill/></button>
+                        </div>
+
                     </div>
 
+                ))
+            })
+        } else{
+            this.setState({
+                Content: <div>
+                    <h4 className="noProduct">Lo sentimos, no tenemos workers para mostrarte.</h4>
+                    <h5 className="noProduct">Intenta una nueva busqueda !! </h5>
                 </div>
-
-            ))
-        })
+                    })
+        }
     }
 
     render() {

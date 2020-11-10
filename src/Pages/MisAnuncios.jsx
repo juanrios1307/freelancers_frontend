@@ -80,14 +80,14 @@ class MisAnuncios extends React.Component {
             }
         };
 
-       var response=await Axios(config);
+        var response = await Axios(config);
 
-       var data = response.data.data;
-
-        this.setState({
-            Content: data.map((anunces) => (
+        var data = response.data.data;
+        if(data.length>0){
+            this.setState({
+                Content: data.map((anunces) => (
                     <div className="media" key={anunces._id}>
-                        <img className="mr-3 imgList" src={anunces.imagen} alt='imagen' />
+                        <img className="mr-3 imgList" src={anunces.imagen} alt='imagen'/>
                         <div className="media-body">
                             <h6 className="mt-0">{anunces.titulo}</h6>
                             <p className="card-text">Profesión : {anunces.profesion}</p>
@@ -95,13 +95,16 @@ class MisAnuncios extends React.Component {
                             <p className="card-text">Descripción: {anunces.especificaciones}</p>
                             <p className="card-text">Ciudad: {anunces.ciudad}</p>
 
-                                <button type="button" className="btn btn-outline btn-list"  onClick={(e)=>this.editAnuncio(anunces._id,e)}>
-                                    <AiIcons.AiFillEdit/>
-                                </button>
+                            <button type="button" className="btn btn-outline btn-list"
+                                    onClick={(e) => this.editAnuncio(anunces._id, e)}>
+                                <AiIcons.AiFillEdit/>
+                            </button>
 
 
-                            <button type="button" className="btn btn-outline btn-list"  onClick={(e) => this.deleteAnuncio(anunces._id,e)}><AiIcons.AiFillDelete/></button>
-                            <button type="button" className="btn btn-outline btn-list"   onClick={(e) => this.specificAnunce(anunces._id)}><AiIcons.AiFillEye/></button>
+                            <button type="button" className="btn btn-outline btn-list"
+                                    onClick={(e) => this.deleteAnuncio(anunces._id, e)}><AiIcons.AiFillDelete/></button>
+                            <button type="button" className="btn btn-outline btn-list"
+                                    onClick={(e) => this.specificAnunce(anunces._id)}><AiIcons.AiFillEye/></button>
 
                             <div className="card-footer">
                                 <small className="text-muted">Subido {moment(anunces.date).format('DD/MM/YYYY')} </small>
@@ -112,7 +115,16 @@ class MisAnuncios extends React.Component {
                     </div>
 
                 ))
-        })
+            })
+
+    }else {
+    this.setState({
+        Content: <div>
+            <h4 className="noProduct">No tienes anuncios.</h4>
+            <h5 className="noProduct">Crealos desde el botón.</h5>
+        </div>
+    })
+}
 
     }
 

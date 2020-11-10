@@ -41,6 +41,7 @@ class AnuncesBuscados extends React.Component {
 
     specificWorker(id){
         localStorage.setItem("anunceID",id)
+        localStorage.setItem("anunceIDAux",id)
 
         window.location.reload();
     }
@@ -200,32 +201,42 @@ class AnuncesBuscados extends React.Component {
     }
 
     getContent(data){
+        if(data.length>0) {
+            this.setState({
+                Content: data.map((anunces) => (
+                    <div className="media" key={anunces._id}>
+                        <img className="mr-3 imgList" src={anunces.imagen} alt='imagen'/>
+                        <div className="media-body">
+                            <h6 className="mt-0">{anunces.titulo}</h6>
+                            <p className="card-text">Email: {anunces.user.correo}</p>
+                            <p className="card-text">Telefono: {anunces.user.telefono}</p>
+                            <p className="card-text">Profesión : {anunces.profesion}</p>
+                            <p className="card-text">Ciudad : {anunces.ciudad}</p>
 
-        this.setState({
-            Content: data.map((anunces) => (
-                <div className="media" key={anunces._id}>
-                    <img className="mr-3 imgList" src={anunces.imagen} alt='imagen' />
-                    <div className="media-body">
-                        <h6 className="mt-0">{anunces.titulo}</h6>
-                        <p className="card-text">Email: {anunces.user.correo}</p>
-                        <p className="card-text">Telefono: {anunces.user.telefono}</p>
-                        <p className="card-text">Profesión : {anunces.profesion}</p>
-                        <p className="card-text">Ciudad : {anunces.ciudad}</p>
+                            <button type="button" className="btn btn-outline btn-list">
+                                <AiIcons.AiFillMessage onClick={(e) => this.crearChat(anunces._id, e)}/>
+                            </button>
+                            <button type="button" className="btn btn-outline btn-list"
+                                    onClick={(e) => this.specificWorker(anunces._id)}><AiIcons.AiFillEye/></button>
 
-                        <button type="button" className="btn btn-outline btn-list">
-                            <AiIcons.AiFillMessage onClick={(e) => this.crearChat(anunces._id, e)}/>
-                        </button>
-                        <button type="button" className="btn btn-outline btn-list"  onClick={(e) => this.specificWorker(anunces._id)}><AiIcons.AiFillEye/></button>
-
-                        <div className="card-footer">
-                            <small className="text-muted">Subido {moment(anunces.date).format('DD/MM/YYYY')} </small>
+                            <div className="card-footer">
+                                <small
+                                    className="text-muted">Subido {moment(anunces.date).format('DD/MM/YYYY')} </small>
+                            </div>
                         </div>
+
                     </div>
 
+                ))
+            })
+        }else{
+            this.setState({
+                Content: <div>
+                    <h4 className="noProduct">Lo sentimos, no tenemos anuncios para mostrarte.</h4>
+                    <h5 className="noProduct">Intenta una nueva busqueda !! </h5>
                 </div>
-
-            ))
-        })
+            })
+        }
     }
 
     render() {

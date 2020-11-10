@@ -84,32 +84,42 @@ class SavingPub extends React.Component {
 
        var data = response.data.data;
 
-        this.setState({
-            Content: data.map((worker) => (
-                    <div className="media" key={worker._id}>
-                        <img className="mr-3 imgList" src={worker.imagen} alt='imagen' />
-                        <div className="media-body">
-                            <h6 className="mt-0">Nombre: {worker.user.nombre}</h6>
-                            <p className="card-text">Email: {worker.user.correo}</p>
-                            <p className="card-text">Profesión : {worker.profesion}</p>
-                            <p className="card-text">Experiencia: {worker.experiencia}</p>
-                            <p className="card-text">Años de experiencia: {worker.yearsXperience}</p>
+       if(data.length>0) {
+           this.setState({
+               Content: data.map((worker) => (
+                   <div className="media" key={worker._id}>
+                       <img className="mr-3 imgList" src={worker.imagen} alt='imagen'/>
+                       <div className="media-body">
+                           <h6 className="mt-0">Nombre: {worker.user.nombre}</h6>
+                           <p className="card-text">Email: {worker.user.correo}</p>
+                           <p className="card-text">Profesión : {worker.profesion}</p>
+                           <p className="card-text">Experiencia: {worker.experiencia}</p>
+                           <p className="card-text">Años de experiencia: {worker.yearsXperience}</p>
 
 
-                            <button type="button" className="btn btn-outline btn-list" onClick={(e) => this.crearChat(worker._id,e)}><AiIcons.AiFillMessage/></button>
-                            <button type="button" className="btn btn-outline btn-list" onClick={(e) => this.specificWorker(worker._id)}><AiIcons.AiFillEye/></button>
-                            <button type="button" className="btn btn-outline btn-list" onClick={(e) => this.deletePub(worker._id,e)}><AiIcons.AiFillDelete/></button>
+                           <button type="button" className="btn btn-outline btn-list"
+                                   onClick={(e) => this.crearChat(worker._id, e)}><AiIcons.AiFillMessage/></button>
+                           <button type="button" className="btn btn-outline btn-list"
+                                   onClick={(e) => this.specificWorker(worker._id)}><AiIcons.AiFillEye/></button>
+                           <button type="button" className="btn btn-outline btn-list"
+                                   onClick={(e) => this.deletePub(worker._id, e)}><AiIcons.AiFillDelete/></button>
 
-                            <div className="card-footer">
-                                <small className="text-muted">Last updated 3 mins ago</small>
-                            </div>
-                        </div>
+                           <div className="card-footer">
+                               <small className="text-muted">Last updated 3 mins ago</small>
+                           </div>
+                       </div>
 
-                    </div>
+                   </div>
 
-                ))
-        })
-
+               ))
+           })
+       }else{
+           this.setState({
+               Content: <div>
+                   <h4 className="noProduct">No tienes workers guardados.</h4>
+               </div>
+           })
+       }
     }
 
     render() {
