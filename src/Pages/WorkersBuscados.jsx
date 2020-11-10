@@ -49,8 +49,8 @@ class WorkersBuscados extends React.Component {
 
         if(token && token!==undefined){
 
-            //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/saving'
-            const url = 'http://localhost:5000/api/saving'
+            const url = 'https://peaceful-ridge-86113.herokuapp.com/api/saving'
+            //const url = 'http://localhost:5000/api/saving'
 
             console.log(Save)
 
@@ -108,8 +108,8 @@ class WorkersBuscados extends React.Component {
         localStorage.removeItem("profesion")
         localStorage.removeItem("categoria")
 
-        //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/main/workers'
-        const url = 'http://localhost:5000/api/main/workers'
+        const url = 'https://peaceful-ridge-86113.herokuapp.com/api/main/workers'
+        //const url = 'http://localhost:5000/api/main/workers'
 
         const config = {
             method: 'get',
@@ -130,8 +130,8 @@ class WorkersBuscados extends React.Component {
     }
 
     async getCiudades() {
-        //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/filters/ciudades'
-        const url = 'http://localhost:5000/api/filters/ciudades'
+        const url = 'https://peaceful-ridge-86113.herokuapp.com/api/filters/ciudades'
+        //const url = 'http://localhost:5000/api/filters/ciudades'
 
         const config = {
             method: 'get',
@@ -158,8 +158,8 @@ class WorkersBuscados extends React.Component {
         this.setState({ciudad:ciudad})
 
        if(ciudad != ' ') {
-           //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/filters/ciudades'
-           const url = 'http://localhost:5000/api/filters/ciudades'
+           const url = 'https://peaceful-ridge-86113.herokuapp.com/api/filters/ciudades'
+           //const url = 'http://localhost:5000/api/filters/ciudades'
 
            const config = {
                method: 'get',
@@ -190,8 +190,8 @@ class WorkersBuscados extends React.Component {
         this.setState({yearsExp:yearsExp})
 
 
-        //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/filters/years'
-        const url = 'http://localhost:5000/api/filters/years'
+        const url = 'https://peaceful-ridge-86113.herokuapp.com/api/filters/years'
+        //const url = 'http://localhost:5000/api/filters/years'
 
         const config = {
             method: 'get',
@@ -217,8 +217,8 @@ class WorkersBuscados extends React.Component {
         this.state.valoracion=ismayor
         this.setState({valoracion:ismayor})
 
-        //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/filters/promedio'
-        const url = 'http://localhost:5000/api/filters/promedio'
+        const url = 'https://peaceful-ridge-86113.herokuapp.com/api/filters/promedio'
+        //const url = 'http://localhost:5000/api/filters/promedio'
 
         const config = {
             method: 'get',
