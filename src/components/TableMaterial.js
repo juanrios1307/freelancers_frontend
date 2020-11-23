@@ -55,7 +55,7 @@ function TableMaterial(props) {
                     <TableRow>
                         <StyledTableCell>Publicaciones Destacadas</StyledTableCell>
                         <StyledTableCell>Nombre</StyledTableCell>
-                        <StyledTableCell>Profesion</StyledTableCell>
+                        <StyledTableCell>Profesión</StyledTableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
