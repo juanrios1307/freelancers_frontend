@@ -109,8 +109,8 @@ export class Register extends React.Component {
                                    onChange={(e) => this.setState({telefono: e.target.value})}/>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="username">Ciudad</label>
-                            <input type="text" name="username" placeholder="Ciudad" required
+                            <label htmlFor="ciudad">Ciudad</label>
+                            <input type="text" name="ciudad" placeholder="Ciudad" required
                                    value={this.state.ciudad}
                                    onChange={(e) => this.setState({ciudad: e.target.value})}/>
                         </div>
