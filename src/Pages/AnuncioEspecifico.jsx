@@ -43,8 +43,8 @@ class AnuncioEspecifico extends Component {
         if(this.state.id) {
             localStorage.removeItem("anunceID")
 
-            const url = 'https://peaceful-ridge-86113.herokuapp.com/api/main/anunces'
-            //const url = 'http://localhost:5000/api/main/anunces'
+            //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/main/anunces'
+            const url = 'http://localhost:5000/api/main/anunces'
 
             console.log("ID: " + this.state.id)
 
@@ -79,8 +79,8 @@ class AnuncioEspecifico extends Component {
         const  token=localStorage.getItem("token")
         if(token && !token!=undefined){
 
-            const url = 'https://peaceful-ridge-86113.herokuapp.com/api/contact/'+this.state.id
-            //const url = 'http://localhost:5000/api/contact/'+this.state.id
+            //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/contact/'+this.state.id
+            const url = 'http://localhost:5000/api/contact/'+this.state.id
 
             var config = {
                 method: 'post',

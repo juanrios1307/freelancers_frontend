@@ -69,8 +69,8 @@ class AnuncesBuscados extends React.Component {
         localStorage.removeItem("categoria")
 
 
-        const url = 'https://peaceful-ridge-86113.herokuapp.com/api/main/anunces'
-       // const url = 'http://localhost:5000/api/main/anunces'
+        //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/main/anunces'
+        const url = 'http://localhost:5000/api/main/anunces'
 
         const config = {
             method: 'get',
@@ -91,8 +91,8 @@ class AnuncesBuscados extends React.Component {
     }
 
     async getCiudades() {
-        const url = 'https://peaceful-ridge-86113.herokuapp.com/api/filters/ciudadesa'
-        //const url = 'http://localhost:5000/api/filters/ciudadesa'
+        //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/filters/ciudadesa'
+        const url = 'http://localhost:5000/api/filters/ciudadesa'
 
         const config = {
             method: 'get',
@@ -119,8 +119,8 @@ class AnuncesBuscados extends React.Component {
         this.setState({ciudad:ciudad})
 
         if(ciudad != ' ') {
-            const url = 'https://peaceful-ridge-86113.herokuapp.com/api/filters/ciudadesa'
-            //const url = 'http://localhost:5000/api/filters/ciudadesa'
+            //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/filters/ciudadesa'
+            const url = 'http://localhost:5000/api/filters/ciudadesa'
 
             const config = {
                 method: 'get',
@@ -149,8 +149,8 @@ class AnuncesBuscados extends React.Component {
         this.state.date=ismayor
         this.setState({date:ismayor})
 
-        const url = 'https://peaceful-ridge-86113.herokuapp.com/api/filters/date'
-        //const url = 'http://localhost:5000/api/filters/date'
+        //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/filters/date'
+        const url = 'http://localhost:5000/api/filters/date'
 
         const config = {
             method: 'get',
@@ -177,8 +177,8 @@ class AnuncesBuscados extends React.Component {
         this.state.presupuesto=ismayor
         this.setState({presupuesto:ismayor})
 
-        const url = 'https://peaceful-ridge-86113.herokuapp.com/api/filters/presupuesto'
-        //const url = 'http://localhost:5000/api/filters/presupuesto'
+        //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/filters/presupuesto'
+        const url = 'http://localhost:5000/api/filters/presupuesto'
 
         const config = {
             method: 'get',

@@ -43,8 +43,8 @@ class ChatEspecifico extends Component {
         if(this.state.id) {
             const token = localStorage.getItem("token")
 
-            const url = 'https://peaceful-ridge-86113.herokuapp.com/api/chat/'
-            //const url = 'http://localhost:5000/api/chat/'
+            //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/chat/'
+            const url = 'http://localhost:5000/api/chat/'
 
             const config = {
                 method: 'get',
@@ -106,8 +106,8 @@ class ChatEspecifico extends Component {
 
         if(worker || anunce){
 
-            const url = 'https://peaceful-ridge-86113.herokuapp.com/api/chat/'
-            //const url = 'http://localhost:5000/api/chat/'
+            //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/chat/'
+            const url = 'http://localhost:5000/api/chat/'
 
             if(worker) {
                 console.log("IsWorker: "+worker)
@@ -163,8 +163,8 @@ class ChatEspecifico extends Component {
 
        const token=localStorage.getItem("token")
 
-        const url = 'https://peaceful-ridge-86113.herokuapp.com/api/chat/'
-        //const url = 'http://localhost:5000/api/chat/'
+        //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/chat/'
+        const url = 'http://localhost:5000/api/chat/'
 
 
         var config = {
@@ -185,9 +185,7 @@ class ChatEspecifico extends Component {
 
 
         if(res.status===200) {
-            Swal.fire({
-                title: data
-            })
+
         }else if(res.status===400){
             Swal.fire({
                 title: data

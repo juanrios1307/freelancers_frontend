@@ -28,8 +28,8 @@ class SavingPub extends React.Component {
         e.preventDefault()
         const token = localStorage.getItem("token")
 
-        const url = 'https://peaceful-ridge-86113.herokuapp.com/api/saving/'
-        //const url = 'http://localhost:5000/api/saving/'
+        //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/saving/'
+        const url = 'http://localhost:5000/api/saving/'
 
         console.log(url + id)
 
@@ -69,8 +69,8 @@ class SavingPub extends React.Component {
 
         const token = localStorage.getItem("token")
 
-        const url = 'https://peaceful-ridge-86113.herokuapp.com/api/saving'
-        //const url = 'http://localhost:5000/api/saving'
+        //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/saving'
+        const url = 'http://localhost:5000/api/saving'
 
         const config = {
             method: 'get',

@@ -30,8 +30,8 @@ class ChangePassword extends Component {
 
             localStorage.removeItem("correo")
 
-            const url = 'https://peaceful-ridge-86113.herokuapp.com/api/updatepwd'
-            //const url = 'http://localhost:5000/api/updatepwd/';
+            //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/updatepwd'
+            const url = 'http://localhost:5000/api/updatepwd/';
 
             var config = {
                 method: 'put',
