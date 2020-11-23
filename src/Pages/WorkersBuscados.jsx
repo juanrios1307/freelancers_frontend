@@ -147,7 +147,7 @@ class WorkersBuscados extends React.Component {
 
         this.setState({
             Ciudades: data.map((ciudad) => (
-                <option  value={ciudad} >{ciudad}</option>
+                <option  value={ciudad} >{ciudad[0].toUpperCase()+ciudad.slice(1)}</option>
             ))
         })
     }
