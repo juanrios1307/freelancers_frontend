@@ -40,7 +40,7 @@ class CardCarousel extends Component {
                         <div className="card-icon" ><img src={worker.imagen} alt="icon1"/></div>
                         <div className="card-body">
                             <h5 className="card-title">{worker.user.nombre}</h5>
-                            <p className="card-text">{worker.profesion}</p>
+                            <p className="card-text">{worker.profesion[0].toUpperCase() + worker.profesion.slice(1)}</p>
                             <p className="card-text">Correo: {worker.user.correo}</p>
                         </div>
                         <div className="card-footer">

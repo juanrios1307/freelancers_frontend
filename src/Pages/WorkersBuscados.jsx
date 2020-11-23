@@ -250,7 +250,7 @@ class WorkersBuscados extends React.Component {
                         <div className="media-body">
                             <h6 className="mt-0">Nombre: {worker.user.nombre}</h6>
                             <p className="card-text">Email: {worker.user.correo}</p>
-                            <p className="card-text">Profesión : {worker.profesion}</p>
+                            <p className="card-text">Profesión : {worker.profesion[0].toUpperCase() + worker.profesion.slice(1)}</p>
                             <p className="card-text">Experiencia: {worker.experiencia}</p>
                             <p className="card-text">Años de experiencia: {worker.yearsXperience}</p>
 

@@ -65,7 +65,7 @@ class AnuncioEspecifico extends Component {
             this.setState({ciudad: data.user.ciudad});
             this.setState({telefono: data.user.telefono});
             this.setState({correo: data.user.correo});
-            this.setState({profesion: data.profesion});
+            this.setState({profesion:  data.profesion[0].toUpperCase() + data.profesion.slice(1)});
             this.setState({descripcion: data.especificaciones});
             this.setState({presupuesto: data.presupuesto});
             this.setState({imagen: data.imagen});

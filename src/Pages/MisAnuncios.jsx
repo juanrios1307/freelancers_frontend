@@ -90,7 +90,7 @@ class MisAnuncios extends React.Component {
                         <img className="mr-3 imgList" src={anunces.imagen} alt='imagen'/>
                         <div className="media-body">
                             <h6 className="mt-0">{anunces.titulo}</h6>
-                            <p className="card-text">Profesión : {anunces.profesion}</p>
+                            <p className="card-text">Profesión : {anunces.profesion[0].toUpperCase() + anunces.profesion.slice(1)}</p>
                             <p className="card-text">Presuspuesto: {anunces.presupuesto}</p>
                             <p className="card-text">Descripción: {anunces.especificaciones}</p>
                             <p className="card-text">Ciudad: {anunces.ciudad}</p>

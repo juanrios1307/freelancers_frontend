@@ -72,7 +72,7 @@ class WorkerEspecifico extends Component {
             this.setState({ciudad: data.user.ciudad});
             this.setState({telefono: data.user.telefono});
             this.setState({correo: data.user.correo});
-            this.setState({profesion: data.profesion});
+            this.setState({profesion: data.profesion[0].toUpperCase() + data.profesion.slice(1)});
             this.setState({experiencia: data.experiencia});
             this.setState({yearsE: data.yearsXperience});
             this.setState({imagen: data.imagen});

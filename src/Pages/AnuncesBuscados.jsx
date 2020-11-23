@@ -210,7 +210,7 @@ class AnuncesBuscados extends React.Component {
                             <h6 className="mt-0">{anunces.titulo}</h6>
                             <p className="card-text">Email: {anunces.user.correo}</p>
                             <p className="card-text">Telefono: {anunces.user.telefono}</p>
-                            <p className="card-text">Profesión : {anunces.profesion}</p>
+                            <p className="card-text">Profesión : { anunces.profesion[0].toUpperCase() + anunces.profesion.slice(1)}</p>
                             <p className="card-text">Ciudad : {anunces.ciudad}</p>
 
                             <button type="button" className="btn btn-outline btn-list">
