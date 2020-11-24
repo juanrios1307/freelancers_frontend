@@ -80,7 +80,7 @@ class Footer extends Component{
                                     <a href="#">Sobre Nosotros</a>
                                 </p>
                                 <p>
-                                    <a href="/support">Ayuda</a>
+                                    <a href="https://drive.google.com/file/d/1S19AcQ7TIIs-ZfpwW69DfbTax8Vlgx9o/view?usp=sharing" target="_blank" >Ayuda</a>
                                 </p>
 
                         </div>
