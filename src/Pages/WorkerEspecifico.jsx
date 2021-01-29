@@ -188,7 +188,6 @@ class WorkerEspecifico extends Component {
                 title: data
             })
 
-            window.location.reload();
 
         }else{
             Swal.fire({
@@ -259,7 +258,7 @@ class WorkerEspecifico extends Component {
                                             <div className="rating">
                                                 <Rating name="simple-controlled"
                                                         onChange={e => this.setState({rating: e.target.value})}/></div>
-                                            <input type="text"
+                                            <input type="text" required
                                                    onChange={e => this.setState({comment: e.target.value})}/>
                                             <button type="submit">Guardar</button>
                                         </form>

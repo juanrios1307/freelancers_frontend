@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import '../assets/css/CardCarousel.css';
 import Axios from "axios";
-
+import nofoto from "../assets/images/nofoto.png"
 
 
 class CardCarousel extends Component {
@@ -33,11 +33,11 @@ class CardCarousel extends Component {
         var response=await Axios(config);
 
         var data = response.data.data;
-
-       this.setState({
-            Content: data.map((worker) => (
+        if(data[0].promedio != 0 ) {
+            this.setState({
+                Content: data.map((worker) => (
                     <div className="card" key={worker._id}>
-                        <div className="card-icon" ><img src={worker.imagen} alt="icon1"/></div>
+                        <div className="card-icon"><img src={worker.promedio>0?worker.imagen:nofoto} alt="icon1"/></div>
                         <div className="card-body">
                             <h5 className="card-title">{worker.user.nombre}</h5>
                             <p className="card-text">{worker.profesion[0].toUpperCase() + worker.profesion.slice(1)}</p>
@@ -47,9 +47,14 @@ class CardCarousel extends Component {
                             <small className="text-muted">Last updated 20 mins ago</small>
                         </div>
                     </div>
-            ))
-        })
-
+                ))
+            })
+        }else{
+            this.setState({Content:
+                    <div className="div0">
+                        <h5 className="card0">No tenemos sugerencias para ti !</h5>
+                    </div>})
+        }
     }
 
 

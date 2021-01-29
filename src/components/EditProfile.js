@@ -2,7 +2,7 @@ import React from 'react';
 import '../assets/css/EditProfile.css';
 import Axios from "axios";
 import {Link} from 'react-router-dom';
-
+import Logo from "../assets/images/Logo/PNG BLACK ICON.png";
 
 class EditProfile extends React.Component {
 
@@ -108,6 +108,9 @@ class EditProfile extends React.Component {
                         <input type="text" name="ciudad" placeholder={this.state.ciudadA}
                                onChange={e => this.setState({ciudad:e.target.value})}/>
                     </div>
+
+                    <img src={Logo}/>
+
                     <div className="ftr">
                         <button type="submit" className="btn">
                             Editar

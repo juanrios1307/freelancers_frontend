@@ -108,16 +108,11 @@ class Dashboard extends React.Component {
                                      font="white"/>
                     </Grid>
 
-                    <Grid container spacing={1} className={classes.container} xs={12} sm={12} md={6} lg={6} xl={6}>
+                    <Grid item xs={12} className={classes.container}>
                         <EditProfile/>
                     </Grid>
 
                     <Grid item xs={0} sm={0} md={1} lg={1} xl={1}></Grid>
-
-                    <Grid item xs={12} sm={12} md={5} lg={5} xl={5} className={classes.containerGrafica}>
-                        <Graphics/>
-                    </Grid>
-
 
                     <Grid item xs={12} className={classes.containerTabla}>
                         <TableMaterial/>

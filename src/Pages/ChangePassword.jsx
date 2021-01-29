@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import '../assets/css/ForgotPasword.css';
 import Logo from "../assets/images/Logo/BLACK PNG.png";
-import {Link} from "react-router-dom";
+import {Redirect} from "react-router-dom";
 import Axios from "axios";
 import Swal from "sweetalert2";
 
@@ -12,7 +12,8 @@ class ChangePassword extends Component {
         this.state = {
             correo:'',
             pwd: '',
-            confirmPwd:''
+            confirmPwd:'',
+            bool:false
         };
         this.enviarForm = this.enviarForm.bind(this);
         this.validarPwd = this.validarPwd.bind(this);
@@ -52,6 +53,13 @@ class ChangePassword extends Component {
             Swal.fire({
                 title: data
             })
+
+            this.setState({
+                pwd: '',
+                confirmPwd:''
+            })
+
+            this.setState({bool:true})
 
         }
 
@@ -96,6 +104,9 @@ class ChangePassword extends Component {
     }
 
     render(){
+        if(this.state.bool){
+            return <Redirect to="/sing-up"/>
+        }
         return (
             <div className="pagforgot">
                 <div className="forgotbox">
