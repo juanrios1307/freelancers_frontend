@@ -27,10 +27,16 @@ function  CheckoutForm() {
                 const url='http://localhost:5000/api/membership/'
                 //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/membership/'
 
-                const response = await Axios.post(
-                    url,
-                    {id, amount: 10000,}
-                );
+                const token = localStorage.getItem("token")
+
+                var config ={
+                    method: 'post',
+                    url:url,
+                    headers: {'access-token': token},
+                    data:{id, amount: 10000,description:"platino"}
+                }
+
+                const response = await Axios(config);
 
                 console.log(response);
 
@@ -48,7 +54,7 @@ function  CheckoutForm() {
                     })
                 }
 
-                elements.getElement(CardElement).clear();
+                //elements.getElement(CardElement).clear();
             } catch (error) {
                 console.log(error);
             }
