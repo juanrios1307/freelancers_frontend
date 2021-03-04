@@ -17,6 +17,8 @@ class SavingPub extends React.Component {
         this.getData = this.getData.bind(this);
         this.deletePub = this.deletePub.bind(this);
         this.specificWorker=this.specificWorker.bind(this);
+        this.saveView = this.saveView.bind(this);
+
         this.crearChat=this.crearChat.bind(this);
     }
 
@@ -50,7 +52,35 @@ class SavingPub extends React.Component {
         window.location.reload();
     }
 
-    specificWorker(id){
+
+    async saveView(id) {
+        const token=localStorage.getItem("token")
+
+        if(token) {
+
+            //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/main/workers/view/'+id
+            const url = 'http://localhost:5000/api/workers/view/'+id
+
+            const config = {
+                method: 'put',
+                url: url,
+                headers: {
+                    'access-token': token,
+                    'Content-Type': 'application/json'
+                }
+            };
+
+            const res = await Axios(config);
+
+            const data = res.data.data;
+        }
+
+    }
+
+    async specificWorker(id){
+
+        this.saveView(id)
+
         localStorage.setItem("workerID",id)
         localStorage.setItem("workerIDAux",id)
 

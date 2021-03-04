@@ -33,6 +33,7 @@ class WorkerEspecifico extends Component {
             mensaje:''
         };
         this.getData = this.getData.bind(this);
+
         this.savePub=this.savePub.bind(this);
         this.comment=this.comment.bind(this);
         this.sendMessage=this.sendMessage.bind(this);
@@ -42,6 +43,7 @@ class WorkerEspecifico extends Component {
     componentDidMount() {
         this.getData();
     }
+
 
     async getData(){
         this.state.id=localStorage.getItem("workerIDAux")

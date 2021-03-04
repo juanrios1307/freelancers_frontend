@@ -28,6 +28,8 @@ class WorkersBuscados extends React.Component {
 
         this.savePub=this.savePub.bind(this);
         this.specificWorker=this.specificWorker.bind(this);
+        this.saveView = this.saveView.bind(this);
+
         this.crearChat=this.crearChat.bind(this);
 
         this.getFiltroCiudad=this.getFiltroCiudad.bind(this)
@@ -40,6 +42,31 @@ class WorkersBuscados extends React.Component {
     componentDidMount() {
         this.getData();
         this.getCiudades();
+    }
+
+
+    async saveView(id) {
+        const token=localStorage.getItem("token")
+
+        if(token) {
+
+            //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/main/workers/view/'+id
+            const url = 'http://localhost:5000/api/workers/view/'+id
+
+            const config = {
+                method: 'put',
+                url: url,
+                headers: {
+                    'access-token': token,
+                    'Content-Type': 'application/json'
+                }
+            };
+
+            const res = await Axios(config);
+
+            const data = res.data.data;
+        }
+
     }
 
     async savePub(Save,e){
@@ -79,7 +106,10 @@ class WorkersBuscados extends React.Component {
         }
     }
 
-    specificWorker(id){
+    async specificWorker(id){
+
+        this.saveView(id)
+
         localStorage.setItem("workerID",id)
         localStorage.setItem("workerIDAux",id)
 

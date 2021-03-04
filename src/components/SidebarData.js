@@ -2,6 +2,8 @@ import React from 'react';
 import * as AiIcons from 'react-icons/ai';
 import * as IoIcons from 'react-icons/io';
 import * as BsIcons from 'react-icons/bs';
+import * as GrIcons from 'react-icons/gr';
+import * as MdIcons from 'react-icons/md';
 
 export const SidebarData = [
     {
@@ -23,6 +25,12 @@ export const SidebarData = [
         icon: <IoIcons.IoIosPaper />,
         cName: 'n-text'
     },
+    {
+        title: 'Mis Workers',
+        path: '/misworkers',
+        icon: <GrIcons.GrUserWorker />,
+        cName: 'n-text'
+    },
 
    {
         title: 'Principal',
@@ -40,6 +48,12 @@ export const SidebarData = [
         title: 'Chat',
         path: '/chats',
         icon: <AiIcons.AiFillMessage />,
+        cName: 'n-text'
+    },
+    {
+        title: 'Membresias',
+        path: '/mymemberships',
+        icon: <MdIcons.MdCardMembership />,
         cName: 'n-text'
     }
 ];
