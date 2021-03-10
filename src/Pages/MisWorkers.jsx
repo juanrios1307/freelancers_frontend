@@ -174,4 +174,4 @@ class MisWorkers extends React.Component {
 
 }
 
-export default Misworkers
+export default MisWorkers
