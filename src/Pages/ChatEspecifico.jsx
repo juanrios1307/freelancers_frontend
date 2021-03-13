@@ -19,18 +19,40 @@ class ChatEspecifico extends Component {
         this.getMessages = throttle( this.getMessages.bind(this) , 1500);
         this.sendMessage = this.sendMessage.bind(this);
         this.crearChat = this.crearChat.bind(this);
+        this.leer=this.leer.bind(this);
     }
 
     componentDidMount() {
         this.getID();
         this.crearChat();
         this.getMessages();
+        this.leer();
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         this.getMessages()
     }
 
+    async leer() {
+        if (this.state.id) {
+            const token = localStorage.getItem("token")
+
+            //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/chat/leer/'
+            const url = 'http://localhost:5000/api/chat/leer/'
+
+            const config = {
+                method: 'put',
+                url: url + this.state.id,
+                headers: {
+                    'access-token': token
+                }
+            };
+
+            const res = await Axios(config);
+
+            const data = res.data.data;
+        }
+    }
 
     getID(){
         this.state.id=localStorage.getItem("ChatIDAux")

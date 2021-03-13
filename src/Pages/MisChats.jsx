@@ -68,6 +68,18 @@ class MisChats extends React.Component {
                                                                                         moment(chat.Mensajes[chat.Mensajes.length - 1].date).format('DD/MM/YYYY h:mm a'):
                                                                                         "Hoy "+moment(chat.Mensajes[chat.Mensajes.length - 1].date).format('h:mm a')) : 1}</small>
                            </div>
+
+
+                           <div className="hola">
+                              <p className="card-text">{chat.Mensajes.length > 0 ?
+                                                            (bool[index] && chat.Mensajes[chat.Mensajes.length - 1].emisor == "user" )?
+                                                                "Leido" : (bool[index] && chat.Mensajes[chat.Mensajes.length - 1].emisor == "worker" && chat.Mensajes[chat.Mensajes.length - 1].leido == true )?
+                                                                            "Leido" : (bool[index] && chat.Mensajes[chat.Mensajes.length - 1].emisor == "worker" && chat.Mensajes[chat.Mensajes.length - 1].leido == false )?
+                                                                                        "No leido" : (bool[index] == false && chat.Mensajes[chat.Mensajes.length - 1].emisor == "user" && chat.Mensajes[chat.Mensajes.length - 1].leido == true )?
+                                                                                                        "Leido" : (bool[index] == false && chat.Mensajes[chat.Mensajes.length - 1].emisor == "worker" )?
+                                                                                                                        "Leido" : "No leido" : "No leido"} </p>
+                           </div>
+
                        </div>
 
                    </div>

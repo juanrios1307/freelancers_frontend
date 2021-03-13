@@ -74,7 +74,7 @@ class Footer extends Component{
                                     <a href="/sing-up">Tu Cuenta</a>
                                 </p>
                                 <p>
-                                    <a href="/sing-up">Afiliate</a>
+                                    <a href="/membership">Afiliate</a>
                                 </p>
                                 <p>
                                     <a href="#">Sobre Nosotros</a>

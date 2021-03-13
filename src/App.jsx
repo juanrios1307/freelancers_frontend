@@ -16,6 +16,9 @@ import AnuncioEspecifico from "./Pages/AnuncioEspecifico";
 import MisChats from "./Pages/MisChats";
 import ForgotPasword from "./Pages/ForgotPasword";
 import ChangePassword from "./Pages/ChangePassword";
+import Membership from "./Pages/Membership";
+import MisWorkers from "./Pages/MisWorkers";
+import MyMemberships from "./Pages/MyMemberships";
 
 
 class App extends React.Component {
@@ -30,6 +33,8 @@ class App extends React.Component {
                     <Route exact path="/createAnunce" component={CreateAdvertisements}/>
                     <Route exact path="/editAnunce" component={EditAnunce} />
                     <Route exact path="/misanuncios" component={MisAnuncios} />
+                    <Route exact path="/editworker" component={EditAnunce} />
+                    <Route exact path="/misworkers" component={MisWorkers} />
                     <Route exact path="/saves" component={SavingPub} />
                     <Route exact path="/signupworker" component={RegisterWorker} />
                     <Route exact path="/workers" component={WorkersBuscados} />
@@ -40,6 +45,10 @@ class App extends React.Component {
                     <Route exact path="/chats" component={MisChats}/>
                     <Route exact path="/forgotpwd" component={ForgotPasword}/>
                     <Route exact path="/updatepwd" component={ChangePassword}/>
+
+                    <Route exact path="/membership" component={Membership}/>
+                    <Route exact path="/mymemberships" component={MyMemberships}/>
+
                 </Switch>
             </Router>
 

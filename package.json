@@ -7,6 +7,8 @@
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
+    "@stripe/react-stripe-js": "^1.3.0",
+    "@stripe/stripe-js": "^1.13.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
@@ -24,6 +26,7 @@
     "react-icons": "^3.11.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.4",
+    "stripe-checkout": "^1.0.9",
     "styled-components": "^5.2.0"
   },
   "scripts": {
