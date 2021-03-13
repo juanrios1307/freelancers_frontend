@@ -101,6 +101,7 @@ class MisAnuncios extends React.Component {
                             </button>
 
 
+
                             <button type="button" className="btn btn-outline btn-list"
                                     onClick={(e) => this.deleteAnuncio(anunces._id, e)}><AiIcons.AiFillDelete/></button>
                             <button type="button" className="btn btn-outline btn-list"

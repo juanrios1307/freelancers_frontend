@@ -52,7 +52,6 @@ class SavingPub extends React.Component {
         window.location.reload();
     }
 
-
     async saveView(id) {
         const token=localStorage.getItem("token")
 
