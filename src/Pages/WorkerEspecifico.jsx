@@ -78,6 +78,7 @@ class WorkerEspecifico extends Component {
             this.setState({experiencia: data.experiencia});
             this.setState({yearsE: data.yearsXperience});
             this.setState({imagen: data.imagen});
+            this.setState({rating: data.promedio})
         }
     }
 
@@ -190,6 +191,8 @@ class WorkerEspecifico extends Component {
                 title: data
             })
 
+            window.location.reload()
+
 
         }else{
             Swal.fire({
@@ -258,7 +261,7 @@ class WorkerEspecifico extends Component {
                                     <div className="comenta">
                                         <form onSubmit={this.comment}>
                                             <div className="rating">
-                                                <Rating name="simple-controlled"
+                                                <Rating name="simple-controlled" value={this.state.rating}
                                                         onChange={e => this.setState({rating: e.target.value})}/></div>
                                             <input type="text" required
                                                    onChange={e => this.setState({comment: e.target.value})}/>
@@ -280,9 +283,9 @@ class WorkerEspecifico extends Component {
                                 <p>Correo: {this.state.correo}</p>
                                 <form onSubmit={this.sendMessage}>
                                     <label>Asunto:</label>
-                                    <input type="text" onChange={e => this.setState({asunto: e.target.value})}/>
+                                    <input type="text" required onChange={e => this.setState({asunto: e.target.value})}/>
                                     <label>Mensaje:</label>
-                                    <input type="text" onChange={e => this.setState({mensaje: e.target.value})}/>
+                                    <input type="text" required onChange={e => this.setState({mensaje: e.target.value})}/>
                                     <button type="submit">Enviar</button>
                                 </form>
                             </div>
@@ -327,7 +330,7 @@ class WorkerEspecifico extends Component {
                                     <div className="comenta">
                                         <form onSubmit={this.comment}>
                                             <div className="rating">
-                                                <Rating name="simple-controlled"
+                                                <Rating name="simple-controlled" value={this.state.rating}
                                                         onChange={e => this.setState({rating: e.target.value})}/></div>
                                             <input type="text"
                                                    onChange={e => this.setState({comment: e.target.value})}/>

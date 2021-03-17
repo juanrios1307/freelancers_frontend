@@ -104,6 +104,8 @@ class AnuncioEspecifico extends Component {
                 title: data
             })
 
+            window.location.reload()
+
 
         }else{
             Swal.fire({
@@ -169,9 +171,9 @@ class AnuncioEspecifico extends Component {
                             <p>Teléfono: {this.state.telefono}</p>
                             <form onSubmit={this.sendMessage}>
                                 <label>Asunto:</label>
-                                <input type="text" onChange={e => this.setState({asunto: e.target.value})}/>
+                                <input type="text" required onChange={e => this.setState({asunto: e.target.value})}/>
                                 <label>Mensaje:</label>
-                                <input type="text" onChange={e => this.setState({mensaje: e.target.value})}/>
+                                <input type="text" required onChange={e => this.setState({mensaje: e.target.value})}/>
                                 <button type="submit">Enviar</button>
                             </form>
                         </div>
