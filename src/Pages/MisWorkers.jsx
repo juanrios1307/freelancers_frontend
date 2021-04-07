@@ -41,10 +41,11 @@ class MisWorkers extends React.Component {
 
     async deleteWorker(id, e) {
         e.preventDefault()
+
         const token = localStorage.getItem("token")
 
-        //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/worker/'
-        const url = 'http://localhost:5000/api/worker/'
+        //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/workers/'
+        const url = 'http://localhost:5000/api/workers/'
 
         console.log(url + id)
 
@@ -62,7 +63,8 @@ class MisWorkers extends React.Component {
             title: response.data.data
         })
 
-        //window.location.reload();
+        window.location.reload();
+
     }
 
 
@@ -93,6 +95,7 @@ class MisWorkers extends React.Component {
        var response=await Axios(config);
 
        var data = response.data.data;
+       console.log(data)
 
        this.getContent(data)
 
@@ -127,8 +130,8 @@ class MisWorkers extends React.Component {
         } else{
             this.setState({
                 Content: <div>
-                    <h4 className="noProduct">Lo sentimos, no tenemos workers para mostrarte.</h4>
-                    <h5 className="noProduct">Intenta una nueva busqueda !! </h5>
+                    <h4 className="noProduct">Aun no has creado Workers .</h4>
+                    <h5 className="noProduct">Intenta creando tu perfil !! </h5>
                 </div>
                     })
         }
@@ -141,7 +144,7 @@ class MisWorkers extends React.Component {
             )
 
         } else {
-            if (localStorage.getItem("anunceID")) {
+            if (localStorage.getItem("workerID")) {
                 return (
                     <Redirect to="worker"/>
                 )

@@ -28,7 +28,7 @@ export const SidebarData = [
     {
         title: 'Mis Workers',
         path: '/misworkers',
-        icon: <GrIcons.GrUserWorker />,
+        icon: <AiIcons.AiOutlineAudit />,
         cName: 'n-text'
     },
 
