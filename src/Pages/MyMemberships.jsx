@@ -9,6 +9,7 @@ import {Link, Redirect} from "react-router-dom";
 import Swal from "sweetalert2";
 import {fiFI} from "@material-ui/core/locale";
 import {Grid} from "@material-ui/core";
+import moment from "moment";
 
 class MyMemberships extends React.Component {
 
@@ -54,21 +55,29 @@ class MyMemberships extends React.Component {
 
 
     getContent(data){
-
+        if(data.length>0) {
             this.setState({
                 Content: data.map((membresia) => (
                     <div className="media" key={membresia._id}>
 
                         <div className="media-body">
                             <h6 className="mt-0">Membresia {membresia.description}</h6>
-                            <p className="card-text">Fecha Compra: {membresia.fechaCompra}</p>
-                            <p className="card-text">Fecha Expiración : {membresia.fechaExpiracion}</p>
+                            <p className="card-text">Fecha Compra:  {moment(membresia.fechaCompra).format('DD/MM/YYYY')}</p>
+                            <p className="card-text">Fecha Expiración : {moment(membresia.fechaExpiracion).format('DD/MM/YYYY')}</p>
                         </div>
 
                     </div>
 
                 ))
             })
+        }else{
+            this.setState({
+                Content: <div>
+                    <h4 className="noProduct">Aun no has comprado ninguna Membresia .</h4>
+                    <h5 className="noProduct">Comprala Ya!! </h5>
+                </div>
+            })
+        }
 
     }
 
@@ -87,9 +96,9 @@ class MyMemberships extends React.Component {
                 </Grid>
 
                 <Grid item xs={12} className='dashButtonDiv'>
-                    <a href='/signupworker'>
+                    <a href='/membership'>
                         <button className='buttonDash'>
-                            Crear Worker
+                            Comprar Membresia
                         </button>
                     </a>
                 </Grid>

@@ -27,7 +27,7 @@ class Membership extends React.Component{
                     <Elements stripe={stripePromise}>
                         <div className="container p-4">
                             <div className="row h-100">
-                                <div className="col-md-4 offset-md-4 h-100">
+                                <div className="col">
                                     <CheckoutForm />
                                 </div>
                             </div>
@@ -38,23 +38,7 @@ class Membership extends React.Component{
             )
         } else {
             return (
-                <div>
-
-                    <div item xs={12}>
-                        <NavBar/>
-                    </div>
-
-                    <Elements stripe={stripePromise}>
-                        <div className="container p-4">
-                            <div className="row h-100">
-                                <div className="col-md-4 offset-md-4 h-100">
-                                    <CheckoutForm />
-                                </div>
-                            </div>
-                        </div>
-                    </Elements>
-
-                </div>
+                <Redirect to="/sing-up"/>
             )
         }
     }

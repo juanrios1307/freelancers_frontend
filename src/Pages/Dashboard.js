@@ -119,9 +119,10 @@ class Dashboard extends React.Component {
                     </Grid>
 
                     <Grid item xs={12} className='dashButtonDiv'>
-                        <a href='/signupworker'>
+
+                        <a href='/membership'>
                             <button className='buttonDash'>
-                                Registrarse como trabajador
+                                Comprala aqui tu membresia
                             </button>
                         </a>
                     </Grid>
