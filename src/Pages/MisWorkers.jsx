@@ -34,8 +34,8 @@ class MisWorkers extends React.Component {
 
     editWorker(id, e){
 
-        localStorage.setItem("editID",id)
-        localStorage.setItem("editIDAux",id)
+        localStorage.setItem("editIDW",id)
+        localStorage.setItem("editIDAuxW",id)
         window.location.reload()
     }
 
@@ -138,7 +138,7 @@ class MisWorkers extends React.Component {
     }
 
     render() {
-        if (localStorage.getItem("editID")) {
+        if (localStorage.getItem("editIDW")) {
             return(
                 <Redirect to="/editWorker" />
             )

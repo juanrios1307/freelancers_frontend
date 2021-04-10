@@ -19,6 +19,7 @@ import ChangePassword from "./Pages/ChangePassword";
 import Membership from "./Pages/Membership";
 import MisWorkers from "./Pages/MisWorkers";
 import MyMemberships from "./Pages/MyMemberships";
+import EditWorker from "./Pages/EditWorker";
 
 
 class App extends React.Component {
@@ -30,17 +31,22 @@ class App extends React.Component {
                     <Route exact path="/" component={MainPage} />
                     <Route exact path="/sing-up" component={LoginRegisterPage} />
                     <Route exact path="/dashboard" component={Dashboard} />
+
                     <Route exact path="/createAnunce" component={CreateAdvertisements}/>
                     <Route exact path="/editAnunce" component={EditAnunce} />
                     <Route exact path="/misanuncios" component={MisAnuncios} />
-                    <Route exact path="/editworker" component={EditAnunce} />
+
+                    <Route exact path="/editworker" component={EditWorker} />
                     <Route exact path="/misworkers" component={MisWorkers} />
-                    <Route exact path="/saves" component={SavingPub} />
                     <Route exact path="/signupworker" component={RegisterWorker} />
+
+                    <Route exact path="/saves" component={SavingPub} />
+
                     <Route exact path="/workers" component={WorkersBuscados} />
                     <Route exact path="/anunces" component={AnuncesBuscados} />
                     <Route exact path="/worker" component={WorkerEspecifico}/>
                     <Route exact path="/anunce" component={AnuncioEspecifico}/>
+
                     <Route exact path="/chat" component={ChatEspecifico}/>
                     <Route exact path="/chats" component={MisChats}/>
                     <Route exact path="/forgotpwd" component={ForgotPasword}/>
