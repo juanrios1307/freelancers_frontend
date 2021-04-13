@@ -87,40 +87,53 @@ function  CheckoutForm() {
                     {/* Product Information */}
 
                     <div className="col">
-                        <img
-                            src={gold}
-                            alt="Corsair Gaming Keyboard RGB"
-                            className="img-fluid"
-                        />
+                        <h2 className="text-center ">Gold</h2>
 
-                        <h3 className="text-center my-2">Valor: 30$</h3>
 
+                        <p className="text-center ">20 Workers</p>
+                        <p className="text-center ">Unlimited Anunces</p>
+                        <p className="text-center ">Analitica de Datos</p>
+                        <p className="text-center ">Quien Vio tus publicaciones</p>
+                        <p className="text-center ">Soporte 24/7</p>
+
+                        <h4 className="text-center ">Valor: 30$</h4>
+                        <br />
                         <input className="form-check-input" type="radio" id="inlineRadio3" name="inlineRadioOptions" value="gold" onChange={e => setType(e.target.value)}/>
 
                     </div>
 
                     <div className="col">
-                        <img
-                            src={silver}
-                            alt="Corsair Gaming Keyboard RGB"
-                            className="img-fluid"
-                        />
+                        <h2 className="text-center ">Silver</h2>
 
-                        <h3 className="text-center my-2">Valor: 20$</h3>
 
+                        <p className="text-center ">5 Workers</p>
+                        <p className="text-center ">20 Anunces</p>
+                        <p className="text-center ">Analitica de Datos</p>
+                        <br />
+                        <p className="text-center ">Soporte 24/7</p>
+
+                        <br/>
+
+
+                        <h4 className="text-center ">Valor: 20$</h4>
+                        <br />
                         <input className="form-check-input" type="radio" id="inlineRadio2" name="inlineRadioOptions" value="silver" onChange={e => setType(e.target.value)}/>
 
                     </div>
 
                     <div className="col">
-                        <img
-                            src={bronze}
-                            alt="Corsair Gaming Keyboard RGB"
-                            className="img-fluid"
-                        />
+                        <h2 className="text-center ">Bronze</h2>
 
-                        <h3 className="text-center my-2">Valor: 10$</h3>
+                        <p className="text-center ">2 Workers</p>
+                        <p className="text-center ">10 Anunces</p>
+                        <br />
+                        <p className="text-center ">Soporte 24/7</p>
+                        <br/>
+                        <br/>
 
+
+                        <h4 className="text-center ">Valor: 10$</h4>
+                        <br/>
                         <input className="form-check-input" type="radio" id="inlineRadio1" name="inlineRadioOptions" value="bronze" onChange={e => setType(e.target.value)}/>
 
                     </div>
@@ -129,6 +142,7 @@ function  CheckoutForm() {
                 </div>
 
             <br/>
+            <br />
 
                 {/* User Card Input */}
                 <div className="form-group">
