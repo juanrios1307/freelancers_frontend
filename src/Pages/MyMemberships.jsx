@@ -17,7 +17,7 @@ class MyMemberships extends React.Component {
         super(props);
         this.state = {
             Content: '',
-
+            boolM : true
         };
         this.getData = this.getData.bind(this);
 
@@ -77,6 +77,9 @@ class MyMemberships extends React.Component {
                     <h5 className="noProduct">Comprala Ya!! </h5>
                 </div>
             })
+            this.setState({
+                boolM:false
+            })
         }
 
     }
@@ -98,9 +101,11 @@ class MyMemberships extends React.Component {
                 <Grid item xs={12} className='dashButtonDiv'>
                     <a href='/membership'>
                         <button className='buttonDash'>
-                            Comprar Membresia
+                            {this.state.boolM?"Renovar Membresia":"Comprar Membresia"}
                         </button>
                     </a>
+
+
                 </Grid>
 
             </Grid>

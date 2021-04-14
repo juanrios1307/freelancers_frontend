@@ -122,7 +122,7 @@ class Dashboard extends React.Component {
 
                         <a href='/membership'>
                             <button className='buttonDash'>
-                                Comprala aqui tu membresia
+                                Compra aquí tu membresia
                             </button>
                         </a>
                     </Grid>
