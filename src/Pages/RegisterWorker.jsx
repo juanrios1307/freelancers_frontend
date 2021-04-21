@@ -72,7 +72,7 @@ export class Register extends React.Component {
 
     render() {
         if (this.state.bool) {
-            return <Redirect to='/dashboard' />
+            return <Redirect to='/misworkers' />
         } else {
 
             return (

@@ -4,11 +4,16 @@ import {Elements, CardElement, useStripe, useElements,} from "@stripe/react-stri
 import Axios from "axios";
 import Swal from "sweetalert2";
 
+import gold from '../assets/images/gold.png'
+import silver from '../assets/images/silver.png'
+import bronze from '../assets/images/bronze.png'
+
 function  CheckoutForm() {
     const stripe = useStripe();
     const elements = useElements();
 
     const [loading, setLoading] = useState(false);
+    const [type, setType] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -29,11 +34,21 @@ function  CheckoutForm() {
 
                 const token = localStorage.getItem("token")
 
+                var amount = 10
+
+                if(type == "gold"){
+                    amount=3000
+                }else if(type == "silver"){
+                    amount=2000
+                }else if(type=="bronze"){
+                    amount=1000
+                }
+
                 var config ={
                     method: 'post',
                     url:url,
                     headers: {'access-token': token},
-                    data:{id, amount: 10000,description:"platino"}
+                    data:{id, amount: amount,description:type}
                 }
 
                 const response = await Axios(config);
@@ -65,31 +80,88 @@ function  CheckoutForm() {
     console.log(!stripe || loading);
 
     return (
+
         <form className="card card-body" onSubmit={handleSubmit}>
-            {/* Product Information */}
-            <img
-                src="https://www.corsair.com/medias/sys_master/images/images/h80/hdd/9029904465950/-CH-9109011-ES-Gallery-K70-RGB-MK2-01.png"
-                alt="Corsair Gaming Keyboard RGB"
-                className="img-fluid"
-            />
+                <div className="container">
+                <div className="row justify-content-center">
+                    {/* Product Information */}
 
-            <h3 className="text-center my-2">Price: 100$</h3>
+                    <div className="col">
+                        <h2 className="text-center ">Gold</h2>
 
-            {/* User Card Input */}
-            <div className="form-group">
-                <CardElement/>
-            </div>
 
-            <button disabled={!stripe} className="btn btn-success">
-                {loading ? (
-                    <div className="spinner-border text-light" role="status">
-                        <span className="sr-only">Loading...</span>
+                        <p className="text-center ">20 Workers</p>
+                        <p className="text-center ">Unlimited Anunces</p>
+                        <p className="text-center ">Analitica de Datos</p>
+                        <p className="text-center ">Quien Vio tus publicaciones</p>
+                        <p className="text-center ">Soporte 24/7</p>
+
+                        <h4 className="text-center ">Valor: 30$</h4>
+                        <br />
+                        <input className="form-check-input" type="radio" id="inlineRadio3" name="inlineRadioOptions" value="gold" onChange={e => setType(e.target.value)}/>
+
                     </div>
-                ) : (
-                    "Buy"
-                )}
-            </button>
-        </form>
+
+                    <div className="col">
+                        <h2 className="text-center ">Silver</h2>
+
+
+                        <p className="text-center ">5 Workers</p>
+                        <p className="text-center ">20 Anunces</p>
+                        <p className="text-center ">Analitica de Datos</p>
+                        <br />
+                        <p className="text-center ">Soporte 24/7</p>
+
+                        <br/>
+
+
+                        <h4 className="text-center ">Valor: 20$</h4>
+                        <br />
+                        <input className="form-check-input" type="radio" id="inlineRadio2" name="inlineRadioOptions" value="silver" onChange={e => setType(e.target.value)}/>
+
+                    </div>
+
+                    <div className="col">
+                        <h2 className="text-center ">Bronze</h2>
+
+                        <p className="text-center ">2 Workers</p>
+                        <p className="text-center ">10 Anunces</p>
+                        <br />
+                        <p className="text-center ">Soporte 24/7</p>
+                        <br/>
+                        <br/>
+
+
+                        <h4 className="text-center ">Valor: 10$</h4>
+                        <br/>
+                        <input className="form-check-input" type="radio" id="inlineRadio1" name="inlineRadioOptions" value="bronze" onChange={e => setType(e.target.value)}/>
+
+                    </div>
+
+                </div>
+                </div>
+
+            <br/>
+            <br />
+
+                {/* User Card Input */}
+                <div className="form-group">
+                    <CardElement/>
+                </div>
+
+                <button disabled={!stripe} className="btn btn-success">
+                    {loading ? (
+                        <div className="spinner-border text-light" role="status">
+                            <span className="sr-only">Loading...</span>
+                        </div>
+                    ) : (
+                        "Buy"
+                    )}
+                </button>
+
+
+            </form>
+
     );
 }
 

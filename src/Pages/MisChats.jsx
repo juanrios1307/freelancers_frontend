@@ -7,6 +7,7 @@ import * as AiIcons from 'react-icons/ai';
 import Swal from "sweetalert2";
 import {Redirect} from "react-router-dom";
 import moment from "moment";
+import * as CGIcons from 'react-icons/cg';
 
 class MisChats extends React.Component {
 
@@ -73,11 +74,13 @@ class MisChats extends React.Component {
                            <div className="hola">
                               <p className="card-text">{chat.Mensajes.length > 0 ?
                                                             (bool[index] && chat.Mensajes[chat.Mensajes.length - 1].emisor == "user" )?
-                                                                "Leido" : (bool[index] && chat.Mensajes[chat.Mensajes.length - 1].emisor == "worker" && chat.Mensajes[chat.Mensajes.length - 1].leido == true )?
-                                                                            "Leido" : (bool[index] && chat.Mensajes[chat.Mensajes.length - 1].emisor == "worker" && chat.Mensajes[chat.Mensajes.length - 1].leido == false )?
-                                                                                        "No leido" : (bool[index] == false && chat.Mensajes[chat.Mensajes.length - 1].emisor == "user" && chat.Mensajes[chat.Mensajes.length - 1].leido == true )?
-                                                                                                        "Leido" : (bool[index] == false && chat.Mensajes[chat.Mensajes.length - 1].emisor == "worker" )?
-                                                                                                                        "Leido" : "No leido" : "No leido"} </p>
+                                                                " " : (bool[index] && chat.Mensajes[chat.Mensajes.length - 1].emisor == "worker" && chat.Mensajes[chat.Mensajes.length - 1].leido == true )?
+                                                                            " " : (bool[index] && chat.Mensajes[chat.Mensajes.length - 1].emisor == "worker" && chat.Mensajes[chat.Mensajes.length - 1].leido == false )?
+                                                                                <CGIcons.CgEyeAlt /> : (bool[index] == false && chat.Mensajes[chat.Mensajes.length - 1].emisor == "user" && chat.Mensajes[chat.Mensajes.length - 1].leido == true )?
+                                                                                                        " " : (bool[index] == false && chat.Mensajes[chat.Mensajes.length - 1].emisor == "worker" )?
+                                                                                                                        " " :
+                                                                            <CGIcons.CgEyeAlt /> :
+                                                            <CGIcons.CgEyeAlt />} </p>
                            </div>
 
                        </div>

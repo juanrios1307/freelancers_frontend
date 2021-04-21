@@ -55,7 +55,7 @@ class MisAnuncios extends React.Component {
             title: response.data.data
         })
 
-        //window.location.reload();
+        window.location.reload();
     }
 
     specificAnunce(id){
