@@ -34,8 +34,8 @@ class MyMemberships extends React.Component {
 
         const token = localStorage.getItem("token")
 
-        //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/workers'
-        const url = 'http://localhost:5000/api/membership/'
+        //const url = 'https://peaceful-ridge-86113.herokuapp.com/api/membership/pays/'
+        const url = 'http://localhost:5000/api/membership/pays/'
 
         const config = {
             method: 'get',
