@@ -55,6 +55,9 @@ class MyMemberships extends React.Component {
 
 
     getContent(data){
+
+        var cont=0
+
         if(data.length>0) {
             this.setState({
                 Content: data.map((membresia) => (
@@ -64,6 +67,18 @@ class MyMemberships extends React.Component {
                             <h6 className="mt-0">Membresia {membresia.description}</h6>
                             <p className="card-text">Fecha Compra:  {moment(membresia.fechaCompra).format('DD/MM/YYYY')}</p>
                             <p className="card-text">Fecha Expiración : {moment(membresia.fechaExpiracion).format('DD/MM/YYYY')}</p>
+
+                            {
+                                moment()>moment(membresia.fechaExpiracion) && (
+                                    <p className="card-text">{"Membresia Vencida"}</p>
+                                )
+                            }
+
+                            {
+                                moment() < moment(membresia.fechaExpiracion) && (
+                                    <p className="card-text">{"Membresia Activa"}</p>
+                                )
+                            }
                         </div>
 
                     </div>

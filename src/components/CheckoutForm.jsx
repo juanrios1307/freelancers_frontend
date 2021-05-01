@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import gold from '../assets/images/gold.png'
 import silver from '../assets/images/silver.png'
 import bronze from '../assets/images/bronze.png'
+import {Redirect} from "react-router-dom";
 
 function  CheckoutForm() {
     const stripe = useStripe();
@@ -14,6 +15,7 @@ function  CheckoutForm() {
 
     const [loading, setLoading] = useState(false);
     const [type, setType] = useState('');
+    const [bool,setBool] = useState(false)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -63,6 +65,7 @@ function  CheckoutForm() {
 
                     })
 
+                    setBool(true)
                 }else{
                     Swal.fire({
                         title: response.data.mensaje,
@@ -79,70 +82,79 @@ function  CheckoutForm() {
 
     console.log(!stripe || loading);
 
-    return (
+    if (bool){
+        return(
+            <Redirect to='/mymemberships' />
+        )
+    }else {
 
-        <form className="card card-body" onSubmit={handleSubmit}>
+        return (
+
+            <form className="card card-body" onSubmit={handleSubmit}>
                 <div className="container">
-                <div className="row justify-content-center">
-                    {/* Product Information */}
+                    <div className="row justify-content-center">
+                        {/* Product Information */}
 
-                    <div className="col">
-                        <h2 className="text-center ">Gold</h2>
+                        <div className="col">
+                            <h2 className="text-center ">Gold</h2>
 
 
-                        <p className="text-center ">20 Workers</p>
-                        <p className="text-center ">Unlimited Anunces</p>
-                        <p className="text-center ">Analitica de Datos</p>
-                        <p className="text-center ">Quien Vio tus publicaciones</p>
-                        <p className="text-center ">Soporte 24/7</p>
+                            <p className="text-center ">20 Workers</p>
+                            <p className="text-center ">Unlimited Anunces</p>
+                            <p className="text-center ">Analitica de Datos</p>
+                            <p className="text-center ">Quien Vio tus publicaciones</p>
+                            <p className="text-center ">Soporte 24/7</p>
 
-                        <h4 className="text-center ">Valor: 30$</h4>
-                        <br />
-                        <input className="form-check-input" type="radio" id="inlineRadio3" name="inlineRadioOptions" value="gold" onChange={e => setType(e.target.value)}/>
+                            <h4 className="text-center ">Valor: 30$</h4>
+                            <br/>
+                            <input className="form-check-input" type="radio" id="inlineRadio3" name="inlineRadioOptions"
+                                   value="gold" onChange={e => setType(e.target.value)}/>
+
+                        </div>
+
+                        <div className="col">
+                            <h2 className="text-center ">Silver</h2>
+
+
+                            <p className="text-center ">5 Workers</p>
+                            <p className="text-center ">20 Anunces</p>
+                            <p className="text-center ">Analitica de Datos</p>
+                            <br/>
+                            <p className="text-center ">Soporte 24/7</p>
+
+                            <br/>
+
+
+                            <h4 className="text-center ">Valor: 20$</h4>
+                            <br/>
+                            <input className="form-check-input" type="radio" id="inlineRadio2" name="inlineRadioOptions"
+                                   value="silver" onChange={e => setType(e.target.value)}/>
+
+                        </div>
+
+                        <div className="col">
+                            <h2 className="text-center ">Bronze</h2>
+
+                            <p className="text-center ">2 Workers</p>
+                            <p className="text-center ">10 Anunces</p>
+                            <br/>
+                            <p className="text-center ">Soporte 24/7</p>
+                            <br/>
+                            <br/>
+
+
+                            <h4 className="text-center ">Valor: 10$</h4>
+                            <br/>
+                            <input className="form-check-input" type="radio" id="inlineRadio1" name="inlineRadioOptions"
+                                   value="bronze" onChange={e => setType(e.target.value)}/>
+
+                        </div>
 
                     </div>
-
-                    <div className="col">
-                        <h2 className="text-center ">Silver</h2>
-
-
-                        <p className="text-center ">5 Workers</p>
-                        <p className="text-center ">20 Anunces</p>
-                        <p className="text-center ">Analitica de Datos</p>
-                        <br />
-                        <p className="text-center ">Soporte 24/7</p>
-
-                        <br/>
-
-
-                        <h4 className="text-center ">Valor: 20$</h4>
-                        <br />
-                        <input className="form-check-input" type="radio" id="inlineRadio2" name="inlineRadioOptions" value="silver" onChange={e => setType(e.target.value)}/>
-
-                    </div>
-
-                    <div className="col">
-                        <h2 className="text-center ">Bronze</h2>
-
-                        <p className="text-center ">2 Workers</p>
-                        <p className="text-center ">10 Anunces</p>
-                        <br />
-                        <p className="text-center ">Soporte 24/7</p>
-                        <br/>
-                        <br/>
-
-
-                        <h4 className="text-center ">Valor: 10$</h4>
-                        <br/>
-                        <input className="form-check-input" type="radio" id="inlineRadio1" name="inlineRadioOptions" value="bronze" onChange={e => setType(e.target.value)}/>
-
-                    </div>
-
                 </div>
-                </div>
 
-            <br/>
-            <br />
+                <br/>
+                <br/>
 
                 {/* User Card Input */}
                 <div className="form-group">
@@ -162,7 +174,8 @@ function  CheckoutForm() {
 
             </form>
 
-    );
+        );
+    }
 }
 
 export default CheckoutForm
